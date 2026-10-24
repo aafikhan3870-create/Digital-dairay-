@@ -1,96 +1,86 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="ur" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Dairay - Apki Zaati Diary</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Poppins',sans-serif;background:#0f172a;color:#fff;min-height:100vh;padding:15px;transition:0.3s}
-body.light{background:#f1f5f9;color:#0f172a}
-.container{max-width:500px;margin:auto}
-.header{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
-.logo{font-size:24px;font-weight:700}
-.logo span{color:#22c55e}
-.btn-icon{background:#1e293b;border:0;color:#fff;width:40px;height:40px;border-radius:10px;font-size:18px;cursor:pointer}
-.light .btn-icon{background:#e2e8f0;color:#000}
-.card{background:#1e293b;border-radius:20px;padding:20px;margin-bottom:15px;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
-.light .card{background:#fff;box-shadow:0 10px 30px rgba(0,0,0,0.1)}
-.card h2{font-size:18px;margin-bottom:10px;color:#22c55e}
-.date-box{background:#0f172a;padding:12px;border-radius:12px;text-align:center;margin-bottom:15px;font-weight:600}
-.light .date-box{background:#f8fafc}
-textarea{width:100%;height:200px;background:#0f172a;border:1px solid #334155;color:#fff;border-radius:15px;padding:15px;font-size:16px;resize:none;outline:none;font-family:'Noto Nastaliq Urdu','Poppins',sans-serif}
-.light textarea{background:#f8fafc;color:#000;border-color:#cbd5e1}
-.btn-main{width:100%;background:linear-gradient(135deg,#22c55e,#16a34a);color:#000;border:0;padding:14px;border-radius:15px;font-weight:700;font-size:16px;margin-top:15px;cursor:pointer}
-.btn-main:active{transform:scale(0.98)}
-.entries{margin-top:20px}
-.entry{background:#0f172a;padding:15px;border-radius:15px;margin-bottom:10px;border-left:4px solid #22c55e}
-.light .entry{background:#f8fafc}
-.entry-date{font-size:12px;opacity:0.6;margin-bottom:5px}
-.footer{text-align:center;opacity:0.5;font-size:12px;margin-top:30px;padding:20px}
-</style>
+<title>Digital Dairay - ABDUL HADI</title>
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<div class="container">
-<div class="header">
-<div class="logo">📖 Digital <span>Dairay</span></div>
-<button class="btn-icon" onclick="toggleTheme()">🌙</button>
+<body style="background:#09090b;color:#e4e4e7;margin:0;font-family:system-ui">
+
+<!-- Right Bar like Firebase -->
+<div style="position:fixed;right:0;top:0;bottom:0;width:58px;background:#18181b;border-left:1px solid #27272a;display:flex;flex-direction:column;align-items:center;padding:14px 0;gap:18px;z-index:50">
+<div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(to br,#fcd34d,#ea580c);display:flex;align-items:center;justify-content:center;color:#000;font-weight:900">AH</div>
+<div style="width:28px;height:1px;background:#27272a"></div>
+<div>🔔</div><div>✨</div><div>💬</div><div>❓</div>
 </div>
 
-<div class="card">
-<h2>Assalam-o-Alaikum Aafi! ❤️</h2>
-<p style="opacity:0.8;font-size:14px">Aapki zaati diary, mehfooz, offline, Pakistan me har jagah chalegi.</p>
-<div class="date-box" id="todayDate"></div>
-<textarea id="diaryInput" placeholder="Aaj kya hua Aafi? Yahan apne dil ki baat likho..."></textarea>
-<button class="btn-main" onclick="saveDiary()">💾 Save Karo</button>
-<p id="saveMsg" style="text-align:center;color:#22c55e;margin-top:10px;display:none">✓ Mehfooz ho gayi!</p>
+<div style="margin-right:58px;min-height:100vh;display:flex;flex-direction:column">
+<div style="height:56px;background:#121214;border-bottom:1px solid #27272a;display:flex;align-items:center;justify-content:space-between;padding:0 16px">
+<h1 style="margin:0;font-weight:900">Digital <span style="color:#fbbf24">Dairay</span> <span style="font-size:11px;color:#71717a">by ABDUL HADI</span></h1>
+<span style="font-size:11px;background:#052e1f;color:#34d399;padding:5px 12px;border-radius:20px;border:1px solid #065f46">● LIVE</span>
 </div>
 
-<div class="card entries">
-<h2>📚 Purani Yadein</h2>
-<div id="entriesList"><p style="opacity:0.5;text-align:center;padding:20px">Abhi koi diary nahi likhi</p></div>
-<button class="btn-main" style="background:#ef4444;color:white" onclick="clearAll()" >🗑️ Sab Delete Karo</button>
+<div style="flex:1;display:flex;flex-wrap:wrap">
+<div style="flex:2;min-width:300px;padding:16px;background:#0a0a0b">
+<div style="background:#18181b;border:1px solid #27272a;border-radius:20px;padding:16px">
+<textarea id="storyInput" placeholder="Apni kahani likho..." style="width:100%;background:#1f1f23;border:1px solid #2a2a2e;border-radius:12px;padding:12px;color:#fff;min-height:90px"></textarea>
+<button onclick="postStory()" style="margin-top:10px;background:#fff;color:#000;font-weight:700;padding:8px 24px;border-radius:20px;border:none">Post Karo</button>
+</div>
+<div id="storiesFeed" style="margin-top:16px"></div>
 </div>
 
-<div class="footer">Made with ❤️ by Aafi Khan | 100% Offline & Private<br>Bina VPN ke Pakistan me working</div>
+<div style="flex:1;min-width:280px;background:#121214;border-right:1px solid #27272a;display:flex;flex-direction:column">
+<div style="padding:14px;border-bottom:1px solid #27272a;display:flex;justify-content:space-between"><b>Live Chat</b><span id="onlineCount" style="font-size:11px;color:#71717a">0</span></div>
+<div id="chatMessages" style="flex:1;padding:12px;overflow-y:auto;display:flex;flex-direction:column;gap:8px"></div>
+<div style="padding:12px;border-top:1px solid #27272a;display:flex;gap:6px">
+<input id="userName" placeholder="Naam" style="width:60px;background:#1f1f23;border:1px solid #2a2a2e;border-radius:20px;padding:10px;color:#fff;font-size:11px">
+<input id="chatInput" placeholder="Paigham..." style="flex:1;background:#1f1f23;border:1px solid #2a2a2e;border-radius:20px;padding:10px;color:#fff">
+<button onclick="sendMessage()" style="background:#fbbf24;color:#000;width:38px;height:38px;border-radius:50%;border:none;font-weight:700">↑</button>
+</div>
+</div>
+</div>
 </div>
 
-<script>
-const today = new Date().toLocaleDateString('ur-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-document.getElementById('todayDate').innerText = today;
-
-function saveDiary(){
-let text = document.getElementById('diaryInput').value;
-if(!text.trim()){alert('Kuch likho to sahi Aafi!');return;}
-let entries = JSON.parse(localStorage.getItem('dd_entries')||'[]');
-let now = new Date();
-entries.unshift({date:now.toLocaleString('ur-PK'),text:text});
-localStorage.setItem('dd_entries',JSON.stringify(entries));
-document.getElementById('diaryInput').value='';
-document.getElementById('saveMsg').style.display='block';
-setTimeout(()=>document.getElementById('saveMsg').style.display='none',2000);
-showEntries();
-}
-
-function showEntries(){
-let entries = JSON.parse(localStorage.getItem('dd_entries')||'[]');
-let list = document.getElementById('entriesList');
-if(entries.length==0){list.innerHTML='<p style="opacity:0.5;text-align:center;padding:20px">Abhi koi diary nahi likhi</p>';return;}
-list.innerHTML = entries.map((e,i)=>`<div class="entry"><div class="entry-date">${e.date} <span onclick="delEntry(${i})" style="float:right;cursor:pointer">❌</span></div><div>${e.text.replace(/\n/g,'<br>')}</div></div>`).join('');
-}
-
-function delEntry(i){
-let entries = JSON.parse(localStorage.getItem('dd_entries')||'[]');
-entries.splice(i,1);
-localStorage.setItem('dd_entries',JSON.stringify(entries));
-showEntries();
-}
-
-function clearAll(){if(confirm('Sari diaries delete karni hain?')){localStorage.removeItem('dd_entries');showEntries();}}
-function toggleTheme(){document.body.classList.toggle('light');localStorage.setItem('theme',document.body.classList.contains('light')?'light':'dark')}
-if(localStorage.getItem('theme')=='light'){document.body.classList.add('light')}
-showEntries();
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, addDoc, onSnapshot, orderBy, query, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyDrxztt_wMInNZ2SsYuA_Z0KfPdUhMWZDM",
+  authDomain: "aafi-khan.firebaseapp.com",
+  projectId: "aafi-khan",
+  storageBucket: "aafi-khan.firebasestorage.app",
+  messagingSenderId: "225988422863",
+  appId: "1:225988422863:web:f1be7832f1ee1ab52b9bba",
+  measurementId: "G-RZPCEXZ3Q7"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const chatCol = collection(db, "hadi_chats");
+const storyCol = collection(db, "hadi_stories");
+window.sendMessage = async () => {
+  const n = document.getElementById('userName').value || "Mehman";
+  const t = document.getElementById('chatInput').value.trim();
+  if(!t) return; document.getElementById('chatInput').value="";
+  await addDoc(chatCol, { name: n, text: t, created: Date.now(), time: serverTimestamp() });
+};
+window.postStory = async () => {
+  const t = document.getElementById('storyInput').value.trim();
+  if(!t) return; document.getElementById('storyInput').value="";
+  await addDoc(storyCol, { text: t, created: Date.now() });
+};
+const qChat = query(chatCol, orderBy("created","asc"));
+onSnapshot(qChat, (snap)=>{
+  const box=document.getElementById('chatMessages'); box.innerHTML=""; let c=0;
+  snap.forEach(d=>{ const data=d.data(); const div=document.createElement('div'); div.style.cssText="background:#1e1e20;border-radius:14px;padding:10px;border:1px solid #27272a"; div.innerHTML=`<b style="color:#fbbf24;font-size:11px">${data.name}</b> <span style="font-size:10px;color:#71717a"> ${new Date(data.created).toLocaleTimeString()}</span><div style="margin-top:4px;font-size:13px">${data.text}</div>`; box.appendChild(div); c++; });
+  document.getElementById('onlineCount').innerText=c+" messages"; box.scrollTop=box.scrollHeight;
+});
+const qStory = query(storyCol, orderBy("created","desc"));
+onSnapshot(qStory, (snap)=>{
+  const feed=document.getElementById('storiesFeed'); feed.innerHTML="";
+  snap.forEach(d=>{ const data=d.data(); const div=document.createElement('div'); div.style.cssText="background:#18181b;border:1px solid #27272a;border-radius:18px;padding:14px;margin-bottom:12px"; div.innerHTML=`<div>${data.text}</div><div style="font-size:10px;color:#71717a;margin-top:8px">${new Date(data.created).toLocaleString()}</div>`; feed.appendChild(div); });
+});
+document.getElementById('chatInput').addEventListener('keydown', e=>{ if(e.key==='Enter') sendMessage(); });
 </script>
 </body>
 </html>
