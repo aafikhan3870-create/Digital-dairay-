@@ -198,4 +198,5 @@ function installApp(){
 window.addEventListener('appinstalled', ()=>{
   document.getElementById('installBox').style.display='none';
 });
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
 </script></body></html>
