@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Dairay</title>
+<style>
+body{background:#0f172a;color:white;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:sans-serif;text-align:center;padding:20px}
+.card{background:#1e293b;padding:30px;border-radius:20px;max-width:400px;width:100%}
+textarea{width:100%;height:120px;border-radius:12px;padding:10px;margin-top:15px}
+.btn{background:#22c55e;color:black;padding:10px 20px;border-radius:10px;display:inline-block;margin-top:15px;font-weight:bold}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>📖 Digital Dairay</h1>
+<p>Assalam-o-Alaikum Aafi!<br>Aapki diary ab Pakistan me VPN ke baghair chalegi!</p>
+<textarea id="d" placeholder="Aaj kya hua? Yahan likho..."></textarea>
+<div class="btn" onclick="localStorage.setItem('diary',document.getElementById('d').value);alert('Save ho gayi!')">Save</div>
+</div>
+<script>document.getElementById('d').value=localStorage.getItem('diary')||''</script>
+</body>
+</html>
