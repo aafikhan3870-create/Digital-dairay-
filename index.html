@@ -170,4 +170,32 @@ loadY();
 let savedLang=localStorage.getItem('fullLang')||'ur';setFullLang(savedLang);
 let sc=localStorage.getItem('themeColor');if(sc)setTheme(sc);
 setView('today');localStorage.removeItem('un');document.getElementById('lockScreen').style.display='flex';loadY();
+</script>
+<!-- Install Button -->
+<div id="installBox" style="display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:10000;width:90%;max-width:360px">
+<button id="installBtn" onclick="installApp()" style="width:100%;background:#16a34a;color:#fff;border:none;padding:16px;border-radius:16px;font-weight:800;font-size:18px;box-shadow:0 8px 20px rgba(22,163,74,.4)">📲 App Install Karo - ABDUL HADI</button>
+</div>
+<script>
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('installBox').style.display='block';
+});
+function installApp(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choice)=>{
+      if(choice.outcome==='accepted'){
+        document.getElementById('installBox').style.display='none';
+      }
+      deferredPrompt=null;
+    });
+  } else {
+    alert('3 dots (⋮) dabao -> Install App / Add to Home Screen dabao!');
+  }
+}
+window.addEventListener('appinstalled', ()=>{
+  document.getElementById('installBox').style.display='none';
+});
 </script></body></html>
