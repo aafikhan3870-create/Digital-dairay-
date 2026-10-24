@@ -1,23 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="ur">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Dairay</title>
+<title>Digital Dairay - Apki Zaati Diary</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
-body{background:#0f172a;color:white;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:sans-serif;text-align:center;padding:20px}
-.card{background:#1e293b;padding:30px;border-radius:20px;max-width:400px;width:100%}
-textarea{width:100%;height:120px;border-radius:12px;padding:10px;margin-top:15px}
-.btn{background:#22c55e;color:black;padding:10px 20px;border-radius:10px;display:inline-block;margin-top:15px;font-weight:bold}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;background:#0f172a;color:#fff;min-height:100vh;padding:15px;transition:0.3s}
+body.light{background:#f1f5f9;color:#0f172a}
+.container{max-width:500px;margin:auto}
+.header{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font-size:24px;font-weight:700}
+.logo span{color:#22c55e}
+.btn-icon{background:#1e293b;border:0;color:#fff;width:40px;height:40px;border-radius:10px;font-size:18px;cursor:pointer}
+.light .btn-icon{background:#e2e8f0;color:#000}
+.card{background:#1e293b;border-radius:20px;padding:20px;margin-bottom:15px;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+.light .card{background:#fff;box-shadow:0 10px 30px rgba(0,0,0,0.1)}
+.card h2{font-size:18px;margin-bottom:10px;color:#22c55e}
+.date-box{background:#0f172a;padding:12px;border-radius:12px;text-align:center;margin-bottom:15px;font-weight:600}
+.light .date-box{background:#f8fafc}
+textarea{width:100%;height:200px;background:#0f172a;border:1px solid #334155;color:#fff;border-radius:15px;padding:15px;font-size:16px;resize:none;outline:none;font-family:'Noto Nastaliq Urdu','Poppins',sans-serif}
+.light textarea{background:#f8fafc;color:#000;border-color:#cbd5e1}
+.btn-main{width:100%;background:linear-gradient(135deg,#22c55e,#16a34a);color:#000;border:0;padding:14px;border-radius:15px;font-weight:700;font-size:16px;margin-top:15px;cursor:pointer}
+.btn-main:active{transform:scale(0.98)}
+.entries{margin-top:20px}
+.entry{background:#0f172a;padding:15px;border-radius:15px;margin-bottom:10px;border-left:4px solid #22c55e}
+.light .entry{background:#f8fafc}
+.entry-date{font-size:12px;opacity:0.6;margin-bottom:5px}
+.footer{text-align:center;opacity:0.5;font-size:12px;margin-top:30px;padding:20px}
 </style>
 </head>
 <body>
-<div class="card">
-<h1>📖 Digital Dairay</h1>
-<p>Assalam-o-Alaikum Aafi!<br>Aapki diary ab Pakistan me VPN ke baghair chalegi!</p>
-<textarea id="d" placeholder="Aaj kya hua? Yahan likho..."></textarea>
-<div class="btn" onclick="localStorage.setItem('diary',document.getElementById('d').value);alert('Save ho gayi!')">Save</div>
+<div class="container">
+<div class="header">
+<div class="logo">📖 Digital <span>Dairay</span></div>
+<button class="btn-icon" onclick="toggleTheme()">🌙</button>
 </div>
-<script>document.getElementById('d').value=localStorage.getItem('diary')||''</script>
+
+<div class="card">
+<h2>Assalam-o-Alaikum Aafi! ❤️</h2>
+<p style="opacity:0.8;font-size:14px">Aapki zaati diary, mehfooz, offline, Pakistan me har jagah chalegi.</p>
+<div class="date-box" id="todayDate"></div>
+<textarea id="diaryInput" placeholder="Aaj kya hua Aafi? Yahan apne dil ki baat likho..."></textarea>
+<button class="btn-main" onclick="saveDiary()">💾 Save Karo</button>
+<p id="saveMsg" style="text-align:center;color:#22c55e;margin-top:10px;display:none">✓ Mehfooz ho gayi!</p>
+</div>
+
+<div class="card entries">
+<h2>📚 Purani Yadein</h2>
+<div id="entriesList"><p style="opacity:0.5;text-align:center;padding:20px">Abhi koi diary nahi likhi</p></div>
+<button class="btn-main" style="background:#ef4444;color:white" onclick="clearAll()" >🗑️ Sab Delete Karo</button>
+</div>
+
+<div class="footer">Made with ❤️ by Aafi Khan | 100% Offline & Private<br>Bina VPN ke Pakistan me working</div>
+</div>
+
+<script>
+const today = new Date().toLocaleDateString('ur-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+document.getElementById('todayDate').innerText = today;
+
+function saveDiary(){
+let text = document.getElementById('diaryInput').value;
+if(!text.trim()){alert('Kuch likho to sahi Aafi!');return;}
+let entries = JSON.parse(localStorage.getItem('dd_entries')||'[]');
+let now = new Date();
+entries.unshift({date:now.toLocaleString('ur-PK'),text:text});
+localStorage.setItem('dd_entries',JSON.stringify(entries));
+document.getElementById('diaryInput').value='';
+document.getElementById('saveMsg').style.display='block';
+setTimeout(()=>document.getElementById('saveMsg').style.display='none',2000);
+showEntries();
+}
+
+function showEntries(){
+let entries = JSON.parse(localStorage.getItem('dd_entries')||'[]');
+let list = document.getElementById('entriesList');
+if(entries.length==0){list.innerHTML='<p style="opacity:0.5;text-align:center;padding:20px">Abhi koi diary nahi likhi</p>';return;}
+list.innerHTML = entries.map((e,i)=>`<div class="entry"><div class="entry-date">${e.date} <span onclick="delEntry(${i})" style="float:right;cursor:pointer">❌</span></div><div>${e.text.replace(/\n/g,'<br>')}</div></div>`).join('');
+}
+
+function delEntry(i){
+let entries = JSON.parse(localStorage.getItem('dd_entries')||'[]');
+entries.splice(i,1);
+localStorage.setItem('dd_entries',JSON.stringify(entries));
+showEntries();
+}
+
+function clearAll(){if(confirm('Sari diaries delete karni hain?')){localStorage.removeItem('dd_entries');showEntries();}}
+function toggleTheme(){document.body.classList.toggle('light');localStorage.setItem('theme',document.body.classList.contains('light')?'light':'dark')}
+if(localStorage.getItem('theme')=='light'){document.body.classList.add('light')}
+showEntries();
+</script>
 </body>
 </html>
