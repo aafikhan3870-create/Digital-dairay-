@@ -1,109 +1,79 @@
-<!DOCTYPE html>
-<html lang="ur" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>عبد الہادی - ABDUL HADI ki Dairay</title>
-<link rel="icon" href="logo.jpg">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:system-ui,Noto Nastaliq Urdu;background:#ffffff}
-.top-green{background:linear-gradient(135deg,#14532d,#16a34a);padding:15px 15px 20px;text-align:center;color:#fff;position:relative}
-.top-green .logos{display:flex;justify-content:space-between;align-items:center}
-.top-green .logos img{width:68px;height:68px;border-radius:50%;border:3px solid #fff;object-fit:cover;background:#fff}
-.top-green h1{font-size:26px;margin:5px 0 2px}
-.top-green h2{font-size:18px;font-weight:600}
-.top-green p{font-size:14px;opacity:0.9;margin-top:6px}
-.themes{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
-.themes span{width:34px;height:34px;border-radius:50%;cursor:pointer;border:3px solid rgba(255,255,255,0.8);box-shadow:0 2px 6px rgba(0,0,0,0.2)}
-.white-area{background:#ffffff;min-height:100vh;padding:20px 15px}
-.profile-white{background:#fff;border:1px solid #f1f5f9;border-radius:20px;padding:20px;text-align:center;margin-bottom:18px;box-shadow:0 4px 15px rgba(0,0,0,0.05)}
-.profile-white img{width:110px;height:110px;border-radius:50%;object-fit:cover;border:4px solid #f0fdf4;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
-.profile-white h2{margin-top:12px;font-size:22px;color:#0f172a}
-.profile-white p{color:#64748b;font-size:13px;margin-top:4px}
-.card{background:#fff;border:1.5px solid #16a34a;border-radius:16px;padding:14px;margin-bottom:15px}
-.card textarea{width:100%;border:none;outline:none;resize:none;font-size:15px;min-height:90px}
-.btn-green{width:100%;background:#16a34a;color:#fff;border:none;padding:14px;border-radius:14px;font-size:16px;font-weight:bold;cursor:pointer;margin-bottom:14px}
-.btn-red{width:100%;background:#ef4444;color:#fff;border:none;padding:14px;border-radius:14px;font-size:16px;font-weight:bold;cursor:pointer;margin-top:15px}
-#chatBox{height:200px;overflow-y:auto;background:#f8fafc;border-radius:12px;padding:10px;margin-bottom:10px;border:1px solid #e2e8f0}
-.msg{padding:8px 12px;border-radius:12px;margin:5px 0;max-width:80%;font-size:13px}
-.msg.me{background:#16a34a;color:#fff;margin-right:auto}
-.msg.other{background:#fff;border:1px solid #e2e8f0}
-.lockScreen{position:fixed;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999}
-.lockScreen img.logo{width:130px;height:130px;border-radius:22px;object-fit:cover}
-.lockScreen img.user{width:80px;height:80px;border-radius:50%;margin-top:-20px;border:3px solid #fff;box-shadow:0 4px 15px rgba(0,0,0,0.1);object-fit:cover}
-#pinInput{display:flex;gap:10px;margin:15px 0}
-#pinInput input{width:50px;height:50px;text-align:center;font-size:20px;border-radius:12px;border:1.5px solid #e2e8f0}
-</style>
-</head>
-<body>
+<!DOCTYPE html><html lang="ur" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>عبد الہادی</title><link rel="icon" href="logo.jpg"><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui;background:#fff;overscroll-behavior:none}.top{background:linear-gradient(135deg,#14532d,#16a34a);padding:14px;text-align:center;color:#fff}.top .logos{display:flex;justify-content:space-between;align-items:center}.top .logos img{width:68px;height:68px;border-radius:50%;border:3px solid #fff;object-fit:cover}.white{padding:18px 14px}.profile{border:1px solid #f1f5f9;border-radius:20px;padding:22px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,.06);margin-bottom:18px}.profile img{width:115px;height:115px;border-radius:50%;object-fit:cover;border:4px solid #f0fdf4}.card{border:1.5px solid #16a34a;border-radius:16px;padding:12px;margin-bottom:14px}.card textarea{width:100%;border:none;outline:none;min-height:110px;font-size:16px;resize:none}.btn{width:100%;background:#16a34a;color:#fff;border:none;padding:14px;border-radius:14px;font-weight:bold;font-size:16px;cursor:pointer;margin-bottom:10px}.lockS{position:fixed;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:18px 20px;z-index:9999;overflow-y:auto}.lockS .l1{width:125px;height:125px;border-radius:22px;object-fit:cover}.lockS .l2{width:82px;height:82px;border-radius:50%;margin-top:-20px;border:4px solid #fff;box-shadow:0 6px 15px rgba(0,0,0,.2);object-fit:cover}#onePass{width:200px;height:58px;border-radius:16px;border:2.5px solid #16a34a;text-align:center;font-size:30px;font-weight:bold;letter-spacing:12px;outline:none;margin:14px 0;background:#f8fafc;pointer-events:none}.numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;max-width:260px;margin-top:10px}.numpad button{height:62px;border-radius:16px;border:1.5px solid #e2e8f0;background:#fff;font-size:24px;font-weight:bold;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.05)}.numpad button:active{background:#16a34a;color:#fff;transform:scale(.96)}.numpad .ok{background:#0f172a;color:#fff;border:none}.numpad .del{background:#fef2f2;color:#ef4444}.kbBar{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}.kbBar button{padding:8px 14px;border-radius:20px;border:1.5px solid #e2e8f0;background:#fff;font-size:13px;font-weight:bold;cursor:pointer}.kbBar button.active{background:#16a34a;color:#fff;border-color:#16a34a}.urduKB{display:none;grid-template-columns:repeat(8,1fr);gap:6px;margin-top:8px}.urduKB.show{display:grid}.urduKB button{padding:10px 2px;border-radius:10px;border:1px solid #e2e8f0;background:#fff;font-size:16px;cursor:pointer}.urduKB button:active{background:#16a34a;color:#fff}.engKB{display:none;grid-template-columns:repeat(10,1fr);gap:5px;margin-top:8px}.engKB.show{display:grid}.engKB button{padding:10px 2px;border-radius:8px;border:1px solid #e2e8f0;background:#f8fafc;font-size:14px;cursor:pointer}.changeBox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:10000;align-items:center;justify-content:center;padding:20px}.changeInner{background:#fff;border-radius:20px;padding:22px;width:100%;max-width:340px;text-align:center}.changeInner input{width:100%;height:50px;border-radius:12px;border:2px solid #e2e8f0;text-align:center;font-size:20px;font-weight:bold;letter-spacing:6px;margin:8px 0;outline:none}</style></head><body>
 
-<div id="lockScreen" class="lockScreen">
-<img src="logo.jpg" class="logo" onerror="this.src='https://via.placeholder.com/130'">
-<img src="small.jpg" class="user" id="lockPic" onerror="this.style.display='none'">
-<h2 style="margin-top:15px">عبد الہادی</h2>
-<p style="color:#64748b">Digital Dairay</p>
-<div id="pinInput"><input type="password" maxlength="1"><input type="password" maxlength="1"><input type="password" maxlength="1"><input type="password" maxlength="1"></div>
-<button onclick="checkPin()" style="background:#0f172a;color:#fff;border:none;padding:12px 45px;border-radius:30px;font-weight:bold">Dakhil Hon →</button>
-<p id="err" style="color:red;display:none;margin-top:10px">Galat Password!</p>
+<div id="lockScreen" class="lockS">
+<img src="logo.jpg" class="l1"><img src="small.jpg" class="l2">
+<h2 style="margin-top:12px;font-size:26px">عبد الہادی</h2>
+<p style="color:#64748b;font-size:13px">Apna Keyboard</p>
+<input id="onePass" readonly placeholder="••••">
+<div class="numpad">
+<button onclick="addNum('1')">1</button><button onclick="addNum('2')">2</button><button onclick="addNum('3')">3</button>
+<button onclick="addNum('4')">4</button><button onclick="addNum('5')">5</button><button onclick="addNum('6')">6</button>
+<button onclick="addNum('7')">7</button><button onclick="addNum('8')">8</button><button onclick="addNum('9')">9</button>
+<button onclick="delNum()" class="del">⌫</button><button onclick="addNum('0')">0</button><button onclick="checkOne()" class="ok">✔</button>
+</div>
+<button onclick="checkOne()" style="background:#0f172a;color:#fff;border:none;padding:14px 55px;border-radius:30px;font-weight:bold;font-size:17px;margin-top:16px;cursor:pointer">🔓 Dakhil Hon</button>
+<p id="err" style="color:#ef4444;display:none;margin-top:12px;font-weight:bold">Galat!</p>
+<p style="color:#94a3b8;font-size:11px;margin-top:10px" id="showPassText">Default: 2938</p>
 </div>
 
-<div class="top-green">
-<div class="logos">
-<img src="logo.jpg" onerror="this.src='https://via.placeholder.com/68'">
-<div>
-<h1>عبد الہادی</h1>
-<h2>📖 ABDUL HADI ki Dairay</h2>
-<p id="date"></p>
-</div>
-<img src="logo.jpg" onerror="this.src='https://via.placeholder.com/68'">
-</div>
-<div class="themes">
-<span style="background:#ffffff" onclick="setTheme('#16a34a')"></span>
-<span style="background:#3b82f6" onclick="setTheme('#3b82f6')"></span>
-<span style="background:#a855f7" onclick="setTheme('#a855f7')"></span>
-<span style="background:#ec4899" onclick="setTheme('#ec4899')"></span>
-<span style="background:#f59e0b" onclick="setTheme('#f59e0b')"></span>
-<span style="background:#ef4444" onclick="setTheme('#ef4444')"></span>
-<span style="background:#14b8a6" onclick="setTheme('#14b8a6')"></span>
-<span style="background:#1e293b" onclick="setTheme('#1e293b')"></span>
-</div>
-<p style="font-size:11px;margin-top:8px;letter-spacing:1px;opacity:0.9">RANG BADLO - 8 THEMES 🎨</p>
-</div>
+<div id="changeBox" class="changeBox"><div class="changeInner"><h3>🔑 Password Change</h3><input id="oldP" readonly onclick="setActiveInput('oldP')" placeholder="Purana"><input id="newP" readonly onclick="setActiveInput('newP')" placeholder="Naya"><input id="newP2" readonly onclick="setActiveInput('newP2')" placeholder="Naya dobara"><div class="numpad" style="max-width:100%;margin-top:12px"><button onclick="addNum2('1')">1</button><button onclick="addNum2('2')">2</button><button onclick="addNum2('3')">3</button><button onclick="addNum2('4')">4</button><button onclick="addNum2('5')">5</button><button onclick="addNum2('6')">6</button><button onclick="addNum2('7')">7</button><button onclick="addNum2('8')">8</button><button onclick="addNum2('9')">9</button><button onclick="delNum2()" class="del">⌫</button><button onclick="addNum2('0')">0</button><button onclick="closeChange()" class="ok">✕</button></div><button onclick="saveNewPass()" style="width:100%;background:#16a34a;color:#fff;border:none;padding:14px;border-radius:12px;font-weight:bold;margin-top:12px">✅ Save Naya Password</button><p id="changeMsg" style="display:none;margin-top:8px;font-size:13px"></p></div></div>
 
-<div class="white-area">
-<!-- ABDUL HADI PIC WHITE JAGA PE -->
-<div class="profile-white">
-<img src="small.jpg" onerror="this.src='logo.jpg'">
-<h2>عبد الہادی</h2>
-<p>Digital Dairay Owner • White Clean Design</p>
-</div>
+<div class="top"><div class="logos"><img src="logo.jpg"><div><h1>عبد الہادی</h1><h2>📖 ABDUL HADI ki Dairay</h2><p id="d" style="font-size:12px;opacity:.9;margin-top:3px"></p></div><img src="logo.jpg"></div></div>
+
+<div class="white">
+<div class="profile"><img src="small.jpg" onerror="this.src='logo.jpg'"><h2>عبد الہادی</h2><p id="currentPassShow">Password: 2938</p></div>
 
 <div class="card">
+<div class="kbBar"><button id="bEng" onclick="showKB('eng')" class="active">English ⌨️</button><button id="bUrdu" onclick="showKB('urdu')">Urdu اردو</button><button onclick="clearYaad()">🗑 Clear</button><button onclick="addSpace()">⎵ Space</button></div>
 <label style="font-weight:bold">🌿 Aaj kya hua? ✍️</label>
-<textarea id="yaadInput" placeholder="Yahan apni kahani, yaad, khayal likho..."></textarea>
+<textarea id="yaadInput" placeholder="Yahan apni kahani likho... (Apna keyboard neeche hai)"></textarea>
+
+<div id="urduKB" class="urduKB">
+<button onclick="typeChar('ا')">ا</button><button onclick="typeChar('ب')">ب</button><button onclick="typeChar('پ')">پ</button><button onclick="typeChar('ت')">ت</button><button onclick="typeChar('ٹ')">ٹ</button><button onclick="typeChar('ث')">ث</button><button onclick="typeChar('ج')">ج</button><button onclick="typeChar('چ')">چ</button>
+<button onclick="typeChar('ح')">ح</button><button onclick="typeChar('خ')">خ</button><button onclick="typeChar('د')">د</button><button onclick="typeChar('ڈ')">ڈ</button><button onclick="typeChar('ذ')">ذ</button><button onclick="typeChar('ر')">ر</button><button onclick="typeChar('ڑ')">ڑ</button><button onclick="typeChar('ز')">ز</button>
+<button onclick="typeChar('س')">س</button><button onclick="typeChar('ش')">ش</button><button onclick="typeChar('ص')">ص</button><button onclick="typeChar('ض')">ض</button><button onclick="typeChar('ط')">ط</button><button onclick="typeChar('ظ')">ظ</button><button onclick="typeChar('ع')">ع</button><button onclick="typeChar('غ')">غ</button>
+<button onclick="typeChar('ف')">ف</button><button onclick="typeChar('ق')">ق</button><button onclick="typeChar('ک')">ک</button><button onclick="typeChar('گ')">گ</button><button onclick="typeChar('ل')">ل</button><button onclick="typeChar('م')">م</button><button onclick="typeChar('ن')">ن</button><button onclick="typeChar('و')">و</button>
+<button onclick="typeChar('ہ')">ہ</button><button onclick="typeChar('ھ')">ھ</button><button onclick="typeChar('ء')">ء</button><button onclick="typeChar('ی')">ی</button><button onclick="typeChar('ے')">ے</button><button onclick="typeChar('۔')">۔</button><button onclick="typeChar('،')">،</button><button onclick="typeChar('؟')">؟</button>
 </div>
 
-<button class="btn-green" onclick="saveYaad()">📄 Save + File Banao 💾</button>
-
-<div class="card" style="border-color:#e2e8f0">
-<h3 style="text-align:center">💬 Chat System</h3>
-<div id="chatBox"></div>
-<div style="display:flex;gap:8px"><input id="chatInput" placeholder="Paigham..." style="flex:1;padding:10px;border-radius:20px;border:1px solid #e2e8f0"><button onclick="sendMsg()" style="background:#16a34a;color:#fff;border:none;padding:0 18px;border-radius:20px">➤</button></div>
+<div id="engKB" class="engKB show">
+<button onclick="typeChar('q')">q</button><button onclick="typeChar('w')">w</button><button onclick="typeChar('e')">e</button><button onclick="typeChar('r')">r</button><button onclick="typeChar('t')">t</button><button onclick="typeChar('y')">y</button><button onclick="typeChar('u')">u</button><button onclick="typeChar('i')">i</button><button onclick="typeChar('o')">o</button><button onclick="typeChar('p')">p</button>
+<button onclick="typeChar('a')">a</button><button onclick="typeChar('s')">s</button><button onclick="typeChar('d')">d</button><button onclick="typeChar('f')">f</button><button onclick="typeChar('g')">g</button><button onclick="typeChar('h')">h</button><button onclick="typeChar('j')">j</button><button onclick="typeChar('k')">k</button><button onclick="typeChar('l')">l</button><button onclick="typeChar('!')">!</button>
+<button onclick="typeChar('z')">z</button><button onclick="typeChar('x')">x</button><button onclick="typeChar('c')">c</button><button onclick="typeChar('v')">v</button><button onclick="typeChar('b')">b</button><button onclick="typeChar('n')">n</button><button onclick="typeChar('m')">m</button><button onclick="typeChar('.')">.</button><button onclick="typeChar(',')">,</button><button onclick="typeChar('?')">?</button>
+<button onclick="backChar()" style="background:#fef2f2;color:#ef4444;grid-column:span 2">⌫ Delete</button><button onclick="addSpace()" style="grid-column:span 6;background:#f1f5f9">Space - جگہ</button><button onclick="typeChar('\n')" style="grid-column:span 2;background:#dcfce7">↵ Enter</button>
+</div>
 </div>
 
-<div style="margin-top:20px">
-<h3 style="text-align:right">Purani Yadein - <span id="count">0</span> 📚</h3>
-<div id="list" style="color:#64748b;text-align:center;padding:20px">🌱 Abhi koi yaad nahi... Pehli yaad likho!</div>
-<button class="btn-green" onclick="downloadAll()">📥 Sari Yadein Ek File Me Download 📦</button>
-</div>
-
-<button class="btn-red" onclick="lockKaro()">Lock Karo 🔒</button>
-<p style="text-align:center;color:#94a3b8;font-size:11px;margin-top:12px">Full Screen • 8 Themes • Logo + Photo • Password 2938</p>
+<button class="btn" onclick="saveYaad()">📄 Save Karo 💾</button>
+<div style="margin-top:16px"><h3 style="text-align:right">Purani Yadein - <span id="c">0</span> 📚</h3><div id="list" style="color:#64748b;text-align:center;padding:16px">🌱 Abhi koi yaad nahi...</div></div>
+<button style="width:100%;background:#3b82f6;color:#fff;border:none;padding:14px;border-radius:14px;font-weight:bold;margin-top:10px" onclick="openChange()">🔑 Password Change Karo</button>
+<button style="width:100%;background:#ef4444;color:#fff;border:none;padding:14px;border-radius:14px;font-weight:bold;margin-top:10px" onclick="lockK()">Lock Karo 🔒</button>
 </div>
 
 <script>
-let pinInputs=document.querySelectorAll('#pinInput input');
-pinInputs.forEach((inp,i)=>{inp.addEventListener('input',()=>{if(inp.value&&i<3)pinInputs[i+1].focus()})});
-function checkPin(){let p='';pinInputs.forEach(i=>p+=i.value);if(p==='2938'){document.getElementById('lockScreen').style.display='none';localStorage.setItem('un','yes')}else{document.getElementById('err').style.display='block';pinInputs.forEach(i=>i.value='')}};
-if(localStorage.getItem('un')==='yes')document.getElementBy
+let curPassInput=null;
+function getPass(){return localStorage.getItem('myPass')||'2938'}
+let passVal='';
+function addNum(n){if(passVal.length<4){passVal+=n;document.getElementById('onePass').value='•'.repeat(passVal.length);if(passVal.length===4)setTimeout(checkOne,300)}}
+function delNum(){passVal=passVal.slice(0,-1);document.getElementById('onePass').value='•'.repeat(passVal.length)}
+function checkOne(){if(passVal===getPass()){document.getElementById('lockScreen').style.display='none';localStorage.setItem('un','yes');passVal='';document.getElementById('onePass').value=''}else if(passVal.length===4){let e=document.getElementById('err');e.style.display='block';e.innerText='Galat! Sahi: '+getPass();setTimeout(()=>{e.style.display='none';passVal='';document.getElementById('onePass').value=''},1000)}}
+if(localStorage.getItem('un')==='yes')document.getElementById('lockScreen').style.display='none';
+document.getElementById('d').innerText=new Date().toLocaleDateString('ur-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+function updateShow(){let p=getPass();document.getElementById('showPassText').innerText='Current: '+p;document.getElementById('currentPassShow').innerText='Password: '+p}
+updateShow();
+function openChange(){document.getElementById('changeBox').style.display='flex';curPassInput='oldP'}
+function closeChange(){document.getElementById('changeBox').style.display='none'}
+function setActiveInput(id){curPassInput=id}
+function addNum2(n){if(!curPassInput)curPassInput='oldP';let el=document.getElementById(curPassInput);if(el.value.length<4)el.value+=n}
+function delNum2(){if(!curPassInput)return;let el=document.getElementById(curPassInput);el.value=el.value.slice(0,-1)}
+function saveNewPass(){let oldV=document.getElementById('oldP').value.trim();let newV=document.getElementById('newP').value.trim();let newV2=document.getElementById('newP2').value.trim();let msg=document.getElementById('changeMsg');if(oldV!==getPass()){msg.style.display='block';msg.style.color='#ef4444';msg.innerText='Purana galat!';return}if(newV.length!==4||!/^[0-9]{4}$/.test(newV)){msg.style.display='block';msg.style.color='#ef4444';msg.innerText='4 number likho!';return}if(newV!==newV2){msg.style.display='block';msg.style.color='#ef4444';msg.innerText='Match nahi!';return}localStorage.setItem('myPass',newV);updateShow();msg.style.display='block';msg.style.color='#16a34a';msg.innerText='✅ Ho gaya! Naya: '+newV;setTimeout(()=>{closeChange();document.getElementById('oldP').value='';document.getElementById('newP').value='';document.getElementById('newP2').value='';msg.style.display='none'},1200)}
+function showKB(t){document.getElementById('urduKB').classList.remove('show');document.getElementById('engKB').classList.remove('show');document.getElementById('bUrdu').classList.remove('active');document.getElementById('bEng').classList.remove('active');if(t==='urdu'){document.getElementById('urduKB').classList.add('show');document.getElementById('bUrdu').classList.add('active')}else{document.getElementById('engKB').classList.add('show');document.getElementById('bEng').classList.add('active')}}
+function typeChar(c){let ta=document.getElementById('yaadInput');let s=ta.selectionStart;let e=ta.selectionEnd;ta.value=ta.value.substring(0,s)+c+ta.value.substring(e);ta.selectionStart=ta.selectionEnd=s+c.length;ta.focus()}
+function backChar(){let ta=document.getElementById('yaadInput');let s=ta.selectionStart;let e=ta.selectionEnd;if(s===e&&s>0){ta.value=ta.value.substring(0,s-1)+ta.value.substring(e);ta.selectionStart=ta.selectionEnd=s-1}else{ta.value=ta.value.substring(0,s)+ta.value.substring(e);ta.selectionStart=ta.selectionEnd=s}ta.focus()}
+function addSpace(){typeChar(' ')}
+function clearYaad(){if(confirm('Clear karna hai?'))document.getElementById('yaadInput').value=''}
+function saveYaad(){let t=document.getElementById('yaadInput').value.trim();if(!t)return alert('Kuch likho!');let a=JSON.parse(localStorage.getItem('y')||'[]');a.unshift({text:t,date:new Date().toLocaleString()});localStorage.setItem('y',JSON.stringify(a));document.getElementById('yaadInput').value='';loadY();alert('Save ho gaya!')}
+function loadY(){let a=JSON.parse(localStorage.getItem('y')||'[]');document.getElementById('c').innerText=a.length;let l=document.getElementById('list');if(a.length==0){l.innerHTML='🌱 Abhi koi yaad nahi...';return}l.innerHTML='';a.forEach(y=>{let d=document.createElement('div');d.style.cssText='background:#f8fafc;border:1px solid #e2e8f0;padding:10px;border-radius:10px;margin-bottom:8px;text-align:right';d.innerHTML='<small style=color:#94a3b8>'+y.date+'</small><p style=margin-top:4px;white-space:pre-wrap>'+y.text+'</p>';l.appendChild(d)})}
+function lockK(){localStorage.removeItem('un');location.reload()}
+loadY();
+</script></body></html>
