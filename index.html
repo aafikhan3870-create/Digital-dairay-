@@ -1,30 +1,54 @@
-<!DOCTYPE html><html lang="ur" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"><title>عبد الہادی</title><link rel="icon" href="logo.jpg"><style>
-:root{--green:#16a34a;--bg:#ffffff;--card:#ffffff;--text:#0f172a;--muted:#64748b;--border:#f1f5f9}
-*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui;background:var(--bg);color:var(--text);transition:.2s}
+<!DOCTYPE html><html lang="ur" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"><title>عبد الہادی</title><link rel="icon" href="logo.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Jameel Noori Nastaleeq Font */
+@font-face{
+font-family:'Jameel Noori Nastaleeq';
+src:url('https://cdn.jsdelivr.net/gh/mustafaakbari/Jameel-Noori-Nastaleeq@main/Jameel%20Noori%20Nastaleeq.ttf') format('truetype');
+font-display:swap;
+}
+:root{--green:#16a34a;--bg:#fff;--card:#fff;--text:#0f172a;--border:#f1f5f9}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Jameel Noori Nastaleeq','Noto Nastaliq Urdu',system-ui;background:var(--bg);color:var(--text)}
+.urduFont{font-family:'Jameel Noori Nastaleeq','Noto Nastaliq Urdu',serif !important;font-size:19px;line-height:2}
+.engFont{font-family:system-ui !important;direction:ltr;text-align:left}
 .top{height:60px;background:var(--card);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 14px;position:sticky;top:0;z-index:10}
-.top .left{display:flex;align-items:center;gap:10px}.top .left img{width:38px;height:38px;border-radius:50%;object-fit:cover}.menuBtn{width:42px;height:42px;border-radius:12px;border:1px solid var(--border);background:var(--card);font-size:20px;cursor:pointer}
-.searchWrap{padding:12px 14px;max-width:480px;margin:0 auto}.searchWrap input{width:100%;height:46px;border-radius:14px;border:1.5px solid var(--border);background:var(--card);padding:0 16px;font-size:14px;outline:none}
-.white{padding:0 14px 90px;max-width:480px;margin:0 auto}
-.profile{text-align:center;padding:16px 0 8px}.profile img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid #f0fdf4;cursor:pointer;transition:.3s}.profile img:active{transform:scale(1.1)}
-.card{border:1px solid var(--border);border-radius:18px;padding:14px;background:var(--card);margin-top:14px}.card textarea,.card input{width:100%;border:none;outline:none;background:transparent;font-size:15px}.card input{font-weight:800;font-size:16px;padding-bottom:8px;border-bottom:1px dashed var(--border);margin-bottom:8px}.card textarea{min-height:100px;resize:none}
-.btn{width:100%;background:var(--green);color:#fff;border:none;padding:14px;border-radius:16px;font-weight:800;font-size:15px;cursor:pointer;margin-top:12px}
-.tabs{display:flex;gap:8px;margin-top:14px;overflow:auto}.tabs button{padding:9px 16px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);font-weight:700;font-size:13px;white-space:nowrap;cursor:pointer}.tabs button.on{background:var(--text);color:#fff;border-color:var(--text)}
-.listTitle{margin-top:18px;font-weight:800;font-size:14px;display:flex;justify-content:space-between}
-.note{border:1px solid var(--border);background:var(--card);border-radius:16px;padding:12px;margin-top:10px;text-align:right}.note h4{font-size:15px}.note small{color:var(--muted);font-size:11px}.note p{margin-top:6px;font-size:14px;white-space:pre-wrap}
-.lockS{position:fixed;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;padding-top:48px;z-index:9999}.lockS .l1{width:110px;height:110px;border-radius:26px;object-fit:cover}.lockS .l2{width:74px;height:74px;border-radius:50%;margin-top:-18px;border:4px solid #fff;box-shadow:0 8px 18px rgba(0,0,0,.12);object-fit:cover}#dots{display:flex;gap:10px;margin:16px 0}.dot{width:14px;height:14px;border-radius:50%;border:2px solid #cbd5e1;background:#fff}.dot.on{background:#0f172a;border-color:#0f172a}.numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;width:100%;max-width:280px;margin-top:16px}.numpad button{height:64px;border-radius:18px;border:none;background:#f8fafc;font-size:22px;font-weight:700}.numpad button:active{transform:scale(.96)}.numpad .ok{background:#0f172a;color:#fff}.numpad .del{background:#fff;border:1px solid #fee2e2;color:#ef4444}
-.menuSheet{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:10001}.menuSheet.show{display:flex}.sheetMenu{background:var(--card);width:82%;max-width:320px;height:100%;padding:18px;overflow-y:auto;animation:slide .25s ease}.sheetMenu h3{margin-bottom:14px}.sheetMenu .sec{margin-top:18px;color:var(--muted);font-size:11px;font-weight:800;letter-spacing:1px}.sheetMenu button{width:100%;text-align:right;padding:14px;border-radius:14px;border:1px solid var(--border);background:var(--card);margin-top:8px;font-weight:700;font-size:14px;cursor:pointer}.sheetMenu button.on{background:var(--text);color:#fff}
-@keyframes slide{from{transform:translateX(100%)}to{transform:translateX(0)}}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:10002;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modal img{max-width:92vw;max-height:80vh;border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.4)}
-.kbPanel{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--border);border-radius:22px 22px 0 0;padding:10px 10px 18px;z-index:10000;max-height:50vh;overflow-y:auto}.kbPanel.show{display:block}.engG{display:grid;grid-template-columns:repeat(10,1fr);gap:5px}.urduG{display:none;grid-template-columns:repeat(7,1fr);gap:6px}.urduG button,.engG button{padding:10px 2px;border-radius:10px;border:1px solid var(--border);background:#f8fafc}
-.themeRow{display:flex;gap:10px;margin-top:10px}.themeRow button{width:36px;height:36px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.15);cursor:pointer}
-.copy{margin-top:18px;padding:14px;border-radius:14px;background:#f8fafc;border:1px solid var(--border);text-align:center;font-size:12px;color:var(--muted)}
+.menuBtn{width:42px;height:42px;border-radius:12px;border:1px solid var(--border);background:var(--card);font-size:22px}
+.searchWrap{padding:10px 14px;max-width:480px;margin:0 auto;position:sticky;top:60px;background:var(--bg);z-index:9}
+.searchWrap input{width:100%;height:48px;border-radius:14px;border:1.5px solid var(--border);padding:0 40px 0 14px;outline:none;background:var(--card);font-family:'Jameel Noori Nastaleeq','Noto Nastaliq Urdu',serif;font-size:18px}
+.white{padding:0 14px 100px;max-width:480px;margin:0 auto}
+.profile{text-align:center;padding:14px 0}.profile img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid #f0fdf4}
+.profile h2{font-family:'Jameel Noori Nastaleeq','Noto Nastaliq Urdu',serif;font-size:28px}
+.card{border:1px solid var(--border);border-radius:18px;padding:12px;background:var(--card);margin-top:12px}
+.card .langRow{display:flex;gap:6px;margin-bottom:10px}
+.card .langRow button{flex:1;padding:8px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);font-weight:700;font-size:13px;cursor:pointer;font-family:'Jameel Noori Nastaleeq','Noto Nastaliq Urdu',serif}
+.card .langRow button.on{background:var(--text);color:#fff;border-color:var(--text)}
+.card input{width:100%;border:none;border-bottom:1px dashed var(--border);padding-bottom:8px;margin-bottom:8px;font-weight:700;font-size:20px;outline:none;background:transparent;font-family:'Jameel Noori Nastaleeq','Noto Nastaliq Urdu',serif}
+.card textarea{width:100%;border:none;outline:none;min-height:120px;font-size:20px;resize:none;background:transparent;font-family:'Jameel Noori Nastaleeq','Noto Nastaliq Urdu',serif;line-height:2}
+.btn{width:100%;background:var(--green);color:#fff;border:none;padding:14px;border-radius:16px;font-weight:800;margin-top:12px;font-family:'Jameel Noori Nastaleeq','Noto Nastaliq Urdu',serif;font-size:18px}
+.tabs{display:flex;gap:8px;margin-top:14px;overflow:auto}.tabs button{padding:9px 16px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);font-weight:700;font-size:13px;white-space:nowrap;font-family:'Jameel Noori Nastaleeq','Noto Nastaliq Urdu',serif}.tabs button.on{background:var(--text);color:#fff}
+.note{border:1px solid var(--border);background:var(--card);border-radius:16px;padding:12px;margin-top:10px}
+.note h4{font-family:'Jameel Noori Nastaleeq','Noto Nastaliq Urdu',serif;font-size:20px}.note p{font-family:'Jameel Noori Nastaleeq','Noto Nastaliq Urdu',serif;font-size:18px;line-height:2;white-space:pre-wrap}
+.lockS{position:fixed;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;padding-top:50px;z-index:9999}
+.lockS .l1{width:110px;height:110px;border-radius:26px;object-fit:cover}.lockS .l2{width:74px;height:74px;border-radius:50%;margin-top:-18px;border:4px solid #fff;box-shadow:0 8px 18px rgba(0,0,0,.12);object-fit:cover}
+#dots{display:flex;gap:10px;margin:16px 0}.dot{width:14px;height:14px;border-radius:50%;border:2px solid #cbd5e1}.dot.on{background:#0f172a;border-color:#0f172a}
+.numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;width:100%;max-width:280px;margin-top:16px}.numpad button{height:64px;border-radius:18px;border:none;background:#f8fafc;font-size:22px;font-weight:700}.numpad .ok{background:#0f172a;color:#fff}.numpad .del{background:#fff;border:1px solid #fee2e2;color:#ef4444}
+.menuSheet{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:10001;justify-content:flex-start}.menuSheet.show{display:flex}
+.sheetMenu{background:var(--card);width:82%;max-width:320px;height:100%;padding:18px;overflow:auto;animation:sl .25s ease}
+@keyframes sl{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+.sheetMenu button{width:100%;text-align:right;padding:14px;border-radius:14px;border:1px solid var(--border);background:var(--card);margin-top:8px;font-weight:700;font-family:'Jameel Noori Nastaleeq','Noto Nastaliq Urdu',serif;font-size:16px}
+.sheetMenu button.on{background:var(--text);color:#fff}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:10002;align-items:center;justify-content:center}.modal.show{display:flex}.modal img{max-width:90vw;max-height:80vh;border-radius:20px}
+.kbPanel{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--border);border-radius:22px 22px 0 0;padding:10px 10px 18px;z-index:10000;max-height:52vh;overflow:auto}.kbPanel.show{display:block}
+.engG{display:grid;grid-template-columns:repeat(10,1fr);gap:5px}.urduG{display:none;grid-template-columns:repeat(7,1fr);gap:6px}
+.urduG button,.engG button{padding:11px 2px;border-radius:10px;border:1px solid var(--border);background:#f8fafc;font-family:'Jameel Noori Nastaleeq','Noto Nastaliq Urdu',serif;font-size:18px}
 </style></head><body>
 
 <div id="lockScreen" class="lockS">
 <img src="logo.jpg" class="l1"><img src="small.jpg" class="l2">
-<h2 style="margin-top:14px">عبد الہادی</h2><p style="color:#64748b;font-size:12px">Secure Login</p>
+<h2 style="margin-top:14px;font-family:'Jameel Noori Nastaleeq','Noto Nastaliq Urdu',serif;font-size:30px">عبد الہادی</h2>
 <div id="dots"><div class="dot" id="d0"></div><div class="dot" id="d1"></div><div class="dot" id="d2"></div><div class="dot" id="d3"></div></div>
-<p id="err" style="color:#ef4444;display:none;font-size:13px;font-weight:700">Galat Code</p>
+<p id="err" style="color:#ef4444;display:none;font-weight:700;font-size:14px;font-family:'Jameel Noori Nastaleeq'">غلط کوڈ</p>
 <div class="numpad">
 <button onclick="addN('1')">1</button><button onclick="addN('2')">2</button><button onclick="addN('3')">3</button>
 <button onclick="addN('4')">4</button><button onclick="addN('5')">5</button><button onclick="addN('6')">6</button>
@@ -33,137 +57,108 @@
 </div>
 </div>
 
-<div id="picModal" class="modal" onclick="closePic()"><img id="bigPic" src="small.jpg"></div>
+<div id="picModal" class="modal" onclick="this.classList.remove('show')"><img id="bigPic" src="small.jpg"></div>
 
 <div id="menuSheet" class="menuSheet" onclick="if(event.target===this)closeMenu()">
 <div class="sheetMenu">
-<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><img src="small.jpg" style="width:48px;height:48px;border-radius:50%;object-fit:cover" onerror="this.src='logo.jpg'"><div><b>عبد الہادی</b><div style="font-size:11px;color:#64748b">Digital Dairay</div></div></div>
-
-<button id="mHome" class="on" onclick="goHome();closeMenu()">🏠 Home</button>
-
-<div class="sec">📒 NOTE BOOK</div>
-<button id="mToday" onclick="setView('today');closeMenu()">📅 Today</button>
-<button id="mWeekly" onclick="setView('weekly');closeMenu()">🗓 Weekly</button>
-<button id="mMonthly" onclick="setView('monthly');closeMenu()">📆 Monthly</button>
-
-<div class="sec">🔐 SECURITY</div>
-<button onclick="openPassChange();closeMenu()">🔑 Password Change</button>
-
-<div class="sec">⚙️ SETTING</div>
-<button onclick="setView('settings');closeMenu()">🎨 Theme & Colors</button>
-
-<div class="copy">
-<b>© 2026 ABDUL HADI</b><br>Digital Dairay - Private Diary<br>Developed by Abdul Hadi<br>All Rights Reserved<br><br>Version 3.0 • White Clean
-</div>
-
-<button onclick="lockK()" style="background:#fef2f2;color:#ef4444;margin-top:14px">🔒 Lock Karo</button>
-<button onclick="closeMenu()" style="background:#f8fafc;text-align:center">✕ Band Karo</button>
+<div style="display:flex;gap:10px;align-items:center"><img src="small.jpg" style="width:48px;height:48px;border-radius:50%;object-fit:cover"><b style="font-family:'Jameel Noori Nastaleeq';font-size:20px">عبد الہادی</b></div>
+<button id="mHome" class="on" onclick="goHome();closeMenu()">🏠 ہوم</button>
+<div style="margin-top:14px;font-size:11px;color:#94a3b8;font-weight:800">📒 نوٹ بک</div>
+<button id="mToday" onclick="setView('today');closeMenu()">📅 آج</button>
+<button id="mWeekly" onclick="setView('weekly');closeMenu()">🗓 ہفتہ وار</button>
+<button id="mMonthly" onclick="setView('monthly');closeMenu()">📆 ماہانہ</button>
+<div style="margin-top:14px;font-size:11px;color:#94a3b8;font-weight:800">🔐</div>
+<button onclick="openPass();closeMenu()">🔑 پاسورڈ تبدیل</button>
+<button onclick="setView('settings');closeMenu()">⚙️ سیٹنگ</button>
+<button onclick="lockK()" style="background:#fef2f2;color:#ef4444;margin-top:16px">🔒 لاک</button>
+<div style="text-align:center;margin-top:18px;font-size:12px;color:#94a3b8;font-family:'Jameel Noori Nastaleeq'">© 2026 عبد الہادی<br>ڈیجیٹل ڈائری</div>
 </div>
 </div>
 
-<div id="passBox" class="menuSheet"><div class="sheetMenu" style="width:92%;max-width:360px;margin:auto;height:auto;border-radius:22px"><h3 style="text-align:center">🔑 Password Change</h3>
-<input id="oldP" type="tel" maxlength="4" placeholder="Purana Code" style="width:100%;height:52px;border-radius:14px;border:2px solid #e2e8f0;text-align:center;font-size:20px;letter-spacing:8px;font-weight:800;margin-top:12px;outline:none">
-<input id="newP" type="tel" maxlength="4" placeholder="Naya Code" style="width:100%;height:52px;border-radius:14px;border:2px solid #e2e8f0;text-align:center;font-size:20px;letter-spacing:8px;font-weight:800;margin-top:8px;outline:none">
-<input id="newP2" type="tel" maxlength="4" placeholder="Dobara Naya" style="width:100%;height:52px;border-radius:14px;border:2px solid #e2e8f0;text-align:center;font-size:20px;letter-spacing:8px;font-weight:800;margin-top:8px;outline:none">
-<p id="pMsg" style="display:none;text-align:center;margin-top:10px;font-size:13px;font-weight:700"></p>
-<button onclick="saveNewPass()" style="width:100%;background:var(--green);color:#fff;border:none;padding:14px;border-radius:14px;font-weight:800;margin-top:12px">✅ Save</button>
-<button onclick="closePass()" style="width:100%;margin-top:8px">Cancel</button>
+<div id="passBox" class="menuSheet" style="justify-content:center;align-items:center"><div class="sheetMenu" style="width:92%;max-width:360px;height:auto;border-radius:22px"><h3 style="text-align:center;font-family:'Jameel Noori Nastaleeq';font-size:22px">🔑 پاسورڈ تبدیل</h3>
+<input id="oldP" type="tel" maxlength="4" placeholder="پرانا" style="width:100%;height:52px;border-radius:14px;border:2px solid #e2e8f0;text-align:center;font-size:20px;letter-spacing:8px;font-weight:800;margin-top:12px;font-family:'Jameel Noori Nastaleeq'">
+<input id="newP" type="tel" maxlength="4" placeholder="نیا" style="width:100%;height:52px;border-radius:14px;border:2px solid #e2e8f0;text-align:center;font-size:20px;letter-spacing:8px;font-weight:800;margin-top:8px;font-family:'Jameel Noori Nastaleeq'">
+<input id="newP2" type="tel" maxlength="4" placeholder="دوبارہ" style="width:100%;height:52px;border-radius:14px;border:2px solid #e2e8f0;text-align:center;font-size:20px;letter-spacing:8px;font-weight:800;margin-top:8px;font-family:'Jameel Noori Nastaleeq'">
+<p id="pMsg" style="display:none;text-align:center;margin-top:8px;font-weight:700;font-size:13px"></p>
+<button onclick="savePass()" style="width:100%;background:var(--green);color:#fff;border:none;padding:14px;border-radius:14px;font-weight:800;margin-top:12px">محفوظ کریں</button>
+<button onclick="closePass()" style="width:100%;margin-top:8px">واپس</button>
 </div></div>
 
-<div class="top"><div class="left"><img src="small.jpg" onerror="this.src='logo.jpg'"><div><div style="font-weight:800;font-size:13px">عبد الہادی</div><div style="font-size:10px;color:#64748b" id="topSub">Home</div></div></div><button class="menuBtn" onclick="openMenu()">☰</button></div>
+<div class="top"><button class="menuBtn" onclick="openMenu()">☰</button><div style="display:flex;align-items:center;gap:8px"><div style="text-align:right"><div style="font-weight:800;font-size:16px;font-family:'Jameel Noori Nastaleeq'">عبد الہادی</div><div style="font-size:10px;color:#64748b" id="topSub">ہوم</div></div><img src="small.jpg" style="width:36px;height:36px;border-radius:50%;object-fit:cover"></div></div>
 
-<div class="searchWrap" id="searchWrap"><input id="searchInput" placeholder="🔍 Heading search karo..." oninput="doSearch()"></div>
+<div class="searchWrap"><div style="position:relative"><input id="searchInput" placeholder="🔍 تلاش کریں..." oninput="doSearch()"><span style="position:absolute;right:12px;top:50%;transform:translateY(-50%)">🔍</span></div><div id="sRes" style="font-size:13px;color:var(--green);font-weight:700;margin-top:6px;display:none;font-family:'Jameel Noori Nastaleeq'"></div></div>
 
 <div class="white">
 <div id="homeView">
-<div class="profile"><img id="profImg" src="small.jpg" onclick="openPic(this.src)" onerror="this.src='logo.jpg'"><h2>عبد الہادی</h2><p style="color:#64748b;font-size:12px;margin-top:4px" id="d"></p></div>
+<div class="profile"><img id="profImg" src="small.jpg" onclick="document.getElementById('bigPic').src=this.src;document.getElementById('picModal').classList.add('show')" onerror="this.src='logo.jpg'"><h2>عبد الہادی</h2><p id="d" style="font-size:12px;color:#94a3b8;margin-top:6px;font-family:'Jameel Noori Nastaleeq'"></p></div>
 
 <div class="card">
-<input id="headInput" placeholder="Heading likho... (misal: Aaj ka din)">
-<textarea id="yaadInput" placeholder="Yahan apni kahani likho..."></textarea>
-<div style="display:flex;gap:8px;margin-top:8px"><button onclick="toggleKB()" style="flex:1;padding:8px;border-radius:20px;border:1px solid var(--border);background:var(--card);font-size:12px;font-weight:700">⌨️ Keyboard</button><button onclick="document.getElementById('yaadInput').value='';document.getElementById('headInput').value=''" style="padding:8px 14px;border-radius:20px;border:1px solid var(--border);background:var(--card);font-size:12px">Clear</button></div>
+<div class="langRow">
+<button id="dirUrdu" class="on" onclick="setDir('urdu')">اردو - دائیں</button>
+<button id="dirEng" onclick="setDir('eng')">English - Left</button>
+<button onclick="toggleKB()" style="flex:0.6">⌨️</button>
 </div>
-<button class="btn" onclick="saveYaad()">💾 Save Karo</button>
+<input id="headInput" placeholder="ہیڈنگ" onfocus="openKBauto()">
+<textarea id="yaadInput" placeholder="یہاں اپنی کہانی لکھیں..." onfocus="openKBauto()"></textarea>
+</div>
+<button class="btn" onclick="saveYaad()">محفوظ کریں</button>
 </div>
 
 <div id="listWrap">
-<div class="tabs" id="tabs"><button id="tToday" onclick="setView('today')" class="on">Today</button><button id="tWeekly" onclick="setView('weekly')">Weekly</button><button id="tMonthly" onclick="setView('monthly')">Monthly</button><button id="tAll" onclick="setView('all')">All</button></div>
-<div class="listTitle"><span id="listName">📚 Today</span><span id="c" style="color:var(--green)">0</span></div>
+<div class="tabs"><button id="tToday" onclick="setView('today')" class="on">آج</button><button id="tWeekly" onclick="setView('weekly')">ہفتہ وار</button><button id="tMonthly" onclick="setView('monthly')">ماہانہ</button><button id="tAll" onclick="setView('all')">تمام</button></div>
+<div style="display:flex;justify-content:space-between;margin-top:16px;font-weight:800;font-size:15px;font-family:'Jameel Noori Nastaleeq'"><span id="listName">تمام نوٹس</span><span id="c" style="color:var(--green)">0</span></div>
 <div id="list"></div>
 </div>
 
 <div id="settingsView" style="display:none">
-<div class="card"><b>🎨 Theme Color</b><p style="font-size:12px;color:#64748b;margin-top:4px">Apna pasand ka rang choose karo</p>
-<div class="themeRow"><button onclick="setTheme('#16a34a')" style="background:#16a34a"></button><button onclick="setTheme('#2563eb')" style="background:#2563eb"></button><button onclick="setTheme('#0f172a')" style="background:#0f172a"></button><button onclick="setTheme('#9333ea')" style="background:#9333ea"></button><button onclick="setTheme('#dc2626')" style="background:#dc2626"></button></div>
-<div style="margin-top:16px"><b>🌗 Mode</b><div style="display:flex;gap:8px;margin-top:8px"><button onclick="setMode('light')" style="flex:1;padding:12px;border-radius:12px;border:1px solid var(--border);background:var(--card);font-weight:700">☀️ Light</button><button onclick="setMode('dark')" style="flex:1;padding:12px;border-radius:12px;border:1px solid var(--border);background:var(--card);font-weight:700">🌙 Dark</button></div></div>
-<div class="copy"><b>© ABDUL HADI - Digital Dairay</b><br><br>Ye diary Abdul Hadi ki private diary hai.<br>Design: White Clean • Secure<br>Owner: Abdul Hadi<br>Email: Private<br><br>All Rights Reserved 2026</div>
+<div class="card"><b style="font-family:'Jameel Noori Nastaleeq';font-size:18px">🎨 تھیم</b><div style="display:flex;gap:10px;margin-top:10px"><button onclick="setTheme('#16a34a')" style="width:36px;height:36px;border-radius:50%;background:#16a34a;border:3px solid #fff"></button><button onclick="setTheme('#2563eb')" style="width:36px;height:36px;border-radius:50%;background:#2563eb;border:3px solid #fff"></button><button onclick="setTheme('#0f172a')" style="width:36px;height:36px;border-radius:50%;background:#0f172a;border:3px solid #fff"></button><button onclick="setTheme('#dc2626')" style="width:36px;height:36px;border-radius:50%;background:#dc2626;border:3px solid #fff"></button></div>
+<div style="margin-top:16px;padding:14px;border-radius:14px;background:#f8fafc;border:1px solid var(--border);text-align:center;font-size:14px;font-family:'Jameel Noori Nastaleeq'">© عبد الہادی<br>ڈیجیٹل ڈائری - نجی ڈائری<br>2026<br>جمیل نوری نستعلیق فونٹ میں</div>
 </div>
 </div>
-
 </div>
 
 <div id="kbPanel" class="kbPanel">
-<div style="display:flex;justify-content:space-between;margin-bottom:8px"><div style="display:flex;gap:6px"><button id="kEng" onclick="setKB('eng')" style="padding:8px 14px;border-radius:20px;border:1px solid var(--border);background:#0f172a;color:#fff">English</button><button id="kUrdu" onclick="setKB('urdu')" style="padding:8px 14px;border-radius:20px;border:1px solid var(--border)">اردو</button></div><button onclick="toggleKB()" style="padding:8px 14px;border-radius:20px;border:1px solid var(--border)">✕ Band</button></div>
-<div id="urduKB" class="urduG"><button onclick="tC('ا')">ا</button><button onclick="tC('ب')">ب</button><button onclick="tC('پ')">پ</button><button onclick="tC('ت')">ت</button><button onclick="tC('ٹ')">ٹ</button><button onclick="tC('ج')">ج</button><button onclick="tC('چ')">چ</button><button onclick="tC('ح')">ح</button><button onclick="tC('خ')">خ</button><button onclick="tC('د')">د</button><button onclick="tC('ڈ')">ڈ</button><button onclick="tC('ذ')">ذ</button><button onclick="tC('ر')">ر</button><button onclick="tC('ز')">ز</button><button onclick="tC('س')">س</button><button onclick="tC('ش')">ش</button><button onclick="tC('ص')">ص</button><button onclick="tC('ع')">ع</button><button onclick="tC('غ')">غ</button><button onclick="tC('ف')">ف</button><button onclick="tC('ق')">ق</button><button onclick="tC('ک')">ک</button><button onclick="tC('گ')">گ</button><button onclick="tC('ل')">ل</button><button onclick="tC('م')">م</button><button onclick="tC('ن')">ن</button><button onclick="tC('و')">و</button><button onclick="tC('ہ')">ہ</button><button onclick="tC('ی')">ی</button><button onclick="tC('ے')">ے</button><button onclick="tC('۔')">۔</button></div>
-<div id="engKB" class="engG"><button onclick="tC('q')">q</button><button onclick="tC('w')">w</button><button onclick="tC('e')">e</button><button onclick="tC('r')">r</button><button onclick="tC('t')">t</button><button onclick="tC('y')">y</button><button onclick="tC('u')">u</button><button onclick="tC('i')">i</button><button onclick="tC('o')">o</button><button onclick="tC('p')">p</button><button onclick="tC('a')">a</button><button onclick="tC('s')">s</button><button onclick="tC('d')">d</button><button onclick="tC('f')">f</button><button onclick="tC('g')">g</button><button onclick="tC('h')">h</button><button onclick="tC('j')">j</button><button onclick="tC('k')">k</button><button onclick="tC('l')">l</button><button onclick="backC()" style="background:#fee2e2">⌫</button><button onclick="tC('z')">z</button><button onclick="tC('x')">x</button><button onclick="tC('c')">c</button><button onclick="tC('v')">v</button><button onclick="tC('b')">b</button><button onclick="tC('n')">n</button><button onclick="tC('m')">m</button><button onclick="tC('.')">.</button><button onclick="tC(',')">,</button><button onclick="tC('?')">?</button><button onclick="tC(' ')" style="grid-column:span 8;background:#f1f5f9">Space</button><button onclick="tC('\n')" style="grid-column:span 2;background:#dcfce7">↵</button></div>
+<div style="display:flex;justify-content:space-between;margin-bottom:8px"><div style="display:flex;gap:6px"><button id="kEng" onclick="setKB('eng')" style="padding:8px 14px;border-radius:20px;background:#0f172a;color:#fff">English</button><button id="kUrdu" onclick="setKB('urdu')" style="padding:8px 14px;border-radius:20px;border:1px solid var(--border);font-family:'Jameel Noori Nastaleeq'">اردو</button></div><button onclick="toggleKB()" style="padding:8px 14px;border-radius:20px;border:1px solid var(--border)">✕</button></div>
+<div id="urduKB" class="urduG"><button onclick="tC('ا')">ا</button><button onclick="tC('ب')">ب</button><button onclick="tC('پ')">پ</button><button onclick="tC('ت')">ت</button><button onclick="tC('ٹ')">ٹ</button><button onclick="tC('ث')">ث</button><button onclick="tC('ج')">ج</button><button onclick="tC('چ')">چ</button><button onclick="tC('ح')">ح</button><button onclick="tC('خ')">خ</button><button onclick="tC('د')">د</button><button onclick="tC('ڈ')">ڈ</button><button onclick="tC('ذ')">ذ</button><button onclick="tC('ر')">ر</button><button onclick="tC('ڑ')">ڑ</button><button onclick="tC('ز')">ز</button><button onclick="tC('ژ')">ژ</button><button onclick="tC('س')">س</button><button onclick="tC('ش')">ش</button><button onclick="tC('ص')">ص</button><button onclick="tC('ض')">ض</button><button onclick="tC('ط')">ط</button><button onclick="tC('ظ')">ظ</button><button onclick="tC('ع')">ع</button><button onclick="tC('غ')">غ</button><button onclick="tC('ف')">ف</button><button onclick="tC('ق')">ق</button><button onclick="tC('ک')">ک</button><button onclick="tC('گ')">گ</button><button onclick="tC('ل')">ل</button><button onclick="tC('م')">م</button><button onclick="tC('ن')">ن</button><button onclick="tC('و')">و</button><button onclick="tC('ہ')">ہ</button><button onclick="tC('ھ')">ھ</button><button onclick="tC('ء')">ء</button><button onclick="tC('ی')">ی</button><button onclick="tC('ے')">ے</button></div>
+<div id="engKB" class="engG"><button onclick="tC('q')">q</button><button onclick="tC('w')">w</button><button onclick="tC('e')">e</button><button onclick="tC('r')">r</button><button onclick="tC('t')">t</button><button onclick="tC('y')">y</button><button onclick="tC('u')">u</button><button onclick="tC('i')">i</button><button onclick="tC('o')">o</button><button onclick="tC('p')">p</button><button onclick="tC('a')">a</button><button onclick="tC('s')">s</button><button onclick="tC('d')">d</button><button onclick="tC('f')">f</button><button onclick="tC('g')">g</button><button onclick="tC('h')">h</button><button onclick="tC('j')">j</button><button onclick="tC('k')">k</button><button onclick="tC('l')">l</button><button onclick="backC()" style="background:#fee2e2">⌫</button><button onclick="tC('z')">z</button><button onclick="tC('x')">x</button><button onclick="tC('c')">c</button><button onclick="tC('v')">v</button><button onclick="tC('b')">b</button><button onclick="tC('n')">n</button><button onclick="tC('m')">m</button><button onclick="tC(' ')" style="grid-column:span 8;background:#f1f5f9">Space</button><button onclick="tC('\n')" style="grid-column:span 2;background:#dcfce7">↵</button></div>
 </div>
 
 <script>
 function getP(){return localStorage.getItem('myPass')||'2938'}
 let v='';function addN(n){if(v.length<4){v+=n;upd();if(v.length===4)setTimeout(checkN,200)}}function delN(){v=v.slice(0,-1);upd()}function upd(){for(let i=0;i<4;i++)document.getElementById('d'+i).classList.toggle('on',i<v.length)}
-function checkN(){if(v===getP()){document.getElementById('lockScreen').style.display='none';localStorage.setItem('un','yes');v='';upd();loadY()}else if(v.length===4){let e=document.getElementById('err');e.style.display='block';setTimeout(()=>{e.style.display='none';v='';upd()},900)}}
-if(localStorage.getItem('un')!=='yes'){document.getElementById('lockScreen').style.display='flex'}else{document.getElementById('lockScreen').style.display='none'}
+function checkN(){if(v===getP()){document.getElementById('lockScreen').style.display='none';localStorage.setItem('un','yes');v='';upd()}else if(v.length===4){document.getElementById('err').style.display='block';setTimeout(()=>{document.getElementById('err').style.display='none';v='';upd()},900)}}
 document.getElementById('d').innerText=new Date().toLocaleDateString('ur-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 function openMenu(){document.getElementById('menuSheet').classList.add('show')}function closeMenu(){document.getElementById('menuSheet').classList.remove('show')}
-function openPassChange(){document.getElementById('passBox').style.display='flex';document.getElementById('menuSheet').classList.remove('show')}function closePass(){document.getElementById('passBox').style.display='none'}
-function saveNewPass(){let o=document.getElementById('oldP').value.trim(),n=document.getElementById('newP').value.trim(),n2=document.getElementById('newP2').value.trim(),m=document.getElementById('pMsg');if(o!==getP()){m.style.display='block';m.style.color='#ef4444';m.innerText='Purana galat!';return}if(n.length!==4||!/^[0-9]{4}$/.test(n)){m.style.display='block';m.style.color='#ef4444';m.innerText='4 number!';return}if(n!==n2){m.style.display='block';m.style.color='#ef4444';m.innerText='Match nahi!';return}localStorage.setItem('myPass',n);m.style.display='block';m.style.color='#16a34a';m.innerText='✅ Ho gaya!';setTimeout(closePass,1000)}
-function openPic(s){document.getElementById('bigPic').src=s;document.getElementById('picModal').classList.add('show')}function closePic(){document.getElementById('picModal').classList.remove('show')}
-function goHome(){setView('home');document.getElementById('topSub').innerText='Home';document.getElementById('homeView').style.display='block';document.getElementById('listWrap').style.display='block';document.getElementById('settingsView').style.display='none';document.getElementById('searchWrap').style.display='block';window.scrollTo(0,0);let img=document.getElementById('profImg');img.style.transform='scale(1.25)';setTimeout(()=>img.style.transform='scale(1)',600)}
-let curView='today';
-function setView(view){
-curView=view;
-document.querySelectorAll('.sheetMenu button').forEach(b=>b.classList.remove('on'));
-document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));
-if(view==='home'){document.getElementById('mHome').classList.add('on');document.getElementById('homeView').style.display='block';document.getElementById('listWrap').style.display='block';document.getElementById('settingsView').style.display='none';document.getElementById('searchWrap').style.display='block';document.getElementById('listName').innerText='📚 All Notes';document.getElementById('topSub').innerText='Home';}
-else if(view==='settings'){document.getElementById('homeView').style.display='none';document.getElementById('listWrap').style.display='none';document.getElementById('settingsView').style.display='block';document.getElementById('searchWrap').style.display='none';document.getElementById('topSub').innerText='Settings';}
-else{
-document.getElementById('homeView').style.display='none';document.getElementById('settingsView').style.display='none';document.getElementById('listWrap').style.display='block';document.getElementById('searchWrap').style.display='block';
-if(view==='today'){document.getElementById('mToday').classList.add('on');document.getElementById('tToday').classList.add('on');document.getElementById('listName').innerText='📅 Today';document.getElementById('topSub').innerText='Today'}
-if(view==='weekly'){document.getElementById('mWeekly').classList.add('on');document.getElementById('tWeekly').classList.add('on');document.getElementById('listName').innerText='🗓 Weekly';document.getElementById('topSub').innerText='Weekly'}
-if(view==='monthly'){document.getElementById('mMonthly').classList.add('on');document.getElementById('tMonthly').classList.add('on');document.getElementById('listName').innerText='📆 Monthly';document.getElementById('topSub').innerText='Monthly'}
-if(view==='all'){document.getElementById('tAll').classList.add('on');document.getElementById('listName').innerText='📚 All';}
-}
-loadY();
-}
-function isToday(ts){let d=new Date(ts);let n=new Date();return d.toDateString()===n.toDateString()}
-function isWeekly(ts){let d=new Date(ts);let n=new Date();let diff=(n-d)/(1000*60*60*24);return diff<=7}
-function isMonthly(ts){let d=new Date(ts);let n=new Date();return d.getMonth()===n.getMonth()&&d.getFullYear()===n.getFullYear()}
-function saveYaad(){let h=document.getElementById('headInput').value.trim();let t=document.getElementById('yaadInput').value.trim();if(!h)return alert('Heading likho!');if(!t)return alert('Kahani likho!');let a=JSON.parse(localStorage.getItem('y')||'[]');a.unshift({id:Date.now(),heading:h,text:t,date:new Date().toLocaleString('ur-PK'),ts:Date.now()});localStorage.setItem('y',JSON.stringify(a));document.getElementById('headInput').value='';document.getElementById('yaadInput').value='';loadY();setView('today');alert('Save ho gaya!')}
-let searchQ='';
-function doSearch(){searchQ=document.getElementById('searchInput').value.toLowerCase().trim();loadY()}
-function loadY(){let a=JSON.parse(localStorage.getItem('y')||'[]');let filtered=a;
-if(curView==='today')filtered=a.filter(x=>isToday(x.ts));
-else if(curView==='weekly')filtered=a.filter(x=>isWeekly(x.ts));
-else if(curView==='monthly')filtered=a.filter(x=>isMonthly(x.ts));
-if(searchQ)filtered=filtered.filter(x=>x.heading.toLowerCase().includes(searchQ)||x.text.toLowerCase().includes(searchQ));
-document.getElementById('c').innerText=filtered.length;
-let l=document.getElementById('list');
-if(filtered.length===0){l.innerHTML='<div style="text-align:center;padding:30px;color:#94a3b8;border:1px dashed #e2e8f0;border-radius:16px;margin-top:10px">🌱 Koi yaad nahi mili</div>';return}
-l.innerHTML='';filtered.forEach(y=>{let d=document.createElement('div');d.className='note';d.innerHTML='<div style="display:flex;justify-content:space-between"><h4>📌 '+y.heading+'</h4><button onclick="delY('+y.id+')" style="border:none;background:#fef2f2;color:#ef4444;padding:4px 10px;border-radius:20px;font-size:11px">Delete</button></div><small>'+y.date+'</small><p>'+y.text+'</p>';l.appendChild(d)})
-}
+function openPass(){document.getElementById('passBox').style.display='flex'}function closePass(){document.getElementById('passBox').style.display='none'}
+function savePass(){let o=document.getElementById('oldP').value.trim(),n=document.getElementById('newP').value.trim(),n2=document.getElementById('newP2').value.trim(),m=document.getElementById('pMsg');if(o!==getP()){m.style.display='block';m.style.color='#ef4444';m.innerText='پرانا غلط!';return}if(n.length!==4){m.style.display='block';m.style.color='#ef4444';m.innerText='4 نمبر!';return}if(n!==n2){m.style.display='block';m.style.color='#ef4444';m.innerText='میچ نہیں!';return}localStorage.setItem('myPass',n);m.style.display='block';m.style.color='#16a34a';m.innerText='✅ ہو گیا!';setTimeout(closePass,1000)}
+function goHome(){setView('home');let img=document.getElementById('profImg');document.getElementById('bigPic').src=img.src;document.getElementById('picModal').classList.add('show');setTimeout(()=>document.getElementById('picModal').classList.remove('show'),1100)}
+let cur='today';function setView(view){cur=view;document.querySelectorAll('.sheetMenu button').forEach(b=>b.classList.remove('on'));document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));if(view==='home'){document.getElementById('mHome').classList.add('on');document.getElementById('homeView').style.display='block';document.getElementById('listWrap').style.display='block';document.getElementById('settingsView').style.display='none';document.getElementById('listName').innerText='تمام نوٹس';}else if(view==='settings'){document.getElementById('homeView').style.display='none';document.getElementById('listWrap').style.display='none';document.getElementById('settingsView').style.display='block';}else{document.getElementById('homeView').style.display='none';document.getElementById('settingsView').style.display='none';document.getElementById('listWrap').style.display='block';if(view==='today'){document.getElementById('mToday').classList.add('on');document.getElementById('tToday').classList.add('on');document.getElementById('listName').innerText='آج'}if(view==='weekly'){document.getElementById('mWeekly').classList.add('on');document.getElementById('tWeekly').classList.add('on');document.getElementById('listName').innerText='ہفتہ وار'}if(view==='monthly'){document.getElementById('mMonthly').classList.add('on');document.getElementById('tMonthly').classList.add('on');document.getElementById('listName').innerText='ماہانہ'}if(view==='all'){document.getElementById('tAll').classList.add('on');document.getElementById('listName').innerText='تمام نوٹس'}}loadY()}
+function isToday(ts){return new Date(ts).toDateString()===new Date().toDateString()}
+function isWeekly(ts){return (Date.now()-ts)/86400000<=7}
+function isMonthly(ts){let d=new Date(ts),n=new Date();return d.getMonth()===n.getMonth()&&d.getFullYear()===n.getFullYear()}
+function saveYaad(){let h=document.getElementById('headInput').value.trim(),t=document.getElementById('yaadInput').value.trim();if(!h)return alert('ہیڈنگ لکھیں!');if(!t)return alert('کہانی لکھیں!');let a=JSON.parse(localStorage.getItem('y')||'[]');a.unshift({id:Date.now(),heading:h,text:t,date:new Date().toLocaleString('ur-PK'),ts:Date.now(),dir:currentDir});localStorage.setItem('y',JSON.stringify(a));document.getElementById('headInput').value='';document.getElementById('yaadInput').value='';loadY();setView('today');}
+function doSearch(){let q=document.getElementById('searchInput').value.toLowerCase().trim();let r=document.getElementById('sRes');if(q){r.style.display='block';setView('all');}else{r.style.display='none'}loadY(q)}
+function loadY(sq){let a=JSON.parse(localStorage.getItem('y')||'[]');let f=a;if(cur==='today')f=a.filter(x=>isToday(x.ts));else if(cur==='weekly')f=a.filter(x=>isWeekly(x.ts));else if(cur==='monthly')f=a.filter(x=>isMonthly(x.ts));let q=sq!==undefined?sq:document.getElementById('searchInput').value.toLowerCase().trim();if(q)f=f.filter(x=>x.heading.toLowerCase().includes(q)||x.text.toLowerCase().includes(q));document.getElementById('c').innerText=f.length;let l=document.getElementById('list');if(f.length===0){l.innerHTML='<div style="text-align:center;padding:28px;color:#94a3b8;border:1px dashed #e2e8f0;border-radius:16px;margin-top:10px;font-family:Jameel Noori Nastaleeq">🌱 کوئی نتیجہ نہیں</div>';if(q)document.getElementById('sRes').innerText='❌ "'+q+'" نہیں ملا';return}l.innerHTML='';if(q)document.getElementById('sRes').innerText='✅ '+f.length+' نتیجہ: "'+q+'"';f.forEach(y=>{let d=document.createElement('div');d.className='note';let dirStyle=y.dir==='eng'?'direction:ltr;text-align:left;font-family:system-ui':'direction:rtl;text-align:right;font-family:Jameel Noori Nastaleeq,Noto Nastaliq Urdu';d.innerHTML='<div style="display:flex;justify-content:space-between"><h4 style="'+dirStyle+'">📌 '+y.heading+'</h4><button onclick="delY('+y.id+')" style="border:none;background:#fef2f2;color:#ef4444;padding:4px 10px;border-radius:20px;font-size:11px">Delete</button></div><small style="font-family:Jameel Noori Nastaleeq">'+y.date+'</small><p style="margin-top:6px;white-space:pre-wrap;'+dirStyle+'">'+y.text+'</p>';l.appendChild(d)})}
 function delY(id){if(!confirm('Delete?'))return;let a=JSON.parse(localStorage.getItem('y')||'[]');a=a.filter(x=>x.id!==id);localStorage.setItem('y',JSON.stringify(a));loadY()}
 function lockK(){localStorage.removeItem('un');location.reload()}
 function setTheme(c){document.documentElement.style.setProperty('--green',c);localStorage.setItem('themeColor',c)}
-function setMode(m){if(m==='dark'){document.documentElement.style.setProperty('--bg','#0f172a');document.documentElement.style.setProperty('--card','#1e293b');document.documentElement.style.setProperty('--text','#f8fafc');document.documentElement.style.setProperty('--border','#334155')}else{document.documentElement.style.setProperty('--bg','#ffffff');document.documentElement.style.setProperty('--card','#ffffff');document.documentElement.style.setProperty('--text','#0f172a');document.documentElement.style.setProperty('--border','#f1f5f9')}localStorage.setItem('themeMode',m)}
-let kb=false;function toggleKB(){kb=!kb;document.getElementById('kbPanel').classList.toggle('show',kb)}
+function setMode(m){if(m==='dark'){document.documentElement.style.setProperty('--bg','#0f172a');document.documentElement.style.setProperty('--card','#1e293b');document.documentElement.style.setProperty('--text','#f8fafc');document.documentElement.style.setProperty('--border','#334155')}else{document.documentElement.style.setProperty('--bg','#fff');document.documentElement.style.setProperty('--card','#fff');document.documentElement.style.setProperty('--text','#0f172a');document.documentElement.style.setProperty('--border','#f1f5f9')}}
+let kb=false;function toggleKB(){kb=!kb;document.getElementById('kbPanel').classList.toggle('show',kb)}function openKBauto(){if(!kb){kb=true;document.getElementById('kbPanel').classList.add('show')}}
 function setKB(t){document.getElementById('urduKB').style.display=t==='urdu'?'grid':'none';document.getElementById('engKB').style.display=t==='eng'?'grid':'none';document.getElementById('kUrdu').style.background=t==='urdu'?'#0f172a':'';document.getElementById('kUrdu').style.color=t==='urdu'?'#fff':'';document.getElementById('kEng').style.background=t==='eng'?'#0f172a':'';document.getElementById('kEng').style.color=t==='eng'?'#fff':''}
+let currentDir='urdu';
+function setDir(type){
+currentDir=type;
+document.getElementById('dirUrdu').classList.toggle('on',type==='urdu');
+document.getElementById('dirEng').classList.toggle('on',type==='eng');
+let h=document.getElementById('headInput');
+let y=document.getElementById('yaadInput');
+if(type==='urdu'){h.style.direction='rtl';h.style.textAlign='right';h.style.fontFamily="'Jameel Noori Nastaleeq','Noto Nastaliq Urdu',serif";y.style.direction='rtl';y.style.textAlign='right';y.style.fontFamily="'Jameel Noori Nastaleeq','Noto Nastaliq Urdu',serif";setKB('urdu')}
+else{h.style.direction='ltr';h.style.textAlign='left';h.style.fontFamily="system-ui";y.style.direction='ltr';y.style.textAlign='left';y.style.fontFamily="system-ui";setKB('eng')}
+localStorage.setItem('dirPref',type);
+}
 function tC(c){let ta=document.activeElement.tagName==='TEXTAREA'||document.activeElement.tagName==='INPUT'?document.activeElement:document.getElementById('yaadInput');if(ta.id!=='yaadInput'&&ta.id!=='headInput')ta=document.getElementById('yaadInput');let s=ta.selectionStart,e=ta.selectionEnd;ta.value=ta.value.substring(0,s)+c+ta.value.substring(e);ta.selectionStart=ta.selectionEnd=s+c.length;ta.focus()}
 function backC(){let ta=document.getElementById('yaadInput');if(document.activeElement.id==='headInput')ta=document.activeElement;let s=ta.selectionStart,e=ta.selectionEnd;if(s===e&&s>0){ta.value=ta.value.substring(0,s-1)+ta.value.substring(e);ta.selectionStart=ta.selectionEnd=s-1}else{ta.value=ta.value.substring(0,s)+ta.value.substring(e);ta.selectionStart=ta.selectionEnd=s}ta.focus()}
-let savedColor=localStorage.getItem('themeColor');if(savedColor)setTheme(savedColor);
-let savedMode=localStorage.getItem('themeMode');if(savedMode)setMode(savedMode);
-setView('today');
-// Har dafa refresh pe code mangy - un ko hata diya? Nahi, user ne kaha har dafa code mangy to hum un ko lock kar ke rakhenge? Actually har dafa website pe jany per refresh ho code daba pary - matlab auto login hata diya
-localStorage.removeItem('un'); // force code every time as per request
-document.getElementById('lockScreen').style.display='flex';
-loadY();
+let savedDir=localStorage.getItem('dirPref')||'urdu';setDir(savedDir);
+let sc=localStorage.getItem('themeColor');if(sc)setTheme(sc);
+setView('today');localStorage.removeItem('un');document.getElementById('lockScreen').style.display='flex';loadY();
 </script></body></html>
