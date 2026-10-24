@@ -1,7 +1,9 @@
 <!DOCTYPE html><html lang="ur" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"><title>عبد الہادی</title><link rel="icon" href="logo.jpg">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#16a34a">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
 <style>
-@font-face{font-family:'Jameel Noori';src:url('https://cdn.jsdelivr.net/gh/mustafaakbari/Jameel-Noori-Nastaleeq@main/Jameel%20Noori%20Nastaleeq.ttf') format('truetype');font-display:swap}
+@font-face{font-family:'Jameel Noori';src:url('https://cdn.jsdelivr.net/gh/mustafaakbari/Jameel-Noori-Nastaleeq@main/Jameel%20Noori%20Nastaleeq.ttf') format='truetype';font-display:swap}
 :root{--green:#16a34a;--bg:#fff;--card:#fff;--text:#0f172a;--border:#f1f5f9}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Jameel Noori','Noto Nastaliq Urdu',serif;background:var(--bg);color:var(--text)}
@@ -34,7 +36,6 @@ body{font-family:'Jameel Noori','Noto Nastaliq Urdu',serif;background:var(--bg);
 .urdu{font-family:'Jameel Noori','Noto Nastaliq Urdu',serif !important}
 .eng{font-family:system-ui,sans-serif !important}
 </style></head><body>
-
 <div id="lockScreen" class="lockS">
 <img src="logo.jpg" class="l1"><img src="small.jpg" class="l2">
 <h2 id="lockName" class="urdu" style="margin-top:14px;font-size:30px">عبد الہادی</h2>
@@ -47,9 +48,7 @@ body{font-family:'Jameel Noori','Noto Nastaliq Urdu',serif;background:var(--bg);
 <button onclick="delN()" class="del">⌫</button><button onclick="addN('0')">0</button><button onclick="checkN()" class="ok">✔</button>
 </div>
 </div>
-
 <div id="picModal" class="modal" onclick="this.classList.remove('show')"><img id="bigPic" src="small.jpg"></div>
-
 <div id="menuSheet" class="menuSheet" onclick="if(event.target===this)closeMenu()">
 <div class="sheetMenu">
 <div style="display:flex;gap:10px;align-items:center"><img src="small.jpg" style="width:48px;height:48px;border-radius:50%;object-fit:cover"><b id="mProfileName" class="urdu" style="font-size:20px">عبد الہادی</b></div>
@@ -65,7 +64,6 @@ body{font-family:'Jameel Noori','Noto Nastaliq Urdu',serif;background:var(--bg);
 <div id="mFooter" style="text-align:center;margin-top:18px;font-size:12px;color:#94a3b8" class="urdu">© 2026 عبد الہادی<br>ڈیجیٹل ڈائری</div>
 </div>
 </div>
-
 <div id="passBox" class="menuSheet" style="justify-content:center;align-items:center"><div class="sheetMenu" style="width:92%;max-width:360px;height:auto;border-radius:22px"><h3 id="passTitle" style="text-align:center;font-size:22px" class="urdu">🔑 پاسورڈ تبدیل</h3>
 <input id="oldP" type="tel" maxlength="4" placeholder="پرانا" style="width:100%;height:52px;border-radius:14px;border:2px solid #e2e8f0;text-align:center;font-size:20px;letter-spacing:8px;font-weight:800;margin-top:12px">
 <input id="newP" type="tel" maxlength="4" placeholder="نیا" style="width:100%;height:52px;border-radius:14px;border:2px solid #e2e8f0;text-align:center;font-size:20px;letter-spacing:8px;font-weight:800;margin-top:8px">
@@ -74,15 +72,11 @@ body{font-family:'Jameel Noori','Noto Nastaliq Urdu',serif;background:var(--bg);
 <button id="passSaveBtn" onclick="savePass()" style="width:100%;background:var(--green);color:#fff;border:none;padding:14px;border-radius:14px;font-weight:800;margin-top:12px">محفوظ کریں</button>
 <button id="passCancelBtn" onclick="closePass()" style="width:100%;margin-top:8px">واپس</button>
 </div></div>
-
 <div class="top"><button class="menuBtn" onclick="openMenu()">☰</button><div style="display:flex;align-items:center;gap:8px"><div style="text-align:right"><div id="topName" class="urdu" style="font-weight:800;font-size:16px">عبد الہادی</div><div id="topSub" style="font-size:10px;color:#64748b">ہوم</div></div><img src="small.jpg" style="width:36px;height:36px;border-radius:50%;object-fit:cover"></div></div>
-
 <div class="searchWrap"><div style="position:relative"><input id="searchInput" placeholder="🔍 تلاش کریں..." oninput="doSearch()"></div><div id="sRes" style="font-size:13px;color:var(--green);font-weight:700;margin-top:6px;display:none"></div></div>
-
 <div class="white">
 <div id="homeView">
 <div class="profile"><img id="profImg" src="small.jpg" onclick="document.getElementById('bigPic').src=this.src;document.getElementById('picModal').classList.add('show')" onerror="this.src='logo.jpg'"><h2 id="profileName" class="urdu">عبد الہادی</h2><p id="d" style="font-size:12px;color:#94a3b8;margin-top:6px" class="urdu"></p></div>
-
 <div class="card">
 <div class="langRow">
 <button id="dirUrdu" class="on urdu" onclick="setFullLang('ur')">اردو - دائیں</button>
@@ -93,26 +87,19 @@ body{font-family:'Jameel Noori','Noto Nastaliq Urdu',serif;background:var(--bg);
 </div>
 <button id="saveBtn" class="btn urdu" onclick="saveYaad()">محفوظ کریں</button>
 </div>
-
 <div id="listWrap">
 <div class="tabs"><button id="tToday" onclick="setView('today')" class="on">آج</button><button id="tWeekly" onclick="setView('weekly')">ہفتہ وار</button><button id="tMonthly" onclick="setView('monthly')">ماہانہ</button><button id="tAll" onclick="setView('all')">تمام</button></div>
 <div style="display:flex;justify-content:space-between;margin-top:16px;font-weight:800;font-size:15px"><span id="listName">تمام نوٹس</span><span id="c" style="color:var(--green)">0</span></div>
 <div id="list"></div>
 </div>
-
 <div id="settingsView" style="display:none">
 <div class="card"><b id="themeTitle" class="urdu" style="font-size:18px">🎨 تھیم</b><div style="display:flex;gap:10px;margin-top:10px"><button onclick="setTheme('#16a34a')" style="width:36px;height:36px;border-radius:50%;background:#16a34a;border:3px solid #fff"></button><button onclick="setTheme('#2563eb')" style="width:36px;height:36px;border-radius:50%;background:#2563eb;border:3px solid #fff"></button><button onclick="setTheme('#0f172a')" style="width:36px;height:36px;border-radius:50%;background:#0f172a;border:3px solid #fff"></button><button onclick="setTheme('#dc2626')" style="width:36px;height:36px;border-radius:50%;background:#dc2626;border:3px solid #fff"></button></div>
 <div id="themeFooter" style="margin-top:16px;padding:14px;border-radius:14px;background:#f8fafc;border:1px solid var(--border);text-align:center;font-size:14px" class="urdu">© عبد الہادی<br>ڈیجیٹل ڈائری<br>جمیل نوری نستعلیق میں<br>2026</div>
 </div>
 </div>
 </div>
-
 <script>
-const LANG={
-ur:{search:"🔍 تلاش کریں...",heading:"ہیڈنگ",story:"یہاں اپنی کہانی لکھیں... ا، ب، پ، ت، ٹ...",save:"محفوظ کریں",today:"آج",weekly:"ہفتہ وار",monthly:"ماہانہ",all:"تمام",allNotes:"تمام نوٹس",home:"ہوم",noteBook:"📒 نوٹ بک",sec:"🔐 سیکیورٹی",pass:"🔑 پاسورڈ تبدیل",sett:"⚙️ سیٹنگ",lock:"🔒 لاک",theme:"🎨 تھیم",profile:"عبد الہادی",lockName:"عبد الہادی",passTitle:"🔑 پاسورڈ تبدیل",passSave:"محفوظ کریں",passCancel:"واپس",footer:"© 2026 عبد الہادی<br>ڈیجیٹل ڈائری",themeFooter:"© عبد الہادی<br>ڈیجیٹل ڈائری<br>جمیل نوری نستعلیق میں<br>2026",wrong:"غلط کوڈ",noRes:"🌱 کوئی نتیجہ نہیں",notFound:"نہیں ملا",found:"نتیجہ"},
-en:{search:"🔍 Search...",heading:"Heading",story:"Write here... A, B, C, D, E...",save:"Save",today:"Today",weekly:"Weekly",monthly:"Monthly",all:"All",allNotes:"All Notes",home:"Home",noteBook:"📒 NOTE BOOK",sec:"🔐 SECURITY",pass:"🔑 Change Password",sett:"⚙️ Settings",lock:"🔒 Lock",theme:"🎨 Theme",profile:"ABDUL HADI",lockName:"ABDUL HADI",passTitle:"🔑 Change Password",passSave:"Save",passCancel:"Cancel",footer:"© 2026 ABDUL HADI<br>Digital Diary",themeFooter:"© ABDUL HADI<br>Digital Diary<br>In Jameel Noori Nastaleeq<br>2026",wrong:"Wrong Code",noRes:"🌱 No result",notFound:"not found",found:"result"}
-};
-
+const LANG={ur:{search:"🔍 تلاش کریں...",heading:"ہیڈنگ",story:"یہاں اپنی کہانی لکھیں... ا، ب، پ، ت، ٹ...",save:"محفوظ کریں",today:"آج",weekly:"ہفتہ وار",monthly:"ماہانہ",all:"تمام",allNotes:"تمام نوٹس",home:"ہوم",noteBook:"📒 نوٹ بک",sec:"🔐 سیکیورٹی",pass:"🔑 پاسورڈ تبدیل",sett:"⚙️ سیٹنگ",lock:"🔒 لاک",theme:"🎨 تھیم",profile:"عبد الہادی",lockName:"عبد الہادی",passTitle:"🔑 پاسورڈ تبدیل",passSave:"محفوظ کریں",passCancel:"واپس",footer:"© 2026 عبد الہادی<br>ڈیجیٹل ڈائری",themeFooter:"© عبد الہادی<br>ڈیجیٹل ڈائری<br>جمیل نوری نستعلیق میں<br>2026",wrong:"غلط کوڈ",noRes:"🌱 کوئی نتیجہ نہیں",notFound:"نہیں ملا",found:"نتیجہ"},en:{search:"🔍 Search...",heading:"Heading",story:"Write here... A, B, C, D, E...",save:"Save",today:"Today",weekly:"Weekly",monthly:"Monthly",all:"All",allNotes:"All Notes",home:"Home",noteBook:"📒 NOTE BOOK",sec:"🔐 SECURITY",pass:"🔑 Change Password",sett:"⚙️ Settings",lock:"🔒 Lock",theme:"🎨 Theme",profile:"ABDUL HADI",lockName:"ABDUL HADI",passTitle:"🔑 Change Password",passSave:"Save",passCancel:"Cancel",footer:"© 2026 ABDUL HADI<br>Digital Diary",themeFooter:"© ABDUL HADI<br>Digital Diary<br>In Jameel Noori Nastaleeq<br>2026",wrong:"Wrong Code",noRes:"🌱 No result",notFound:"not found",found:"result"}};
 function getP(){return localStorage.getItem('myPass')||'2938'}
 let v='';function addN(n){if(v.length<4){v+=n;upd();if(v.length===4)setTimeout(checkN,200)}}function delN(){v=v.slice(0,-1);upd()}function upd(){for(let i=0;i<4;i++)document.getElementById('d'+i).classList.toggle('on',i<v.length)}
 function checkN(){if(v===getP()){document.getElementById('lockScreen').style.display='none';localStorage.setItem('un','yes');v='';upd()}else if(v.length===4){document.getElementById('err').style.display='block';setTimeout(()=>{document.getElementById('err').style.display='none';v='';upd()},900)}}
