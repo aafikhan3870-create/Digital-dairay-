@@ -4,195 +4,238 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google" content="notranslate">
-<meta name="googlebot" content="notranslate">
-<title>Digital Dairay - My Personal Diary</title>
+<title>Digital Dairay - عبد الھادی کی</title>
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#111827">
+<meta name="theme-color" content="#065f46">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body.notranslate{background:#0f172a;color:white;font-family:system-ui;min-height:100vh}
-.login-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:#0f172a;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;padding:20px}
-.login-screen img{width:120px;height:120px;border-radius:20px;margin-bottom:20px;border:3px solid #22c55e}
-.login-screen h2{margin-bottom:15px}
-.login-screen input{padding:12px 15px;border-radius:10px;border:none;width:260px;text-align:center;font-size:18px;margin-bottom:12px}
-.login-screen button{padding:12px 25px;background:#22c55e;color:white;border:none;border-radius:10px;font-weight:bold;font-size:16px;cursor:pointer}
-.app{display:none;min-height:100vh}
-.header{background:#1e293b;padding:15px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100}
-.header img{width:45px;height:45px;border-radius:10px}
-.menu{display:flex;gap:8px;padding:15px;background:#1e293b;overflow-x:auto}
-.menu button{padding:10px 18px;border-radius:20px;border:1px solid #334155;background:#0f172a;color:#94a3b8;white-space:nowrap;cursor:pointer}
-.menu button.active{background:#22c55e;color:white;border-color:#22c55e;font-weight:bold}
-.content{padding:20px;max-width:700px;margin:0 auto}
-.write-box{background:#1e293b;padding:20px;border-radius:15px;margin-bottom:20px}
-.write-box h3{margin-bottom:12px;color:#22c55e}
-.write-box textarea{width:100%;min-height:150px;background:#0f172a;border:1px solid #334155;color:white;padding:15px;border-radius:10px;font-size:16px;resize:vertical}
-.write-box button{margin-top:12px;padding:12px 20px;background:#22c55e;color:white;border:none;border-radius:10px;font-weight:bold;cursor:pointer;width:100%}
-.note-card{background:#1e293b;padding:16px;border-radius:12px;margin-bottom:12px;border-left:4px solid #22c55e}
-.note-card .date{color:#22c55e;font-size:13px;font-weight:bold;margin-bottom:6px}
-.note-card .text{color:#e2e8f0;line-height:1.6;white-space:pre-wrap}
-#installBox{position:fixed;bottom:20px;left:15px;right:15px;background:#22c55e;color:white;padding:14px 18px;border-radius:14px;display:flex;justify-content:space-between;align-items:center;z-index:500;box-shadow:0 5px 20px rgba(0,0,0,0.4)}
-#installBox button{background:white;color:#22c55e;border:none;padding:8px 16px;border-radius:8px;font-weight:bold;cursor:pointer}
+:root{--bg:#f8fafc;--card:#ffffff;--text:#0f172a;--primary:#065f46;--accent:#22c55e}
+body{background:var(--bg);color:var(--text);font-family:system-ui;transition:0.3s}
+body.dark{--bg:#0f172a;--card:#1e293b;--text:#f1f5f9}
+body.green{--bg:#f0fdf4;--card:#ffffff;--text:#14532d;--primary:#16a34a}
+body.blue{--bg:#eff6ff;--card:#ffffff;--text:#1e3a8a;--primary:#2563eb}
+body.rose{--bg:#fff1f2;--card:#ffffff;--text:#881337;--primary:#e11d48}
+body.royal{--bg:#faf5ff;--card:#ffffff;--text:#581c87;--primary:#9333ea}
+body.orange{--bg:#fff7ed;--card:#ffffff;--text:#7c2d12;--primary:#ea580c}
+body.teal{--bg:#f0fdfa;--card:#ffffff;--text:#134e4a;--primary:#0d9488}
+.login{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;padding:20px}
+.login img{width:110px;height:110px;border-radius:50%;border:4px solid var(--primary);margin-bottom:15px}
+.login input{padding:14px;width:260px;border-radius:12px;border:2px solid #e2e8f0;text-align:center;font-size:18px;margin:12px 0}
+.login button{padding:12px 30px;background:var(--primary);color:white;border:none;border-radius:12px;font-weight:bold;font-size:16px}
+.header{background:var(--card);padding:14px 18px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 10px rgba(0,0,0,0.05);position:sticky;top:0;z-index:100}
+.header img{width:48px;height:48px;border-radius:12px}
+.menu{display:flex;gap:8px;padding:12px;overflow-x:auto;background:var(--card);border-bottom:1px solid #e2e8f0}
+.menu button{padding:9px 16px;border-radius:20px;border:1px solid #e2e8f0;background:var(--bg);color:var(--text);white-space:nowrap;cursor:pointer}
+.menu button.active{background:var(--primary);color:white;border-color:var(--primary);font-weight:bold}
+.content{max-width:750px;margin:0 auto;padding:18px}
+.card{background:var(--card);padding:18px;border-radius:16px;box-shadow:0 2px 15px rgba(0,0,0,0.05);margin-bottom:16px}
+.card h3{color:var(--primary);margin-bottom:12px}
+textarea{width:100%;min-height:140px;background:var(--bg);border:1px solid #e2e8f0;color:var(--text);padding:14px;border-radius:12px;font-size:16px}
+.btn{padding:12px 20px;background:var(--primary);color:white;border:none;border-radius:10px;font-weight:bold;width:100%;margin-top:10px;cursor:pointer}
+.note{background:var(--bg);padding:14px;border-radius:12px;margin-bottom:10px;border-left:4px solid var(--primary)}
+.note .d{color:var(--primary);font-size:13px;font-weight:bold}
+.themes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.theme-dot{height:45px;border-radius:10px;cursor:pointer;border:3px solid transparent}
+.theme-dot.active{border-color:var(--text)}
+.tasbeeh-box{text-align:center;padding:30px 20px}
+.tasbeeh-count{font-size:72px;font-weight:bold;color:var(--primary);margin:15px 0}
+.tasbeeh-btn{width:140px;height:140px;border-radius:50%;background:var(--primary);color:white;border:none;font-size:22px;font-weight:bold;box-shadow:0 10px 30px rgba(0,0,0,0.2);cursor:pointer}
+.chat-box{height:300px;overflow-y:auto;background:var(--bg);border-radius:12px;padding:12px;margin-bottom:10px}
+.chat-msg{background:var(--primary);color:white;padding:10px 14px;border-radius:12px;margin-bottom:8px;max-width:80%}
+#installBox{position:fixed;bottom:20px;left:15px;right:15px;background:var(--primary);color:white;padding:14px 18px;border-radius:14px;display:none;justify-content:space-between;align-items:center;z-index:500;box-shadow:0 5px 20px rgba(0,0,0,0.3)}
+#installBox button{background:white;color:var(--primary);border:none;padding:8px 16px;border-radius:8px;font-weight:bold}
 </style>
 </head>
 <body class="notranslate" translate="no">
 
-<!-- LOGIN -->
-<div id="loginScreen" class="login-screen">
-<img src="logo.jpg" alt="Logo">
-<h2>Digital Dairay</h2>
-<p style="color:#94a3b8;margin-bottom:15px">Apna Password Likho</p>
-<input type="password" id="passInput" placeholder="Password">
+<div id="loginScreen" class="login">
+<img src="logo.jpg">
+<h2>🕌 Digital Dairay</h2>
+<p style="color:#64748b">عبد الھادی کی - Password 2938</p>
+<input type="password" id="passInput" placeholder="Password likho">
 <button onclick="checkPass()">Andar Jao</button>
-<p id="loginError" style="color:#ef4444;margin-top:10px;display:none">Ghalat Password!</p>
+<p id="err" style="color:red;display:none;margin-top:10px">Ghalat Password!</p>
 </div>
 
-<!-- APP -->
-<div id="mainApp" class="app">
+<div id="app" style="display:none">
 <div class="header">
-<img src="logo.jpg" alt="logo">
-<div><b>Digital Dairay</b><div style="font-size:12px;color:#94a3b8">My Personal Diary</div></div>
+<img src="logo.jpg">
+<div><b>Digital Dairay</b><div style="font-size:12px;color:#64748b">My Personal Diary</div></div>
 </div>
 <div class="menu">
-<button id="btnToday" class="active" onclick="showTab('today')">📅 Today</button>
-<button id="btnWeekly" onclick="showTab('weekly')">📊 Weekly</button>
-<button id="btnMonthly" onclick="showTab('monthly')">📆 Monthly</button>
-<button id="btnAll" onclick="showTab('all')">📔 All Notes</button>
+<button id="bToday" class="active" onclick="showTab('today')">📅 Today</button>
+<button id="bWeekly" onclick="showTab('weekly')">📊 Weekly</button>
+<button id="bMonthly" onclick="showTab('monthly')">📆 Monthly</button>
+<button id="bChat" onclick="showTab('chat')">💬 Chat</button>
+<button id="bTasbeeh" onclick="showTab('tasbeeh')">📿 Tasbeeh</button>
+<button id="bThemes" onclick="showTab('themes')">🎨 Themes</button>
 </div>
 <div class="content">
 <div id="todayTab">
-<div class="write-box">
+<div class="card">
 <h3>✍️ Aaj Ki Kahani Likho</h3>
 <textarea id="todayText" placeholder="Aaj kya hua? Apni kahani yahan likho..."></textarea>
-<button onclick="saveToday()">💾 Save Karo</button>
+<button class="btn" onclick="saveToday()">💾 Save Karo</button>
 </div>
 <div id="todaySaved"></div>
 </div>
 <div id="weeklyTab" style="display:none"></div>
 <div id="monthlyTab" style="display:none"></div>
-<div id="allTab" style="display:none"></div>
+<div id="chatTab" style="display:none">
+<div class="card">
+<h3>💬 Chat System</h3>
+<div id="chatBox" class="chat-box"></div>
+<div style="display:flex;gap:8px"><input id="chatInput" style="flex:1;padding:12px;border-radius:10px;border:1px solid #e2e8f0" placeholder="Message likho..."><button class="btn" style="width:auto;margin:0" onclick="sendChat()">Send</button></div>
+</div>
+</div>
+<div id="tasbeehTab" style="display:none">
+<div class="card tasbeeh-box">
+<h3>📿 Tasbeeh Counter</h3>
+<div class="tasbeeh-count" id="tasbeehCount">0</div>
+<button class="tasbeeh-btn" onclick="doTasbeeh()">سبحان الله</button>
+<div style="margin-top:15px"><button class="btn" style="background:#64748b" onclick="resetTasbeeh()">Reset</button></div>
+<p id="tasbeehTarget" style="margin-top:10px;color:#64748b">Target: 33</p>
+</div>
+</div>
+<div id="themesTab" style="display:none">
+<div class="card">
+<h3>🎨 8 Themes - By Abdul Hadi</h3>
+<div class="themes">
+<div class="theme-dot active" style="background:#f8fafc;border:1px solid #e2e8f0" onclick="setTheme('light',this)"></div>
+<div class="theme-dot" style="background:#0f172a" onclick="setTheme('dark',this)"></div>
+<div class="theme-dot" style="background:#22c55e" onclick="setTheme('green',this)"></div>
+<div class="theme-dot" style="background:#3b82f6" onclick="setTheme('blue',this)"></div>
+<div class="theme-dot" style="background:#f43f5e" onclick="setTheme('rose',this)"></div>
+<div class="theme-dot" style="background:#a855f7" onclick="setTheme('royal',this)"></div>
+<div class="theme-dot" style="background:#f97316" onclick="setTheme('orange',this)"></div>
+<div class="theme-dot" style="background:#14b8a6" onclick="setTheme('teal',this)"></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
-<!-- INSTALL BUTTON - Sirf Chrome me dikhega, App me nahi -->
-<div id="installBox" style="display:none">
+<div id="installBox">
 <div>📲 App Install Karo</div>
 <button onclick="installApp()">Install</button>
 </div>
 
 <script>
+const PASS="2938";
 let deferredPrompt;
-const PASSWORD = "2938";
+let tasbeeh=parseInt(localStorage.getItem('tasbeeh')||'0');
 
-// Login
 function checkPass(){
-  let p = document.getElementById('passInput').value;
-  if(p === PASSWORD){
-    document.getElementById('loginScreen').style.display='none';
-    document.getElementById('mainApp').style.display='block';
-    localStorage.setItem('loggedIn','yes');
-    loadAll();
-  } else {
-    document.getElementById('loginError').style.display='block';
-  }
-}
-if(localStorage.getItem('loggedIn')==='yes'){
+ if(document.getElementById('passInput').value===PASS){
   document.getElementById('loginScreen').style.display='none';
-  document.getElementById('mainApp').style.display='block';
+  document.getElementById('app').style.display='block';
+  localStorage.setItem('logged','yes');
+  loadAll();
+ } else {document.getElementById('err').style.display='block';}
+}
+if(localStorage.getItem('logged')==='yes'){
+ document.getElementById('loginScreen').style.display='none';
+ document.getElementById('app').style.display='block';
 }
 
-// Diary Logic
-function getNotes(){
-  return JSON.parse(localStorage.getItem('diaryNotes') || '[]');
-}
-function saveNotes(notes){
-  localStorage.setItem('diaryNotes', JSON.stringify(notes));
-}
+function getNotes(){return JSON.parse(localStorage.getItem('diaryNotes')||'[]');}
+function saveNotes(n){localStorage.setItem('diaryNotes',JSON.stringify(n));}
 function saveToday(){
-  let text = document.getElementById('todayText').value.trim();
-  if(!text){alert('Pehle kuch likho!');return;}
-  let notes = getNotes();
-  let today = new Date().toLocaleDateString('en-GB');
-  notes.unshift({date: today, text: text, time: Date.now()});
-  saveNotes(notes);
-  document.getElementById('todayText').value='';
-  alert('MashaAllah! Save ho gaya! ✅');
-  loadAll();
+ let t=document.getElementById('todayText').value.trim();
+ if(!t){alert('Pehle kuch likho!');return;}
+ let notes=getNotes();
+ notes.unshift({date:new Date().toLocaleDateString('en-GB'),text:t,time:Date.now()});
+ saveNotes(notes);
+ document.getElementById('todayText').value='';
+ alert('Save ho gaya! ✅');
+ loadAll();
 }
 function showTab(tab){
-  document.getElementById('todayTab').style.display='none';
-  document.getElementById('weeklyTab').style.display='none';
-  document.getElementById('monthlyTab').style.display='none';
-  document.getElementById('allTab').style.display='none';
-  document.querySelectorAll('.menu button').forEach(b=>b.classList.remove('active'));
-  if(tab==='today'){document.getElementById('todayTab').style.display='block';document.getElementById('btnToday').classList.add('active');}
-  if(tab==='weekly'){document.getElementById('weeklyTab').style.display='block';document.getElementById('btnWeekly').classList.add('active');showWeekly();}
-  if(tab==='monthly'){document.getElementById('monthlyTab').style.display='block';document.getElementById('btnMonthly').classList.add('active');showMonthly();}
-  if(tab==='all'){document.getElementById('allTab').style.display='block';document.getElementById('btnAll').classList.add('active');showAll();}
+ ['today','weekly','monthly','chat','tasbeeh','themes'].forEach(x=>{
+  document.getElementById(x+'Tab').style.display='none';
+  document.getElementById('b'+x.charAt(0).toUpperCase()+x.slice(1)).classList.remove('active');
+ });
+ document.getElementById(tab+'Tab').style.display='block';
+ document.getElementById('b'+tab.charAt(0).toUpperCase()+tab.slice(1)).classList.add('active');
+ if(tab==='weekly')showWeekly();
+ if(tab==='monthly')showMonthly();
+ if(tab==='chat')loadChat();
+ if(tab==='tasbeeh')updateTasbeeh();
 }
-function renderNotes(list, elId, title){
-  let el = document.getElementById(elId);
-  if(list.length===0){el.innerHTML=`<div class="write-box"><h3>${title}</h3><p style="color:#94a3b8">Abhi koi kahani nahi hai.</p></div>`;return;}
-  let html=`<div class="write-box"><h3>${title} (${list.length})</h3></div>`;
-  list.forEach(n=>{
-    html+=`<div class="note-card"><div class="date">${n.date}</div><div class="text">${n.text}</div></div>`;
-  });
-  el.innerHTML=html;
+function renderNotes(list, id, title){
+ let el=document.getElementById(id);
+ if(list.length===0){el.innerHTML=`<div class="card"><h3>${title}</h3><p style="color:#64748b">Koi kahani nahi.</p></div>`;return;}
+ let h=`<div class="card"><h3>${title} (${list.length})</h3></div>`;
+ list.forEach(n=>{h+=`<div class="note"><div class="d">${n.date}</div><div>${n.text}</div></div>`});
+ el.innerHTML=h;
 }
-function showWeekly(){
-  let notes = getNotes().slice(0,7);
-  renderNotes(notes,'weeklyTab','📊 Is Hafte Ki Kahaniyan');
-}
-function showMonthly(){
-  let notes = getNotes().slice(0,30);
-  renderNotes(notes,'monthlyTab','📆 Is Mahine Ki Kahaniyan');
-}
-function showAll(){
-  let notes = getNotes();
-  renderNotes(notes,'allTab','📔 Saari Kahaniyan');
-}
+function showWeekly(){renderNotes(getNotes().slice(0,7),'weeklyTab','📊 Weekly Kahaniyan');}
+function showMonthly(){renderNotes(getNotes().slice(0,30),'monthlyTab','📆 Monthly Kahaniyan');}
 function loadAll(){
-  let notes = getNotes();
-  let todayStr = new Date().toLocaleDateString('en-GB');
-  let todayNotes = notes.filter(n=>n.date===todayStr);
-  let el = document.getElementById('todaySaved');
-  if(todayNotes.length>0){
-    let html='<div class="write-box"><h3>✅ Aaj Ki Saved Kahaniyan</h3></div>';
-    todayNotes.forEach(n=>{html+=`<div class="note-card"><div class="date">${n.date}</div><div class="text">${n.text}</div></div>`});
-    el.innerHTML=html;
-  } else {el.innerHTML='';}
+ let notes=getNotes();
+ let today=new Date().toLocaleDateString('en-GB');
+ let tnotes=notes.filter(n=>n.date===today);
+ let el=document.getElementById('todaySaved');
+ if(tnotes.length>0){
+  let h='<div class="card"><h3>✅ Aaj Ki Saved</h3></div>';
+  tnotes.forEach(n=>h+=`<div class="note"><div class="d">${n.date}</div><div>${n.text}</div></div>`);
+  el.innerHTML=h;
+ } else el.innerHTML='';
+ updateTasbeeh();
 }
 
-// INSTALL LOGIC - Chrome me dikhega, App me nahi
-window.addEventListener('beforeinstallprompt', (e)=>{
-  e.preventDefault();
-  deferredPrompt = e;
-  // Sirf Chrome browser me dikhao, App me nahi
-  if(!window.matchMedia('(display-mode: standalone)').matches && window.navigator.standalone !== true){
-    document.getElementById('installBox').style.display='flex';
-  }
+function setTheme(name,el){
+ document.body.className='notranslate '+name;
+ if(name==='light')document.body.className='notranslate';
+ document.querySelectorAll('.theme-dot').forEach(d=>d.classList.remove('active'));
+ el.classList.add('active');
+ localStorage.setItem('theme',name);
+}
+if(localStorage.getItem('theme')){
+ let th=localStorage.getItem('theme');
+ document.body.className='notranslate '+(th==='light'?'':th);
+}
+
+function doTasbeeh(){tasbeeh++;localStorage.setItem('tasbeeh',tasbeeh);updateTasbeeh();if(tasbeeh%33===0)navigator.vibrate&&navigator.vibrate(100);}
+function resetTasbeeh(){tasbeeh=0;localStorage.setItem('tasbeeh','0');updateTasbeeh();}
+function updateTasbeeh(){
+ document.getElementById('tasbeehCount').innerText=tasbeeh;
+ let target=tasbeeh<33?33:tasbeeh<99?99:tasbeeh<1000?1000:tasbeeh;
+ document.getElementById('tasbeehTarget').innerText='Target: '+target+' | Baqi: '+(target-tasbeeh);
+}
+
+function getChats(){return JSON.parse(localStorage.getItem('chats')||'[]');}
+function sendChat(){
+ let i=document.getElementById('chatInput');
+ let t=i.value.trim();if(!t)return;
+ let c=getChats();c.push({text:t,time:Date.now()});localStorage.setItem('chats',JSON.stringify(c));
+ i.value='';loadChat();
+}
+function loadChat(){
+ let c=getChats();let box=document.getElementById('chatBox');
+ if(c.length===0){box.innerHTML='<p style="color:#64748b">Chat khali hai. Pehla message likho!</p>';return;}
+ box.innerHTML=c.map(m=>`<div class="chat-msg">${m.text}</div>`).join('');
+ box.scrollTop=box.scrollHeight;
+}
+
+// INSTALL LOGIC - Sirf Chrome me, App me nahi
+window.addEventListener('beforeinstallprompt',(e)=>{
+ e.preventDefault();deferredPrompt=e;
+ if(!window.matchMedia('(display-mode: standalone)').matches && window.navigator.standalone!==true){
+  document.getElementById('installBox').style.display='flex';
+ }
 });
 function installApp(){
-  if(deferredPrompt){
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choice)=>{
-      if(choice.outcome==='accepted'){
-        document.getElementById('installBox').style.display='none';
-      }
-      deferredPrompt=null;
-    });
-  } else {
-    alert('Upar 3 dots (⋮) dabao -> Add to Home screen -> Install');
-  }
+ if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(ch=>{if(ch.outcome==='accepted')document.getElementById('installBox').style.display='none';deferredPrompt=null;});}
+ else{alert('Upar 3 dots (⋮) > Add to Home screen > Install');}
 }
-window.addEventListener('appinstalled', ()=>{
-  document.getElementById('installBox').style.display='none';
+window.addEventListener('appinstalled',()=>{
+ document.getElementById('installBox').style.display='none';
 });
-
-// Sab se important: Agar App ke andar khula hai to Install button hamesha chhupao
-if(window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true){
-  document.getElementById('installBox').style.display='none';
+// Agar App ke andar khula hai to button hamesha chhupao
+if(window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone===true){
+ document.getElementById('installBox').style.display='none';
 }
-
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
 </script>
 </body>
