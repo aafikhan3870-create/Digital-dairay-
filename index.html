@@ -2,85 +2,100 @@
 <html lang="ur" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Dairay - ABDUL HADI</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>عبد الہادی - ABDUL HADI ki Digital Dairay</title>
+<link rel="icon" href="logo.jpg">
+<style>
+:root{--primary:#16a34a;--primary-dark:#15803d;--bg:#f0fdf4;--light:#dcfce7}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,Noto Nastaliq Urdu,sans-serif;background:var(--bg);min-height:100vh;color:#1e293b;overscroll-behavior:none}
+#lockScreen{position:fixed;inset:0;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;padding:20px;text-align:center}
+#lockScreen .logo{width:170px;height:170px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 10px 30px rgba(0,0,0,.4);background:#fff;padding:4px;margin-bottom:18px}
+#lockScreen .userpic{width:95px;height:95px;border-radius:50%;object-fit:cover;border:3px solid #fff;margin-top:12px;box-shadow:0 4px 15px rgba(0,0,0,.2)}
+#lockScreen h2{color:#fff;font-size:24px;margin-bottom:6px;line-height:1.3}
+#lockScreen p{color:#dcfce7;margin-bottom:18px;font-size:14px}
+#pinInput{display:flex;gap:10px;margin-bottom:18px;direction:ltr}
+#pinInput input{width:56px;height:56px;font-size:26px;text-align:center;border-radius:14px;border:none;font-weight:bold;outline:none;box-shadow:0 4px 10px rgba(0,0,0,.1)}
+#unlockBtn{background:#fff;color:var(--primary);padding:13px 45px;border:none;border-radius:25px;font-weight:800;cursor:pointer;font-size:16px;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+#wrong{color:#fecaca;margin-top:14px;display:none;font-weight:600;background:rgba(0,0,0,.2);padding:6px 14px;border-radius:20px}
+header{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:16px 0 18px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.header-top{display:flex;align-items:center;justify-content:center;gap:12px;padding:0 12px}
+header .logo-mini{width:52px;height:52px;border-radius:50%;background:#fff;padding:3px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+header .profile{width:58px;height:58px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+header h1{font-size:17px;line-height:1.2;text-align:right}
+header h1 span{font-size:26px;display:block;font-weight:900}
+.theme-bar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px;padding:0 10px;direction:ltr}
+.theme-dot{width:32px;height:32px;border-radius:50%;border:3px solid rgba(255,255,255,.9);cursor:pointer;transition:.2s;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.theme-dot.active{transform:scale(1.3);border-color:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.4)}
+.container{width:100%;max-width:600px;margin:0 auto}
+.card{background:#fff;padding:18px;margin:0;border-bottom:8px solid var(--bg)}
+textarea{width:100%;min-height:130px;border:2px solid var(--light);border-radius:16px;padding:14px;font-size:17px;outline:none;resize:none;background:#fafffe;font-family:inherit}
+textarea:focus{border-color:var(--primary);background:#fff}
+.btn{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;border:none;padding:14px 24px;border-radius:14px;font-weight:800;cursor:pointer;width:100%;font-size:16px;margin-top:12px;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.entry{background:var(--bg);border-radius:14px;padding:14px;margin-top:12px;border-right:5px solid var(--primary);text-align:right;word-wrap:break-word}
+.hidden{display:none!important}
+</style>
 </head>
-<body style="background:#09090b;color:#e4e4e7;margin:0;font-family:system-ui">
-
-<!-- Right Bar like Firebase -->
-<div style="position:fixed;right:0;top:0;bottom:0;width:58px;background:#18181b;border-left:1px solid #27272a;display:flex;flex-direction:column;align-items:center;padding:14px 0;gap:18px;z-index:50">
-<div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(to br,#fcd34d,#ea580c);display:flex;align-items:center;justify-content:center;color:#000;font-weight:900">AH</div>
-<div style="width:28px;height:1px;background:#27272a"></div>
-<div>🔔</div><div>✨</div><div>💬</div><div>❓</div>
+<body>
+<div id="lockScreen">
+<img class="logo" src="logo.jpg" alt="عبد الہادی">
+<h2>عبد الہادی<br>ABDUL HADI</h2>
+<p>Password 2938 likho</p>
+<div id="pinInput"><input type="password" maxlength="1" id="p1"><input type="password" maxlength="1" id="p2"><input type="password" maxlength="1" id="p3"><input type="password" maxlength="1" id="p4"></div>
+<button id="unlockBtn" onclick="unlock()">Unlock 🔓</button>
+<p id="wrong">❌ Ghalat password!</p>
+<img class="userpic" src="small.jpg" onerror="this.src='logo.jpg'">
+<p style="font-size:11px;margin-top:10px;opacity:.8;color:#fff">ABDUL HADI ki Digital Dairay</p>
 </div>
 
-<div style="margin-right:58px;min-height:100vh;display:flex;flex-direction:column">
-<div style="height:56px;background:#121214;border-bottom:1px solid #27272a;display:flex;align-items:center;justify-content:space-between;padding:0 16px">
-<h1 style="margin:0;font-weight:900">Digital <span style="color:#fbbf24">Dairay</span> <span style="font-size:11px;color:#71717a">by ABDUL HADI</span></h1>
-<span style="font-size:11px;background:#052e1f;color:#34d399;padding:5px 12px;border-radius:20px;border:1px solid #065f46">● LIVE</span>
+<div id="mainContent" class="hidden">
+<header>
+<div class="header-top">
+<img class="logo-mini" src="logo.jpg" onerror="this.style.display='none'">
+<div style="text-align:right"><h1><span>عبد الہادی</span>ABDUL HADI ki Dairay 📖</h1></div>
+<img class="profile" src="small.jpg" onerror="this.src='logo.jpg'">
+</div>
+<div id="urduDate" style="font-size:12px;opacity:.9;margin-top:10px"></div>
+<div class="theme-bar" id="themeBar"></div>
+<div style="font-size:10px;opacity:.8;margin-top:6px;letter-spacing:1px">🎨 RANG BADLO - 8 THEMES</div>
+</header>
+
+<div class="container">
+<div class="card">
+<h3>✍️ Aaj kya hua? 🌿</h3>
+<textarea id="entryText" placeholder="Yahan apni kahani, yaad, khayal likho..."></textarea>
+<button class="btn" onclick="saveEntry()">💾 Save + File Banao 📄</button>
+</div>
+<div class="card">
+<h3>📚 Purani Yadein - <span id="count">0</span></h3>
+<div id="entries"></div>
+<button class="btn" style="filter:brightness(1.1)" onclick="downloadAll()">📥 Sari Yadein Ek File Me Download</button>
+</div>
+<div class="card" style="text-align:center;padding-bottom:40px">
+<button class="btn" style="background:linear-gradient(135deg,#ef4444,#dc2626)" onclick="lockAgain()">🔒 Lock Karo</button>
+<p style="font-size:10px;color:#94a3b8;margin-top:14px;line-height:1.5">Full Screen • 8 Themes • Logo + Photo • Password 2938<br>File System • Offline Save</p>
+<img src="logo.jpg" style="width:65px;height:65px;border-radius:50%;margin-top:14px;border:2px solid var(--light)" onerror="this.style.display='none'">
+</div>
+</div>
 </div>
 
-<div style="flex:1;display:flex;flex-wrap:wrap">
-<div style="flex:2;min-width:300px;padding:16px;background:#0a0a0b">
-<div style="background:#18181b;border:1px solid #27272a;border-radius:20px;padding:16px">
-<textarea id="storyInput" placeholder="Apni kahani likho..." style="width:100%;background:#1f1f23;border:1px solid #2a2a2e;border-radius:12px;padding:12px;color:#fff;min-height:90px"></textarea>
-<button onclick="postStory()" style="margin-top:10px;background:#fff;color:#000;font-weight:700;padding:8px 24px;border-radius:20px;border:none">Post Karo</button>
-</div>
-<div id="storiesFeed" style="margin-top:16px"></div>
-</div>
-
-<div style="flex:1;min-width:280px;background:#121214;border-right:1px solid #27272a;display:flex;flex-direction:column">
-<div style="padding:14px;border-bottom:1px solid #27272a;display:flex;justify-content:space-between"><b>Live Chat</b><span id="onlineCount" style="font-size:11px;color:#71717a">0</span></div>
-<div id="chatMessages" style="flex:1;padding:12px;overflow-y:auto;display:flex;flex-direction:column;gap:8px"></div>
-<div style="padding:12px;border-top:1px solid #27272a;display:flex;gap:6px">
-<input id="userName" placeholder="Naam" style="width:60px;background:#1f1f23;border:1px solid #2a2a2e;border-radius:20px;padding:10px;color:#fff;font-size:11px">
-<input id="chatInput" placeholder="Paigham..." style="flex:1;background:#1f1f23;border:1px solid #2a2a2e;border-radius:20px;padding:10px;color:#fff">
-<button onclick="sendMessage()" style="background:#fbbf24;color:#000;width:38px;height:38px;border-radius:50%;border:none;font-weight:700">↑</button>
-</div>
-</div>
-</div>
-</div>
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, addDoc, onSnapshot, orderBy, query, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-const firebaseConfig = {
-  apiKey: "AIzaSyDrxztt_wMInNZ2SsYuA_Z0KfPdUhMWZDM",
-  authDomain: "aafi-khan.firebaseapp.com",
-  projectId: "aafi-khan",
-  storageBucket: "aafi-khan.firebasestorage.app",
-  messagingSenderId: "225988422863",
-  appId: "1:225988422863:web:f1be7832f1ee1ab52b9bba",
-  measurementId: "G-RZPCEXZ3Q7"
-};
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const chatCol = collection(db, "hadi_chats");
-const storyCol = collection(db, "hadi_stories");
-window.sendMessage = async () => {
-  const n = document.getElementById('userName').value || "Mehman";
-  const t = document.getElementById('chatInput').value.trim();
-  if(!t) return; document.getElementById('chatInput').value="";
-  await addDoc(chatCol, { name: n, text: t, created: Date.now(), time: serverTimestamp() });
-};
-window.postStory = async () => {
-  const t = document.getElementById('storyInput').value.trim();
-  if(!t) return; document.getElementById('storyInput').value="";
-  await addDoc(storyCol, { text: t, created: Date.now() });
-};
-const qChat = query(chatCol, orderBy("created","asc"));
-onSnapshot(qChat, (snap)=>{
-  const box=document.getElementById('chatMessages'); box.innerHTML=""; let c=0;
-  snap.forEach(d=>{ const data=d.data(); const div=document.createElement('div'); div.style.cssText="background:#1e1e20;border-radius:14px;padding:10px;border:1px solid #27272a"; div.innerHTML=`<b style="color:#fbbf24;font-size:11px">${data.name}</b> <span style="font-size:10px;color:#71717a"> ${new Date(data.created).toLocaleTimeString()}</span><div style="margin-top:4px;font-size:13px">${data.text}</div>`; box.appendChild(div); c++; });
-  document.getElementById('onlineCount').innerText=c+" messages"; box.scrollTop=box.scrollHeight;
-});
-const qStory = query(storyCol, orderBy("created","desc"));
-onSnapshot(qStory, (snap)=>{
-  const feed=document.getElementById('storiesFeed'); feed.innerHTML="";
-  snap.forEach(d=>{ const data=d.data(); const div=document.createElement('div'); div.style.cssText="background:#18181b;border:1px solid #27272a;border-radius:18px;padding:14px;margin-bottom:12px"; div.innerHTML=`<div>${data.text}</div><div style="font-size:10px;color:#71717a;margin-top:8px">${new Date(data.created).toLocaleString()}</div>`; feed.appendChild(div); });
-});
-document.getElementById('chatInput').addEventListener('keydown', e=>{ if(e.key==='Enter') sendMessage(); });
+<script>
+const themes=[{name:'Green',primary:'#16a34a',dark:'#15803d',bg:'#f0fdf4',light:'#dcfce7'},{name:'Blue',primary:'#2563eb',dark:'#1d4ed8',bg:'#eff6ff',light:'#dbeafe'},{name:'Purple',primary:'#9333ea',dark:'#7e22ce',bg:'#faf5ff',light:'#f3e8ff'},{name:'Pink',primary:'#ec4899',dark:'#db2777',bg:'#fdf2f8',light:'#fce7f3'},{name:'Orange',primary:'#f59e0b',dark:'#d97706',bg:'#fffbeb',light:'#fef3c7'},{name:'Red',primary:'#ef4444',dark:'#dc2626',bg:'#fef2f2',light:'#fee2e2'},{name:'Teal',primary:'#0d9488',dark:'#0f766e',bg:'#f0fdfa',light:'#ccfbf1'},{name:'Black',primary:'#1e293b',dark:'#0f172a',bg:'#f1f5f9',light:'#e2e8f0'}];
+function applyTheme(t){document.documentElement.style.setProperty('--primary',t.primary);document.documentElement.style.setProperty('--primary-dark',t.dark);document.documentElement.style.setProperty('--bg',t.bg);document.documentElement.style.setProperty('--light',t.light);localStorage.setItem('hadi_theme',JSON.stringify(t));renderThemeDots();}
+function renderThemeDots(){const saved=JSON.parse(localStorage.getItem('hadi_theme')||'null');const current=saved?saved.primary:themes[0].primary;const bar=document.getElementById('themeBar');bar.innerHTML=themes.map(th=>`<div class="theme-dot ${th.primary===current?'active':''}" style="background:${th.primary}" onclick='applyTheme(${JSON.stringify(th).replace(/'/g,"&#39;")})' title="${th.name}"></div>`).join('');}
+const savedTheme=JSON.parse(localStorage.getItem('hadi_theme')||'null');if(savedTheme){applyTheme(savedTheme);}else{renderThemeDots();}
+const CORRECT="2938";const inputs=[...document.querySelectorAll('#pinInput input')];inputs.forEach((inp,i)=>{inp.addEventListener('input',()=>{inp.value=inp.value.replace(/[^0-9]/g,'');if(inp.value&&i<3)inputs[i+1].focus();if(inputs.every(x=>x.value))unlock();});inp.addEventListener('keydown',(e)=>{if(e.key==='Backspace'&&!inp.value&&i>0)inputs[i-1].focus();});});
+function unlock(){const code=inputs.map(x=>x.value).join('');if(code===CORRECT){lockScreen.classList.add('hidden');mainContent.classList.remove('hidden');localStorage.setItem('unlocked','yes');}else{wrong.style.display='block';inputs.forEach(x=>x.value='');inputs[0].focus();setTimeout(()=>wrong.style.display='none',2000);}}
+function lockAgain(){localStorage.removeItem('unlocked');location.reload();}
+if(localStorage.getItem('unlocked')==='yes'){lockScreen.classList.add('hidden');mainContent.classList.remove('hidden');}
+try{document.getElementById('urduDate').innerText=new Date().toLocaleDateString('ur-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'});}catch(e){document.getElementById('urduDate').innerText=new Date().toDateString();}
+function makeFile(c,f){const b=new Blob([c],{type:'text/plain;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=f;document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(u),1000);}
+function saveEntry(){const t=entryText.value.trim();if(!t)return alert('Kuch likho! ✍️');const now=new Date();const ds=now.toLocaleString('ur-PK');const fd=now.toISOString().slice(0,10);const e=JSON.parse(localStorage.getItem('hadi_entries')||'[]');e.unshift({text:t,date:ds});localStorage.setItem('hadi_entries',JSON.stringify(e));const fc=`عبد الہادی - ABDUL HADI ki Dairay\nTarikh: ${ds}\n\n${t}\n`;const fn=`HADI_${fd}_${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}.txt`;makeFile(fc,fn);entryText.value='';render();}
+function render(){const e=JSON.parse(localStorage.getItem('hadi_entries')||'[]');const div=document.getElementById('entries');document.getElementById('count').innerText=e.length;if(!e.length){div.innerHTML='<p style="color:#94a3b8;text-align:center;padding:15px">Abhi koi yaad nahi... Pehli yaad likho! 🌱</p>';return;}div.innerHTML=e.map((x,i)=>`<div class="entry"><div style="white-space:pre-wrap">${x.text}</div><small style="color:#64748b">📅 ${x.date}</small><br><button style="margin-top:10px;font-size:12px;padding:7px 14px;border:none;background:var(--primary);color:white;border-radius:10px;cursor:pointer" onclick="downloadSingle(${i})">📄 File</button> <span style="float:left;cursor:pointer;font-size:18px" onclick="delEntry(${i})">🗑️</span></div>`).join('');}
+function downloadSingle(i){const e=JSON.parse(localStorage.getItem('hadi_entries')||'[]')[i];makeFile(`Tarikh: ${e.date}\n\n${e.text}`, `Yaad_${i+1}.txt`);}
+function downloadAll(){const e=JSON.parse(localStorage.getItem('hadi_entries')||'[]');if(!e.length)return alert('Koi yaad nahi!');let c=`ABDUL HADI ki Mukammal Dairay\nTotal Yadein: ${e.length}\nDate: ${new Date().toLocaleString()}\n\n========================\n\n`;e.forEach((x,i)=>{c+=`${i+1}. ${x.date}\n${x.text}\n\n---\n\n`;});makeFile(c, `ABDUL_HADI_Mukammal_Dairay_${e.length}_Yadein.txt`);}
+function delEntry(i){if(!confirm('Delete karna hai?'))return;const e=JSON.parse(localStorage.getItem('hadi_entries')||'[]');e.splice(i,1);localStorage.setItem('hadi_entries',JSON.stringify(e));render();}
+render();
 </script>
 </body>
 </html>
