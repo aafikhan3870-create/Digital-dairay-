@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="ur" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"><title>عبد الہادی</title><link rel="icon" href="logo.jpg"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#16a34a">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&family=Poppins:wght@400;700&family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Poppins:wght@400;700&family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 <style>
 @font-face{font-family:'Jameel Noori';src:url('https://cdn.jsdelivr.net/gh/mustafaakbari/Jameel-Noori-Nastaleeq@main/Jameel%20Noori%20Nastaleeq.ttf') format('truetype');font-display:swap}
 @font-face{font-family:'Nafees';src:url('https://cdn.jsdelivr.net/gh/mustafaakbari/Nafees-Nastaleeq@main/Nafees%20Nastaleeq.ttf') format('truetype');font-display:swap}
@@ -21,228 +21,127 @@ body{font-family:'Jameel Noori','Noto Nastaliq Urdu',serif;background:var(--bg);
 .card textarea{width:100%;border:none;outline:none;min-height:130px;font-size:20px;resize:none;background:transparent;line-height:2}
 .btn{width:100%;background:var(--green);color:#fff;border:none;padding:14px;border-radius:16px;font-weight:800;margin-top:12px;font-size:18px}
 .tabs{display:flex;gap:8px;margin-top:14px;overflow:auto}.tabs button{padding:9px 16px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);font-weight:700;font-size:13px;white-space:nowrap}.tabs button.on{background:var(--text);color:#fff}
-.note{border:1px solid var(--border);background:var(--card);border-radius:16px;padding:14px;margin-top:10px;cursor:pointer;transition:.2s}
-.note:active{transform:scale(.98)}
-.note h4{font-size:18px}
+.note{border:1px solid var(--border);background:var(--card);border-radius:16px;padding:14px;margin-top:10px;cursor:pointer}
 .lockS{position:fixed;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;padding-top:50px;z-index:9999}
 .lockS .l1{width:110px;height:110px;border-radius:26px;object-fit:cover}.lockS .l2{width:74px;height:74px;border-radius:50%;margin-top:-18px;border:4px solid #fff;box-shadow:0 8px 18px rgba(0,0,0,.12);object-fit:cover}
 #dots{display:flex;gap:10px;margin:16px 0}.dot{width:14px;height:14px;border-radius:50%;border:2px solid #cbd5e1}.dot.on{background:#0f172a;border-color:#0f172a}
 .numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;width:100%;max-width:280px;margin-top:16px}.numpad button{height:64px;border-radius:18px;border:none;background:#f8fafc;font-size:22px;font-weight:700}.numpad .ok{background:#0f172a;color:#fff}.numpad .del{background:#fff;border:1px solid #fee2e2;color:#ef4444}
 .menuSheet{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:10001;justify-content:flex-start}.menuSheet.show{display:flex}
-.sheetMenu{background:var(--card);width:82%;max-width:320px;height:100%;padding:18px;overflow:auto;animation:sl .25s ease}
-@keyframes sl{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+.sheetMenu{background:var(--card);width:82%;max-width:320px;height:100%;padding:18px;overflow:auto}
 .sheetMenu button{width:100%;text-align:right;padding:14px;border-radius:14px;border:1px solid var(--border);background:var(--card);margin-top:8px;font-weight:700;font-size:15px}
 .sheetMenu button.on{background:var(--text);color:#fff}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:10002;align-items:center;justify-content:center;padding:14px}.modal.show{display:flex}.modal img{max-width:90vw;max-height:80vh;border-radius:20px}
-.readModal{background:#fff;width:92%;max-width:460px;max-height:85vh;border-radius:22px;padding:18px;overflow:auto;animation:pop .25s ease}
-@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:10002;align-items:center;justify-content:center;padding:14px}.modal.show{display:flex}
+.readModal{background:#fff;width:92%;max-width:460px;max-height:85vh;border-radius:22px;padding:18px;overflow:auto}
+.bookWrap{background:#fdf6e3;width:100%;max-width:500px;height:92vh;border-radius:16px;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.5);overflow:hidden;border:3px solid #f3e8c8}
+.bookHeader{background:#fefcf3;padding:10px 14px;border-bottom:2px solid #f3e8c8;display:flex;justify-content:space-between;align-items:center}
+.bookPage{flex:1;background:#fffef5;padding:16px;overflow:auto;position:relative}
+.bookFooter{background:#fefcf3;padding:8px 14px;border-top:2px solid #f3e8c8;display:flex;justify-content:space-between;align-items:center;font-size:12px}
+.bookIndex{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.bookIndex button{padding:14px;border-radius:12px;border:2px solid #f3e8c8;background:#fff;font-weight:800;font-size:16px}
+.bookIndex button:hover{background:#0f172a;color:#fff}
 .urdu{font-family:'Jameel Noori','Noto Nastaliq Urdu',serif !important}
-.eng{font-family:system-ui,sans-serif !important}
-.f-urdu1{font-family:'Jameel Noori',serif !important}
-.f-urdu2{font-family:'Noto Nastaliq Urdu',serif !important}
-.f-urdu3{font-family:'Nafees',serif !important}
-.f-eng1{font-family:'Poppins',sans-serif !important}
-.f-eng2{font-family:'Playfair Display',serif !important}
-.f-eng3{font-family:'Dancing Script',cursive !important}
-#installBox{position:fixed;bottom:20px;left:14px;right:14px;background:#0f172a;color:#fff;padding:14px 18px;border-radius:14px;display:none;justify-content:space-between;align-items:center;z-index:99999;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.f-urdu1{font-family:'Jameel Noori',serif !important}.f-urdu2{font-family:'Noto Nastaliq Urdu',serif !important}.f-urdu3{font-family:'Nafees',serif !important}
+.f-eng1{font-family:'Poppins',sans-serif !important}.f-eng2{font-family:'Playfair Display',serif !important}.f-eng3{font-family:'Dancing Script',cursive !important}
+#installBox{position:fixed;bottom:20px;left:14px;right:14px;background:#0f172a;color:#fff;padding:14px 18px;border-radius:14px;display:none;justify-content:space-between;align-items:center;z-index:99999}
 #installBox button{background:#fff;color:#0f172a;border:none;padding:8px 16px;border-radius:8px;font-weight:800}
+.editInput{width:100%;border:2px dashed #16a34a;border-radius:10px;padding:10px;font-size:20px;outline:none}
 </style></head><body>
 
-<div id="lockScreen" class="lockS">
-<img src="logo.jpg" class="l1"><img src="small.jpg" class="l2">
-<h2 id="lockName" class="urdu" style="margin-top:14px;font-size:30px">عبد الہادی</h2>
-<div id="dots"><div class="dot" id="d0"></div><div class="dot" id="d1"></div><div class="dot" id="d2"></div><div class="dot" id="d3"></div></div>
-<p id="err" style="color:#ef4444;display:none;font-weight:700;font-size:14px">غلط کوڈ</p>
-<div class="numpad">
-<button onclick="addN('1')">1</button><button onclick="addN('2')">2</button><button onclick="addN('3')">3</button>
-<button onclick="addN('4')">4</button><button onclick="addN('5')">5</button><button onclick="addN('6')">6</button>
-<button onclick="addN('7')">7</button><button onclick="addN('8')">8</button><button onclick="addN('9')">9</button>
-<button onclick="delN()" class="del">⌫</button><button onclick="addN('0')">0</button><button onclick="checkN()" class="ok">✔</button>
-</div>
-</div>
+<div id="lockScreen" class="lockS"><img src="logo.jpg" class="l1"><img src="small.jpg" class="l2"><h2 class="urdu" style="margin-top:14px;font-size:30px">عبد الہادی</h2><div id="dots"><div class="dot" id="d0"></div><div class="dot" id="d1"></div><div class="dot" id="d2"></div><div class="dot" id="d3"></div></div><p id="err" style="color:#ef4444;display:none;font-weight:700">غلط کوڈ</p><div class="numpad"><button onclick="addN('1')">1</button><button onclick="addN('2')">2</button><button onclick="addN('3')">3</button><button onclick="addN('4')">4</button><button onclick="addN('5')">5</button><button onclick="addN('6')">6</button><button onclick="addN('7')">7</button><button onclick="addN('8')">8</button><button onclick="addN('9')">9</button><button onclick="delN()" class="del">⌫</button><button onclick="addN('0')">0</button><button onclick="checkN()" class="ok">✔</button></div></div>
 
-<div id="picModal" class="modal" onclick="this.classList.remove('show')"><img id="bigPic" src="small.jpg"></div>
-<div id="readModal" class="modal" onclick="if(event.target===this)closeRead()"><div class="readModal"><div style="display:flex;justify-content:space-between;align-items:center"><b id="readHead" style="font-size:22px"></b><button onclick="closeRead()" style="border:none;background:#fef2f2;color:#ef4444;width:36px;height:36px;border-radius:50%;font-weight:800">✕</button></div><small id="readDate" style="color:#94a3b8"></small><p id="readText" style="margin-top:14px;white-space:pre-wrap;font-size:22px;line-height:2"></p><button id="readDel" style="width:100%;margin-top:18px;background:#fef2f2;color:#ef4444;border:1px solid #fee2e2;padding:12px;border-radius:12px;font-weight:800">Delete</button></div></div>
+<div id="picModal" class="modal" onclick="this.classList.remove('show')"><img id="bigPic" src="small.jpg" style="max-width:90vw;max-height:80vh;border-radius:20px"></div>
 
-<div id="menuSheet" class="menuSheet" onclick="if(event.target===this)closeMenu()"><div class="sheetMenu"><div style="display:flex;gap:10px;align-items:center"><img src="small.jpg" style="width:48px;height:48px;border-radius:50%;object-fit:cover"><b id="mProfileName" class="urdu" style="font-size:20px">عبد الہادی</b></div><button id="mHome" class="on" onclick="goHome();closeMenu()">🏠 ہوم</button><div id="mNoteLabel" style="margin-top:14px;font-size:11px;color:#94a3b8;font-weight:800">📒 نوٹ بک</div><button id="mToday" onclick="setView('today');closeMenu()">📅 آج</button><button id="mWeekly" onclick="setView('weekly');closeMenu()">🗓 ہفتہ وار</button><button id="mMonthly" onclick="setView('monthly');closeMenu()">📆 ماہانہ</button><div id="mSecLabel" style="margin-top:14px;font-size:11px;color:#94a3b8;font-weight:800">🔐 سیکیورٹی</div><button id="mPass" onclick="openPass();closeMenu()">🔑 پاسورڈ تبدیل</button><button id="mSett" onclick="setView('settings');closeMenu()">⚙️ سیٹنگ</button><button id="mLock" onclick="lockK()" style="background:#fef2f2;color:#ef4444;margin-top:16px">🔒 لاک</button><div id="mFooter" style="text-align:center;margin-top:18px;font-size:12px;color:#94a3b8" class="urdu">© 2026 عبد الہادی<br>ڈیجیٹل ڈائری</div></div></div>
-<div id="passBox" class="menuSheet" style="justify-content:center;align-items:center"><div class="sheetMenu" style="width:92%;max-width:360px;height:auto;border-radius:22px"><h3 id="passTitle" style="text-align:center;font-size:22px" class="urdu">🔑 پاسورڈ تبدیل</h3><input id="oldP" type="tel" maxlength="4" placeholder="پرانا" style="width:100%;height:52px;border-radius:14px;border:2px solid #e2e8f0;text-align:center;font-size:20px;letter-spacing:8px;font-weight:800;margin-top:12px"><input id="newP" type="tel" maxlength="4" placeholder="نیا" style="width:100%;height:52px;border-radius:14px;border:2px solid #e2e8f0;text-align:center;font-size:20px;letter-spacing:8px;font-weight:800;margin-top:8px"><input id="newP2" type="tel" maxlength="4" placeholder="دوبارہ" style="width:100%;height:52px;border-radius:14px;border:2px solid #e2e8f0;text-align:center;font-size:20px;letter-spacing:8px;font-weight:800;margin-top:8px"><p id="pMsg" style="display:none;text-align:center;margin-top:8px;font-weight:700;font-size:13px"></p><button id="passSaveBtn" onclick="savePass()" style="width:100%;background:var(--green);color:#fff;border:none;padding:14px;border-radius:14px;font-weight:800;margin-top:12px">محفوظ کریں</button><button id="passCancelBtn" onclick="closePass()" style="width:100%;margin-top:8px">واپس</button></div></div>
-<div class="top"><button class="menuBtn" onclick="openMenu()">☰</button><div style="display:flex;align-items:center;gap:8px"><div style="text-align:right"><div id="topName" class="urdu" style="font-weight:800;font-size:16px">عبد الہادی</div><div id="topSub" style="font-size:10px;color:#64748b">ہوم</div></div><img src="small.jpg" style="width:36px;height:36px;border-radius:50%;object-fit:cover"></div></div>
-<div class="searchWrap"><div style="position:relative"><input id="searchInput" placeholder="🔍 تلاش کریں..." oninput="doSearch()"></div><div id="sRes" style="font-size:13px;color:var(--green);font-weight:700;margin-top:6px;display:none"></div></div>
-<div class="white"><div id="homeView"><div class="profile"><img id="profImg" src="small.jpg" onclick="document.getElementById('bigPic').src=this.src;document.getElementById('picModal').classList.add('show')" onerror="this.src='logo.jpg'"><h2 id="profileName" class="urdu">عبد الہادی</h2><p id="d" style="font-size:12px;color:#94a3b8;margin-top:6px" class="urdu"></p></div>
-<div class="card">
-<div class="langRow">
-<button id="dirUrdu" class="on urdu" onclick="setFullLang('ur')">اردو - دائیں</button>
-<button id="dirEng" class="eng" onclick="setFullLang('en')">English - Left</button>
+<div id="readModal" class="modal" onclick="if(event.target===this)closeRead()"><div class="readModal"><div style="display:flex;justify-content:space-between"><input id="readHead" class="editInput" style="display:none"><b id="readHeadView" style="font-size:22px"></b><button onclick="closeRead()" style="border:none;background:#fef2f2;color:#ef4444;width:36px;height:36px;border-radius:50%">✕</button></div><small id="readDate" style="color:#94a3b8"></small><textarea id="readTextEdit" class="editInput" style="margin-top:14px;min-height:180px;display:none"></textarea><p id="readTextView" style="margin-top:14px;white-space:pre-wrap;font-size:22px;line-height:2"></p><div style="display:flex;gap:8px;margin-top:14px"><button id="editBtn" onclick="toggleEdit()" style="flex:1;background:#0f172a;color:#fff;border:none;padding:12px;border-radius:12px;font-weight:800">✏️ Edit Karo</button><button onclick="openBook()" style="flex:1;background:#fef3c7;color:#92400e;border:1px solid #fde68a;padding:12px;border-radius:12px;font-weight:800">📖 Kitab jaisa</button></div><button id="saveEditBtn" onclick="saveEdited()" style="width:100%;margin-top:8px;background:#16a34a;color:#fff;border:none;padding:12px;border-radius:12px;font-weight:800;display:none">✅ Save Karo</button><button id="readDel" style="width:100%;margin-top:8px;background:#fef2f2;color:#ef4444;border:1px solid #fee2e2;padding:12px;border-radius:12px;font-weight:800">Delete</button></div></div>
+
+<!-- BOOK WITH LOGO + PAGE NUMBER + INDEX -->
+<div id="bookModal" class="modal" style="background:rgba(0,0,0,.92)" onclick="if(event.target===this)closeBook()"><div class="bookWrap">
+<div class="bookHeader">
+<div style="display:flex;align-items:center;gap:8px"><img src="logo.jpg" style="width:28px;height:28px;border-radius:6px;object-fit:cover"><b style="font-size:13px">HADI DAIRAY</b><span style="font-size:10px;color:#a8a29e">Digital Diary</span></div>
+<div style="display:flex;gap:6px"><button onclick="saveBook()" style="background:#16a34a;color:#fff;border:none;padding:7px 12px;border-radius:8px;font-weight:800;font-size:12px">Save</button><button onclick="closeBook()" style="background:#fef2f2;color:#ef4444;border:none;width:32px;height:32px;border-radius:50%">✕</button></div>
 </div>
-<div id="fontUrduRow" class="langRow">
-<button id="fU1" class="on f-urdu1" onclick="setFont('f-urdu1')">جمیل نوری</button>
-<button id="fU2" class="f-urdu2" onclick="setFont('f-urdu2')">نستعلیق</button>
-<button id="fU3" class="f-urdu3" onclick="setFont('f-urdu3')">نفیس</button>
-</div>
-<div id="fontEngRow" class="langRow" style="display:none">
-<button id="fE1" class="on f-eng1" onclick="setFont('f-eng1')">Poppins</button>
-<button id="fE2" class="f-eng2" onclick="setFont('f-eng2')">Royal</button>
-<button id="fE3" class="f-eng3" onclick="setFont('f-eng3')">Dancing</button>
-</div>
-<input id="headInput" placeholder="ہیڈنگ">
-<textarea id="yaadInput" placeholder="یہاں اپنی کہانی لکھیں... ا، ب، پ، ت..."></textarea>
-</div>
-<button id="saveBtn" class="btn urdu" onclick="saveYaad()">محفوظ کریں</button>
-</div>
-<div id="listWrap"><div class="tabs"><button id="tToday" onclick="setView('today')" class="on">آج</button><button id="tWeekly" onclick="setView('weekly')">ہفتہ وار</button><button id="tMonthly" onclick="setView('monthly')">ماہانہ</button><button id="tAll" onclick="setView('all')">تمام</button></div><div style="display:flex;justify-content:space-between;margin-top:16px;font-weight:800;font-size:15px"><span id="listName">تمام نوٹس</span><span id="c" style="color:var(--green)">0</span></div><div id="list"></div></div>
-<div id="settingsView" style="display:none"><div class="card"><b id="themeTitle" class="urdu" style="font-size:18px">🎨 تھیم</b><div style="display:flex;gap:10px;margin-top:10px"><button onclick="setTheme('#16a34a')" style="width:36px;height:36px;border-radius:50%;background:#16a34a;border:3px solid #fff"></button><button onclick="setTheme('#2563eb')" style="width:36px;height:36px;border-radius:50%;background:#2563eb;border:3px solid #fff"></button><button onclick="setTheme('#0f172a')" style="width:36px;height:36px;border-radius:50%;background:#0f172a;border:3px solid #fff"></button><button onclick="setTheme('#dc2626')" style="width:36px;height:36px;border-radius:50%;background:#dc2626;border:3px solid #fff"></button></div><div id="themeFooter" style="margin-top:16px;padding:14px;border-radius:14px;background:#f8fafc;border:1px solid var(--border);text-align:center;font-size:14px" class="urdu">© عبد الہادی<br>ڈیجیٹل ڈائری<br>جمیل نوری نستعلیق میں<br>2026</div></div></div></div>
+<div class="bookPage" id="bookPageContent"></div>
+<div class="bookFooter"><button id="prevBtn" onclick="prevPage()" style="border:none;background:#0f172a;color:#fff;padding:6px 12px;border-radius:8px;font-size:12px">◀ Pichla</button><span id="pageNum" style="font-weight:800">1 / 4</span><button id="nextBtn" onclick="nextPage()" style="border:none;background:#0f172a;color:#fff;padding:6px 12px;border-radius:8px;font-size:12px">Agla ▶</button></div>
+</div></div>
+
+<div id="menuSheet" class="menuSheet" onclick="if(event.target===this)closeMenu()"><div class="sheetMenu"><div style="display:flex;gap:10px;align-items:center"><img src="small.jpg" style="width:48px;height:48px;border-radius:50%"><b class="urdu" style="font-size:20px">عبد الہادی</b></div><button id="mHome" class="on" onclick="setView('home');closeMenu()">🏠 ہوم</button><button id="mToday" onclick="setView('today');closeMenu()">📅 آج</button><button id="mWeekly" onclick="setView('weekly');closeMenu()">🗓 ہفتہ وار</button><button id="mMonthly" onclick="setView('monthly');closeMenu()">📆 ماہانہ</button><button id="mPass" onclick="openPass();closeMenu()">🔑 پاسورڈ تبدیل</button><button id="mSett" onclick="setView('settings');closeMenu()">⚙️ سیٹنگ</button><button onclick="lockK()" style="background:#fef2f2;color:#ef4444;margin-top:16px">🔒 لاک</button></div></div>
+<div id="passBox" class="menuSheet" style="justify-content:center;align-items:center"><div class="sheetMenu" style="width:92%;max-width:360px;height:auto;border-radius:22px"><h3 style="text-align:center">🔑 پاسورڈ تبدیل</h3><input id="oldP" type="tel" maxlength="4" placeholder="پرانا" style="width:100%;height:52px;border-radius:14px;border:2px solid #e2e8f0;text-align:center;font-size:20px;margin-top:12px"><input id="newP" type="tel" maxlength="4" placeholder="نیا" style="width:100%;height:52px;border-radius:14px;border:2px solid #e2e8f0;text-align:center;font-size:20px;margin-top:8px"><input id="newP2" type="tel" maxlength="4" placeholder="دوبارہ" style="width:100%;height:52px;border-radius:14px;border:2px solid #e2e8f0;text-align:center;font-size:20px;margin-top:8px"><p id="pMsg" style="display:none;text-align:center;margin-top:8px;font-weight:700"></p><button onclick="savePass()" style="width:100%;background:var(--green);color:#fff;border:none;padding:14px;border-radius:14px;font-weight:800;margin-top:12px">محفوظ کریں</button><button onclick="closePass()" style="width:100%;margin-top:8px;padding:12px;border-radius:14px;border:1px solid #e2e8f0">واپس</button></div></div>
+
+<div class="top"><button class="menuBtn" onclick="openMenu()">☰</button><div style="display:flex;align-items:center;gap:8px"><div style="text-align:right"><div class="urdu" style="font-weight:800;font-size:16px">عبد الہادی</div><div style="font-size:10px;color:#64748b">ہوم</div></div><img src="small.jpg" style="width:36px;height:36px;border-radius:50%"></div></div>
+<div class="searchWrap"><input id="searchInput" placeholder="🔍 تلاش کریں..." oninput="doSearch()"><div id="sRes" style="font-size:13px;color:var(--green);font-weight:700;margin-top:6px;display:none"></div></div>
+<div class="white"><div id="homeView"><div class="profile"><img id="profImg" src="small.jpg" style="width:96px;height:96px;border-radius:50%"><h2 class="urdu">عبد الہادی</h2><p id="d" style="font-size:12px;color:#94a3b8;margin-top:6px" class="urdu"></p></div><div class="card"><div class="langRow"><button id="dirUrdu" class="on urdu" onclick="setFullLang('ur')">اردو - دائیں</button><button id="dirEng" class="eng" onclick="setFullLang('en')">English - Left</button></div><div id="fontUrduRow" class="langRow"><button id="fU1" class="on f-urdu1" onclick="setFont('f-urdu1')">جمیل نوری</button><button id="fU2" class="f-urdu2" onclick="setFont('f-urdu2')">نستعلیق</button><button id="fU3" class="f-urdu3" onclick="setFont('f-urdu3')">نفیس</button></div><div id="fontEngRow" class="langRow" style="display:none"><button id="fE1" class="on f-eng1" onclick="setFont('f-eng1')">Poppins</button><button id="fE2" class="f-eng2" onclick="setFont('f-eng2')">Royal</button><button id="fE3" class="f-eng3" onclick="setFont('f-eng3')">Dancing</button></div><input id="headInput" placeholder="ہیڈنگ"><textarea id="yaadInput" placeholder="یہاں اپنی کہانی لکھیں..."></textarea></div><button id="saveBtn" class="btn urdu" onclick="saveYaad()">محفوظ کریں</button></div><div id="listWrap"><div class="tabs"><button id="tToday" onclick="setView('today')" class="on">آج</button><button id="tWeekly" onclick="setView('weekly')">ہفتہ وار</button><button id="tMonthly" onclick="setView('monthly')">ماہانہ</button><button id="tAll" onclick="setView('all')">تمام</button></div><div style="display:flex;justify-content:space-between;margin-top:16px;font-weight:800"><span id="listName">تمام نوٹس</span><span id="c" style="color:var(--green)">0</span></div><div id="list"></div></div><div id="settingsView" style="display:none"><div class="card"><b>🎨 تھیم</b><div style="display:flex;gap:10px;margin-top:10px"><button onclick="setTheme('#16a34a')" style="width:36px;height:36px;border-radius:50%;background:#16a34a"></button><button onclick="setTheme('#2563eb')" style="width:36px;height:36px;border-radius:50%;background:#2563eb"></button><button onclick="setTheme('#0f172a')" style="width:36px;height:36px;border-radius:50%;background:#0f172a"></button><button onclick="setTheme('#dc2626')" style="width:36px;height:36px;border-radius:50%;background:#dc2626"></button></div></div></div></div>
 
 <div id="installBox"><div>📲 App Install Karo</div><button onclick="installApp()">Install</button></div>
 
 <script>
-const LANG={ur:{search:"🔍 تلاش کریں...",heading:"ہیڈنگ",story:"یہاں اپنی کہانی لکھیں... ا، ب، پ، ت، ٹ...",save:"محفوظ کریں",today:"آج",weekly:"ہفتہ وار",monthly:"ماہانہ",all:"تمام",allNotes:"تمام نوٹس",home:"ہوم",noteBook:"📒 نوٹ بک",sec:"🔐 سیکیورٹی",pass:"🔑 پاسورڈ تبدیل",sett:"⚙️ سیٹنگ",lock:"🔒 لاک",theme:"🎨 تھیم",profile:"عبد الہادی",lockName:"عبد الہادی",passTitle:"🔑 پاسورڈ تبدیل",passSave:"محفوظ کریں",passCancel:"واپس",footer:"© 2026 عبد الہادی<br>ڈیجیٹل ڈائری",themeFooter:"© عبد الہادی<br>ڈیجیٹل ڈائری<br>جمیل نوری نستعلیق میں<br>2026",wrong:"غلط کوڈ",noRes:"🌱 کوئی نتیجہ نہیں",notFound:"نہیں ملا",found:"نتیجہ"},en:{search:"🔍 Search...",heading:"Heading",story:"Write here... A, B, C, D, E...",save:"Save",today:"Today",weekly:"Weekly",monthly:"Monthly",all:"All",allNotes:"All Notes",home:"Home",noteBook:"📒 NOTE BOOK",sec:"🔐 SECURITY",pass:"🔑 Change Password",sett:"⚙️ Settings",lock:"🔒 Lock",theme:"🎨 Theme",profile:"ABDUL HADI",lockName:"ABDUL HADI",passTitle:"🔑 Change Password",passSave:"Save",passCancel:"Cancel",footer:"© 2026 ABDUL HADI<br>Digital Diary",themeFooter:"© ABDUL HADI<br>Digital Diary<br>In Jameel Noori Nastaleeq<br>2026",wrong:"Wrong Code",noRes:"🌱 No result",notFound:"not found",found:"result"}};
-let deferredPrompt;
-let currentFont='f-urdu1';
+const LANG={ur:{search:"🔍 تلاش کریں...",heading:"ہیڈنگ",story:"یہاں اپنی کہانی لکھیں...",save:"محفوظ کریں",today:"آج",weekly:"ہفتہ وار",monthly:"ماہانہ",all:"تمام",allNotes:"تمام نوٹس",noRes:"🌱 کوئی نتیجہ نہیں",notFound:"نہیں ملا",found:"نتیجہ"},en:{search:"🔍 Search...",heading:"Heading",story:"Write here...",save:"Save",today:"Today",weekly:"Weekly",monthly:"Monthly",all:"All",allNotes:"All Notes",noRes:"🌱 No result",notFound:"not found",found:"result"}};
+let deferredPrompt,currentFont='f-urdu1',currentReadId=null,isEditing=false,bookPages=[],curBookPage=0;
 function getP(){return localStorage.getItem('myPass')||'2938'}
-let v='';
-function addN(n){ if(v.length>=4) return; v+=n; upd(); if(v.length===4) setTimeout(checkN,250); }
-function delN(){ v=v.slice(0,-1); upd(); }
-function upd(){ for(let i=0;i<4;i++){ let el=document.getElementById('d'+i); if(el) el.classList.toggle('on', i < v.length); } }
-function checkN(){ let p=getP(); if(v===p){ document.getElementById('lockScreen').style.display='none'; v=''; upd(); }else if(v.length===4){ let e=document.getElementById('err'); e.style.display='block'; setTimeout(()=>{ e.style.display='none'; v=''; upd(); },800); } }
+let v='';function addN(n){if(v.length>=4)return;v+=n;upd();if(v.length===4)setTimeout(checkN,250);}function delN(){v=v.slice(0,-1);upd();}function upd(){for(let i=0;i<4;i++){let el=document.getElementById('d'+i);if(el)el.classList.toggle('on',i<v.length);}}function checkN(){if(v===getP()){document.getElementById('lockScreen').style.display='none';v='';upd();}else if(v.length===4){document.getElementById('err').style.display='block';setTimeout(()=>{document.getElementById('err').style.display='none';v='';upd();},800);}}
 document.getElementById('d').innerText=new Date().toLocaleDateString('ur-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-function openMenu(){document.getElementById('menuSheet').classList.add('show')}function closeMenu(){document.getElementById('menuSheet').classList.remove('show')}function openPass(){document.getElementById('passBox').style.display='flex'}function closePass(){document.getElementById('passBox').style.display='none'}function savePass(){let o=document.getElementById('oldP').value.trim(),n=document.getElementById('newP').value.trim(),n2=document.getElementById('newP2').value.trim(),m=document.getElementById('pMsg');let curL=localStorage.getItem('fullLang')||'ur';if(o!==getP()){m.style.display='block';m.style.color='#ef4444';m.innerText=curL==='ur'?'پرانا غلط!':'Old wrong!';return}if(n.length!==4){m.style.display='block';m.style.color='#ef4444';m.innerText=curL==='ur'?'4 نمبر!':'4 digits!';return}if(n!==n2){m.style.display='block';m.style.color='#ef4444';m.innerText=curL==='ur'?'میچ نہیں!':'Not match!';return}localStorage.setItem('myPass',n);m.style.display='block';m.style.color='#16a34a';m.innerText=curL==='ur'?'✅ ہو گیا!':'✅ Done!';setTimeout(closePass,1000)}function goHome(){setView('home');let img=document.getElementById('profImg');document.getElementById('bigPic').src=img.src;document.getElementById('picModal').classList.add('show');setTimeout(()=>document.getElementById('picModal').classList.remove('show'),1100)}
+function openMenu(){document.getElementById('menuSheet').classList.add('show')}function closeMenu(){document.getElementById('menuSheet').classList.remove('show')}function openPass(){document.getElementById('passBox').style.display='flex'}function closePass(){document.getElementById('passBox').style.display='none'}function savePass(){let o=document.getElementById('oldP').value.trim(),n=document.getElementById('newP').value.trim(),n2=document.getElementById('newP2').value.trim(),m=document.getElementById('pMsg');if(o!==getP()){m.style.display='block';m.style.color='#ef4444';m.innerText='پرانا غلط!';return}if(n.length!==4){m.style.display='block';m.style.color='#ef4444';m.innerText='4 نمبر!';return}if(n!==n2){m.style.display='block';m.style.color='#ef4444';m.innerText='میچ نہیں!';return}localStorage.setItem('myPass',n);m.style.display='block';m.style.color='#16a34a';m.innerText='✅ ہو گیا!';setTimeout(closePass,1000)}
 let cur='home';
-function setView(view){
- cur=view;
- document.querySelectorAll('.sheetMenu button').forEach(b=>b.classList.remove('on'));
- document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));
- if(view==='home'){
-   document.getElementById('mHome').classList.add('on');
-   document.getElementById('homeView').style.display='block';
-   document.getElementById('listWrap').style.display='block';
-   document.getElementById('settingsView').style.display='none';
-   document.getElementById('listName').innerText=LANG[localStorage.getItem('fullLang')||'ur'].allNotes;
-   document.getElementById('tAll').classList.add('on');
- }else if(view==='settings'){
-   document.getElementById('homeView').style.display='none';
-   document.getElementById('listWrap').style.display='none';
-   document.getElementById('settingsView').style.display='block';
- }else{
-   document.getElementById('homeView').style.display='none';
-   document.getElementById('settingsView').style.display='none';
-   document.getElementById('listWrap').style.display='block';
-   let L=LANG[localStorage.getItem('fullLang')||'ur'];
-   if(view==='today'){document.getElementById('mToday').classList.add('on');document.getElementById('tToday').classList.add('on');document.getElementById('listName').innerText=L.today}
-   if(view==='weekly'){document.getElementById('mWeekly').classList.add('on');document.getElementById('tWeekly').classList.add('on');document.getElementById('listName').innerText=L.weekly}
-   if(view==='monthly'){document.getElementById('mMonthly').classList.add('on');document.getElementById('tMonthly').classList.add('on');document.getElementById('listName').innerText=L.monthly}
-   if(view==='all'){document.getElementById('tAll').classList.add('on');document.getElementById('listName').innerText=L.allNotes}
- }
- loadY();
-}
-function isToday(ts){return new Date(ts).toDateString()===new Date().toDateString()}
-function isWeekly(ts){return (Date.now()-ts)/86400000<=7}
-function isMonthly(ts){let d=new Date(ts),n=new Date();return d.getMonth()===n.getMonth()&&d.getFullYear()===n.getFullYear()}
-
-function setFont(f){
- currentFont=f;
- localStorage.setItem('selFont',f);
- document.querySelectorAll('#fontUrduRow button, #fontEngRow button').forEach(b=>b.classList.remove('on'));
- let el=document.getElementById(f==='f-urdu1'?'fU1':f==='f-urdu2'?'fU2':f==='f-urdu3'?'fU3':f==='f-eng1'?'fE1':f==='f-eng2'?'fE2':'fE3');
- if(el) el.classList.add('on');
- document.getElementById('yaadInput').className=f;
- document.getElementById('headInput').className=f;
-}
-
-function saveYaad(){
- let h=document.getElementById('headInput').value.trim(),t=document.getElementById('yaadInput').value.trim();
- let curL=localStorage.getItem('fullLang')||'ur';
- if(!h)return alert(curL==='ur'?'ہیڈنگ لکھیں!':'Write Heading!');
- if(!t)return alert(curL==='ur'?'کہانی لکھیں!':'Write story!');
- let a=JSON.parse(localStorage.getItem('y')||'[]');
- a.unshift({id:Date.now(),heading:h,text:t,date:new Date().toLocaleString(curL==='ur'?'ur-PK':'en-US'),ts:Date.now(),lang:curL,font:currentFont});
- localStorage.setItem('y',JSON.stringify(a));
- document.getElementById('headInput').value='';document.getElementById('yaadInput').value='';
- loadY();setView('home');
-}
-
+function setView(view){cur=view;document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));if(view==='home'){document.getElementById('homeView').style.display='block';document.getElementById('listWrap').style.display='block';document.getElementById('settingsView').style.display='none';document.getElementById('tAll').classList.add('on');}else if(view==='settings'){document.getElementById('homeView').style.display='none';document.getElementById('listWrap').style.display='none';document.getElementById('settingsView').style.display='block';}else{document.getElementById('homeView').style.display='none';document.getElementById('settingsView').style.display='none';document.getElementById('listWrap').style.display='block';if(view==='today')document.getElementById('tToday').classList.add('on');if(view==='weekly')document.getElementById('tWeekly').classList.add('on');if(view==='monthly')document.getElementById('tMonthly').classList.add('on');if(view==='all')document.getElementById('tAll').classList.add('on');}loadY();}
+function isToday(ts){return new Date(ts).toDateString()===new Date().toDateString()}function isWeekly(ts){return (Date.now()-ts)/86400000<=7}function isMonthly(ts){let d=new Date(ts),n=new Date();return d.getMonth()===n.getMonth()&&d.getFullYear()===n.getFullYear()}
+function setFont(f){currentFont=f;localStorage.setItem('selFont',f);document.querySelectorAll('#fontUrduRow button, #fontEngRow button').forEach(b=>b.classList.remove('on'));let el=document.getElementById(f==='f-urdu1'?'fU1':f==='f-urdu2'?'fU2':f==='f-urdu3'?'fU3':f==='f-eng1'?'fE1':f==='f-eng2'?'fE2':'fE3');if(el)el.classList.add('on');document.getElementById('yaadInput').className=f;document.getElementById('headInput').className=f;}
+function saveYaad(){let h=document.getElementById('headInput').value.trim(),t=document.getElementById('yaadInput').value.trim();let curL=localStorage.getItem('fullLang')||'ur';if(!h)return alert('ہیڈنگ لکھیں!');if(!t)return alert('کہانی لکھیں!');let a=JSON.parse(localStorage.getItem('y')||'[]');a.unshift({id:Date.now(),heading:h,text:t,date:new Date().toLocaleString(curL==='ur'?'ur-PK':'en-US'),ts:Date.now(),lang:curL,font:currentFont});localStorage.setItem('y',JSON.stringify(a));document.getElementById('headInput').value='';document.getElementById('yaadInput').value='';loadY();setView('home');}
 function doSearch(){let q=document.getElementById('searchInput').value.toLowerCase().trim();let r=document.getElementById('sRes');if(q){r.style.display='block';setView('all');}else{r.style.display='none'}loadY(q)}
+function loadY(sq){let a=JSON.parse(localStorage.getItem('y')||'[]');let f=a;if(cur==='today')f=a.filter(x=>isToday(x.ts));else if(cur==='weekly')f=a.filter(x=>isWeekly(x.ts));else if(cur==='monthly')f=a.filter(x=>isMonthly(x.ts));let q=sq!==undefined?sq:document.getElementById('searchInput').value.toLowerCase().trim();if(q)f=f.filter(x=>x.heading.toLowerCase().includes(q)||x.text.toLowerCase().includes(q));document.getElementById('c').innerText=f.length;let l=document.getElementById('list');let curL=localStorage.getItem('fullLang')||'ur';let L=LANG[curL];if(f.length===0){l.innerHTML='<div style="text-align:center;padding:28px;color:#94a3b8;border:1px dashed #e2e8f0;border-radius:16px;margin-top:10px">'+L.noRes+'</div>';if(q)document.getElementById('sRes').innerText='❌ "'+q+'" '+L.notFound;return}l.innerHTML='';if(q)document.getElementById('sRes').innerText='✅ '+f.length+' '+L.found+': "'+q+'"';f.forEach(y=>{let d=document.createElement('div');d.className='note';let fontCls=y.font||'f-urdu1';let dirStyle=y.lang==='ur'?'direction:rtl;text-align:right':'direction:ltr;text-align:left';d.setAttribute('onclick','openRead('+y.id+')');d.innerHTML='<div style="display:flex;justify-content:space-between"><h4 class="'+fontCls+'" style="'+dirStyle+'">📌 '+y.heading+'</h4><button onclick="event.stopPropagation();delY('+y.id+')" style="border:none;background:#fef2f2;color:#ef4444;padding:4px 10px;border-radius:20px;font-size:11px">Delete</button></div><small class="'+fontCls+'" style="color:#64748b">'+y.date+'</small>';l.appendChild(d)})}
 
-function loadY(sq){
- let a=JSON.parse(localStorage.getItem('y')||'[]');let f=a;
- if(cur==='today')f=a.filter(x=>isToday(x.ts));else if(cur==='weekly')f=a.filter(x=>isWeekly(x.ts));else if(cur==='monthly')f=a.filter(x=>isMonthly(x.ts));
- let q=sq!==undefined?sq:document.getElementById('searchInput').value.toLowerCase().trim();
- if(q)f=f.filter(x=>x.heading.toLowerCase().includes(q)||x.text.toLowerCase().includes(q));
- document.getElementById('c').innerText=f.length;
- let l=document.getElementById('list');
- let curL=localStorage.getItem('fullLang')||'ur';let L=LANG[curL];
- if(f.length===0){
-   l.innerHTML='<div style="text-align:center;padding:28px;color:#94a3b8;border:1px dashed #e2e8f0;border-radius:16px;margin-top:10px" class="'+(curL==='ur'?'urdu':'eng')+'">'+L.noRes+'</div>';
-   if(q)document.getElementById('sRes').innerText='❌ "'+q+'" '+L.notFound;return
+function openRead(id){let a=JSON.parse(localStorage.getItem('y')||'[]');let y=a.find(x=>x.id===id);if(!y)return;currentReadId=id;isEditing=false;document.getElementById('readHeadView').innerText='📌 '+y.heading;document.getElementById('readHeadView').className=y.font||'f-urdu1';document.getElementById('readHead').value=y.heading;document.getElementById('readHead').className='editInput '+(y.font||'f-urdu1');document.getElementById('readDate').innerText=y.date;document.getElementById('readTextView').innerText=y.text;document.getElementById('readTextView').className=y.font||'f-urdu1';document.getElementById('readTextEdit').value=y.text;document.getElementById('readTextEdit').className='editInput '+(y.font||'f-urdu1');document.getElementById('readTextView').style.display='block';document.getElementById('readHeadView').style.display='block';document.getElementById('readTextEdit').style.display='none';document.getElementById('readHead').style.display='none';document.getElementById('saveEditBtn').style.display='none';document.getElementById('editBtn').innerText='✏️ Edit Karo';document.getElementById('readDel').setAttribute('onclick','delY('+y.id+');closeRead()');document.getElementById('readModal').classList.add('show');}
+function toggleEdit(){if(!isEditing){document.getElementById('readHeadView').style.display='none';document.getElementById('readTextView').style.display='none';document.getElementById('readHead').style.display='block';document.getElementById('readTextEdit').style.display='block';document.getElementById('saveEditBtn').style.display='block';document.getElementById('editBtn').innerText='👁 View Karo';isEditing=true;}else{document.getElementById('readHeadView').style.display='block';document.getElementById('readTextView').style.display='block';document.getElementById('readHead').style.display='none';document.getElementById('readTextEdit').style.display='none';document.getElementById('saveEditBtn').style.display='none';document.getElementById('editBtn').innerText='✏️ Edit Karo';isEditing=false;}}
+function saveEdited(){let a=JSON.parse(localStorage.getItem('y')||'[]');let idx=a.findIndex(x=>x.id===currentReadId);if(idx<0)return;let newHead=document.getElementById('readHead').value.trim();let newText=document.getElementById('readTextEdit').value.trim();if(!newHead||!newText)return alert('Khali nahi!');a[idx].heading=newHead;a[idx].text=newText;a[idx].date=new Date().toLocaleString(a[idx].lang==='ur'?'ur-PK':'en-US')+' (edited)';localStorage.setItem('y',JSON.stringify(a));document.getElementById('readHeadView').innerText='📌 '+newHead;document.getElementById('readTextView').innerText=newText;toggleEdit();loadY();}
+function closeRead(){document.getElementById('readModal').classList.remove('show');currentReadId=null;}
+
+// BOOK WITH 1/4/8 + LOGO + INDEX
+function openBook(){
+ if(!currentReadId)return;
+ let a=JSON.parse(localStorage.getItem('y')||'[]');let y=a.find(x=>x.id===currentReadId);if(!y)return;
+ let text=y.text;
+ let charsPerPage=400; // 1 page ~ 400 chars = 4 pages = 1600 chars, 8 pages = 3200
+ bookPages=[]; for(let i=0;i<text.length;i+=charsPerPage){bookPages.push(text.slice(i,i+charsPerPage));}
+ if(bookPages.length===0) bookPages=[''];
+ curBookPage=0; // 0 = index
+ renderBook();
+ document.getElementById('bookModal').classList.add('show');
+}
+function renderBook(){
+ let a=JSON.parse(localStorage.getItem('y')||'[]');let y=a.find(x=>x.id===currentReadId);if(!y)return;
+ let cont=document.getElementById('bookPageContent');
+ let fontCls=y.font||'f-urdu1';
+ if(curBookPage===0){
+   // INDEX PAGE - Shumar
+   let total=bookPages.length;
+   cont.innerHTML='<div style="text-align:center;padding:10px"><img src="logo.jpg" style="width:70px;height:70px;border-radius:14px;object-fit:cover"><h2 class="'+fontCls+'" style="margin-top:8px">📖 '+y.heading+'</h2><p style="font-size:12px;color:#94a3b8;margin-top:4px">'+y.date+'</p><div style="margin-top:16px;padding:12px;background:#fff;border-radius:12px;border:2px dashed #f3e8c8"><b class="'+fontCls+'">فہرست - کل '+total+' صفحات</b><div class="bookIndex">'+Array.from({length:total},(_,i)=>'<button onclick="goToPage('+(i+1)+')" class="'+fontCls+'">صفحہ '+(i+1)+'</button>').join('')+'</div></div><button onclick="goToPage(1)" style="margin-top:14px;width:100%;background:#0f172a;color:#fff;border:none;padding:12px;border-radius:12px;font-weight:800">📖 پڑھنا شروع کریں</button></div>';
+   document.getElementById('pageNum').innerText='فہرست / '+total;
+ }else{
+   let pageText=bookPages[curBookPage-1];
+   cont.innerHTML='<div style="min-height:100%"><div style="display:flex;align-items:center;gap:8px;padding-bottom:10px;border-bottom:1px dashed #f3e8c8;margin-bottom:12px"><img src="logo.jpg" style="width:24px;height:24px;border-radius:6px"><b style="font-size:11px">HADI DAIRAY</b><span style="margin-left:auto;font-size:10px;color:#94a3b8">صفحہ '+curBookPage+' / '+bookPages.length+'</span></div><textarea id="bookEditArea" class="'+fontCls+'" style="width:100%;height:58vh;border:none;outline:none;background:transparent;font-size:22px;line-height:2.2;resize:none;background-image:repeating-linear-gradient(transparent,transparent 39px,#f0e6c8 40px)">'+pageText+'</textarea></div>';
+   document.getElementById('pageNum').innerText=curBookPage+' / '+bookPages.length;
+   document.getElementById('bookEditArea').addEventListener('input',function(){bookPages[curBookPage-1]=this.value;});
  }
- l.innerHTML='';
- if(q)document.getElementById('sRes').innerText='✅ '+f.length+' '+L.found+': "'+q+'"';
- f.forEach(y=>{
-   let d=document.createElement('div');d.className='note';
-   let fontCls=y.font||(y.lang==='ur'?'f-urdu1':'f-eng1');
-   let isUr=y.lang==='ur';
-   let dirStyle=isUr?'direction:rtl;text-align:right':'direction:ltr;text-align:left';
-   // SIRF HEADING - CLICK PE PAGE KHULEGA
-   d.setAttribute('onclick','openRead('+y.id+')');
-   d.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center"><h4 class="'+fontCls+'" style="'+dirStyle+'">📌 '+y.heading+'</h4><button onclick="event.stopPropagation();delY('+y.id+')" style="border:none;background:#fef2f2;color:#ef4444;padding:4px 10px;border-radius:20px;font-size:11px" class="eng">Delete</button></div><small class="'+fontCls+'" style="color:#64748b">'+y.date+'</small>';
-   l.appendChild(d)
- })
+ document.getElementById('prevBtn').style.visibility=curBookPage===0?'hidden':'visible';
+ document.getElementById('nextBtn').style.visibility=curBookPage===bookPages.length?'hidden':'visible';
+}
+function goToPage(n){curBookPage=n;renderBook();}
+function nextPage(){if(curBookPage<bookPages.length){curBookPage++;renderBook();}}
+function prevPage(){if(curBookPage>0){curBookPage--;renderBook();}}
+function closeBook(){document.getElementById('bookModal').classList.remove('show');}
+function saveBook(){
+ let a=JSON.parse(localStorage.getItem('y')||'[]');let idx=a.findIndex(x=>x.id===currentReadId);if(idx<0)return;
+ let fullText=bookPages.join('');
+ a[idx].text=fullText;
+ a[idx].date=new Date().toLocaleString(a[idx].lang==='ur'?'ur-PK':'en-US')+' (book edited)';
+ localStorage.setItem('y',JSON.stringify(a));
+ loadY();alert('✅ Kitab save ho gayi! - '+bookPages.length+' safhay');closeBook();closeRead();
 }
 
-function openRead(id){
- let a=JSON.parse(localStorage.getItem('y')||'[]');
- let y=a.find(x=>x.id===id);
- if(!y) return;
- document.getElementById('readHead').innerText='📌 '+y.heading;
- document.getElementById('readHead').className=y.font||'f-urdu1';
- document.getElementById('readDate').innerText=y.date;
- document.getElementById('readText').innerText=y.text;
- document.getElementById('readText').className=y.font||'f-urdu1';
- document.getElementById('readDel').setAttribute('onclick','delY('+y.id+');closeRead()');
- document.getElementById('readModal').classList.add('show');
-}
-function closeRead(){ document.getElementById('readModal').classList.remove('show'); }
 function delY(id){if(!confirm('Delete?'))return;let a=JSON.parse(localStorage.getItem('y')||'[]');a=a.filter(x=>x.id!==id);localStorage.setItem('y',JSON.stringify(a));loadY()}
 function lockK(){location.reload()}
 function setTheme(c){document.documentElement.style.setProperty('--green',c);localStorage.setItem('themeColor',c)}
-function setFullLang(lang){
- localStorage.setItem('fullLang',lang);
- let L=LANG[lang];
- document.getElementById('dirUrdu').classList.toggle('on',lang==='ur');
- document.getElementById('dirEng').classList.toggle('on',lang==='en');
- document.getElementById('searchInput').placeholder=L.search;
- document.getElementById('headInput').placeholder=L.heading;
- document.getElementById('yaadInput').placeholder=L.story;
- document.getElementById('saveBtn').innerText=L.save;
- document.getElementById('saveBtn').className='btn '+(lang==='ur'?'urdu':'eng');
- document.getElementById('tToday').innerText=L.today;document.getElementById('tWeekly').innerText=L.weekly;document.getElementById('tMonthly').innerText=L.monthly;document.getElementById('tAll').innerText=L.all;
- document.getElementById('mHome').innerText=lang==='ur'?'🏠 ہوم':'🏠 Home';document.getElementById('mToday').innerText=lang==='ur'?'📅 آج':'📅 Today';document.getElementById('mWeekly').innerText=lang==='ur'?'🗓 ہفتہ وار':'🗓 Weekly';document.getElementById('mMonthly').innerText=lang==='ur'?'📆 ماہانہ':'📆 Monthly';
- document.getElementById('mNoteLabel').innerText=L.noteBook;document.getElementById('mSecLabel').innerText=L.sec;document.getElementById('mPass').innerText=L.pass;document.getElementById('mSett').innerText=L.sett;document.getElementById('mLock').innerText=L.lock;
- document.getElementById('topName').innerText=L.profile;document.getElementById('profileName').innerText=L.profile;document.getElementById('lockName').innerText=L.lockName;document.getElementById('topSub').innerText=L.home;document.getElementById('mProfileName').innerText=L.profile;document.getElementById('passTitle').innerText=L.passTitle;document.getElementById('passSaveBtn').innerText=L.passSave;document.getElementById('passCancelBtn').innerText=L.passCancel;document.getElementById('mFooter').innerHTML=L.footer;document.getElementById('themeFooter').innerHTML=L.themeFooter;document.getElementById('themeTitle').innerText=L.theme;document.getElementById('err').innerText=L.wrong;
- document.getElementById('mFooter').className=lang==='ur'?'urdu':'eng';document.getElementById('themeFooter').className=lang==='ur'?'urdu':'eng';document.getElementById('topName').className=lang==='ur'?'urdu':'eng';document.getElementById('profileName').className=lang==='ur'?'urdu':'eng';document.getElementById('lockName').className=lang==='ur'?'urdu':'eng';
- if(lang==='ur'){document.getElementById('fontUrduRow').style.display='flex';document.getElementById('fontEngRow').style.display='none';setFont(localStorage.getItem('selFont')||'f-urdu1');}else{document.getElementById('fontUrduRow').style.display='none';document.getElementById('fontEngRow').style.display='flex';setFont(localStorage.getItem('selFont')||'f-eng1');}
- let h=document.getElementById('headInput');let yy=document.getElementById('yaadInput');
- if(lang==='ur'){h.style.direction='rtl';h.style.textAlign='right';yy.style.direction='rtl';yy.style.textAlign='right';document.documentElement.dir='rtl';document.getElementById('searchInput').className='urdu';document.getElementById('searchInput').style.direction='rtl'}
- else{h.style.direction='ltr';h.style.textAlign='left';yy.style.direction='ltr';yy.style.textAlign='left';document.documentElement.dir='ltr';document.getElementById('searchInput').className='eng';document.getElementById('searchInput').style.direction='ltr'}
- loadY();
-}
-let savedLang=localStorage.getItem('fullLang')||'ur';setFullLang(savedLang);
-let savedFont=localStorage.getItem('selFont')|| (savedLang==='ur'?'f-urdu1':'f-eng1');setFont(savedFont);
-let sc=localStorage.getItem('themeColor');if(sc)setTheme(sc);
-setView('home');
-document.getElementById('lockScreen').style.display='flex';
-loadY();
+function setFullLang(lang){localStorage.setItem('fullLang',lang);let L=LANG[lang];document.getElementById('dirUrdu').classList.toggle('on',lang==='ur');document.getElementById('dirEng').classList.toggle('on',lang==='en');document.getElementById('searchInput').placeholder=L.search;document.getElementById('headInput').placeholder=L.heading;document.getElementById('yaadInput').placeholder=L.story;document.getElementById('saveBtn').innerText=L.save;if(lang==='ur'){document.getElementById('fontUrduRow').style.display='flex';document.getElementById('fontEngRow').style.display='none';setFont(localStorage.getItem('selFont')||'f-urdu1');}else{document.getElementById('fontUrduRow').style.display='none';document.getElementById('fontEngRow').style.display='flex';setFont(localStorage.getItem('selFont')||'f-eng1');}loadY();}
+let savedLang=localStorage.getItem('fullLang')||'ur';setFullLang(savedLang);let savedFont=localStorage.getItem('selFont')||(savedLang==='ur'?'f-urdu1':'f-eng1');setFont(savedFont);let sc=localStorage.getItem('themeColor');if(sc)setTheme(sc);setView('home');document.getElementById('lockScreen').style.display='flex';loadY();
 </script>
-
 <script>
-const installBox=document.getElementById('installBox');
-const isStandalone=window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;
-function showInstallBox(){if(!isStandalone)installBox.style.display='flex';}
-function hideInstallBox(){installBox.style.display='none';}
-window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;showInstallBox();});
-setTimeout(()=>{if(!isStandalone)showInstallBox();},1500);
-function installApp(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(ch=>{if(ch.outcome==='accepted')hideInstallBox();deferredPrompt=null;});}}
-window.addEventListener('appinstalled',()=>{hideInstallBox();});
-if(isStandalone)hideInstallBox();
-if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
+const installBox=document.getElementById('installBox');const isStandalone=window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;function showInstallBox(){if(!isStandalone)installBox.style.display='flex';}function hideInstallBox(){installBox.style.display='none';}window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;showInstallBox();});setTimeout(()=>{if(!isStandalone)showInstallBox();},1500);function installApp(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(ch=>{if(ch.outcome==='accepted')hideInstallBox();deferredPrompt=null;});}}window.addEventListener('appinstalled',()=>{hideInstallBox();});if(isStandalone)hideInstallBox();if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
 </script>
 </body></html>
