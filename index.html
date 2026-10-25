@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ur" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"><title>عبد الہادی</title><link rel="icon" href="logo.jpg">
+<!DOCTYPE html><html lang="ur" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"><title>عبد الہادی</title><link rel="icon" href="logo.jpg"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#16a34a">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
 <style>
 @font-face{font-family:'Jameel Noori';src:url('https://cdn.jsdelivr.net/gh/mustafaakbari/Jameel-Noori-Nastaleeq@main/Jameel%20Noori%20Nastaleeq.ttf') format('truetype');font-display:swap}
@@ -33,6 +33,8 @@ body{font-family:'Jameel Noori','Noto Nastaliq Urdu',serif;background:var(--bg);
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:10002;align-items:center;justify-content:center}.modal.show{display:flex}.modal img{max-width:90vw;max-height:80vh;border-radius:20px}
 .urdu{font-family:'Jameel Noori','Noto Nastaliq Urdu',serif !important}
 .eng{font-family:system-ui,sans-serif !important}
+#installBox{position:fixed;bottom:20px;left:14px;right:14px;background:#0f172a;color:#fff;padding:14px 18px;border-radius:14px;display:none;justify-content:space-between;align-items:center;z-index:500;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+#installBox button{background:#fff;color:#0f172a;border:none;padding:8px 16px;border-radius:8px;font-weight:800}
 </style></head><body>
 
 <div id="lockScreen" class="lockS">
@@ -107,12 +109,14 @@ body{font-family:'Jameel Noori','Noto Nastaliq Urdu',serif;background:var(--bg);
 </div>
 </div>
 
+<div id="installBox"><div>📲 App Install Karo</div><button onclick="installApp()">Install</button></div>
+
 <script>
 const LANG={
 ur:{search:"🔍 تلاش کریں...",heading:"ہیڈنگ",story:"یہاں اپنی کہانی لکھیں... ا، ب، پ، ت، ٹ...",save:"محفوظ کریں",today:"آج",weekly:"ہفتہ وار",monthly:"ماہانہ",all:"تمام",allNotes:"تمام نوٹس",home:"ہوم",noteBook:"📒 نوٹ بک",sec:"🔐 سیکیورٹی",pass:"🔑 پاسورڈ تبدیل",sett:"⚙️ سیٹنگ",lock:"🔒 لاک",theme:"🎨 تھیم",profile:"عبد الہادی",lockName:"عبد الہادی",passTitle:"🔑 پاسورڈ تبدیل",passSave:"محفوظ کریں",passCancel:"واپس",footer:"© 2026 عبد الہادی<br>ڈیجیٹل ڈائری",themeFooter:"© عبد الہادی<br>ڈیجیٹل ڈائری<br>جمیل نوری نستعلیق میں<br>2026",wrong:"غلط کوڈ",noRes:"🌱 کوئی نتیجہ نہیں",notFound:"نہیں ملا",found:"نتیجہ"},
 en:{search:"🔍 Search...",heading:"Heading",story:"Write here... A, B, C, D, E...",save:"Save",today:"Today",weekly:"Weekly",monthly:"Monthly",all:"All",allNotes:"All Notes",home:"Home",noteBook:"📒 NOTE BOOK",sec:"🔐 SECURITY",pass:"🔑 Change Password",sett:"⚙️ Settings",lock:"🔒 Lock",theme:"🎨 Theme",profile:"ABDUL HADI",lockName:"ABDUL HADI",passTitle:"🔑 Change Password",passSave:"Save",passCancel:"Cancel",footer:"© 2026 ABDUL HADI<br>Digital Diary",themeFooter:"© ABDUL HADI<br>Digital Diary<br>In Jameel Noori Nastaleeq<br>2026",wrong:"Wrong Code",noRes:"🌱 No result",notFound:"not found",found:"result"}
 };
-
+let deferredPrompt;
 function getP(){return localStorage.getItem('myPass')||'2938'}
 let v='';function addN(n){if(v.length<4){v+=n;upd();if(v.length===4)setTimeout(checkN,200)}}function delN(){v=v.slice(0,-1);upd()}function upd(){for(let i=0;i<4;i++)document.getElementById('d'+i).classList.toggle('on',i<v.length)}
 function checkN(){if(v===getP()){document.getElementById('lockScreen').style.display='none';localStorage.setItem('un','yes');v='';upd()}else if(v.length===4){document.getElementById('err').style.display='block';setTimeout(()=>{document.getElementById('err').style.display='none';v='';upd()},900)}}
@@ -183,4 +187,11 @@ loadY();
 let savedLang=localStorage.getItem('fullLang')||'ur';setFullLang(savedLang);
 let sc=localStorage.getItem('themeColor');if(sc)setTheme(sc);
 setView('today');localStorage.removeItem('un');document.getElementById('lockScreen').style.display='flex';loadY();
+
+// PWA INSTALL FIX - Ye wala
+window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;if(!window.matchMedia('(display-mode: standalone)').matches && window.navigator.standalone!==true){document.getElementById('installBox').style.display='flex';}});
+function installApp(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(ch=>{if(ch.outcome==='accepted')document.getElementById('installBox').style.display='none';deferredPrompt=null;});}else{alert('Upar 3 dots > Add to Home screen > Install');}}
+window.addEventListener('appinstalled',()=>{document.getElementById('installBox').style.display='none';});
+if(window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone===true){document.getElementById('installBox').style.display='none';}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
 </script></body></html>
