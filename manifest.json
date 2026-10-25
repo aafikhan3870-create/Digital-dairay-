@@ -1,12 +1,9 @@
 {
-  "name": "Abdul Hadi Digital Diary",
-  "short_name": "Abdul Hadi",
-  "start_url": ".",
+  "name": "HADI DAIRAY - عبد الہادی",
+  "short_name": "HADI DAIRAY",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#16a34a",
-  "icons": [
-    {"src": "logo.jpg","sizes": "192x192","type": "image/jpeg"},
-    {"src": "logo.jpg","sizes": "512×512","type": "image/jpeg"}
-  ]
+  "icons": [{"src": "logo.jpg","sizes": "192x192","type": "image/jpeg"},{"src": "logo.jpg","sizes": "512x512","type": "image/jpeg"}]
 }
