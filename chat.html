@@ -1,40 +1,42 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HADI - CHAT</title>
 <style>
 *{box-sizing:border-box} body{margin:0;font-family:Poppins,sans-serif;background:#0a1931;color:#fff;display:flex;height:100vh}
 #sidebar{width:35%;background:#162447;border-right:2px solid #2ff3a3;display:flex;flex-direction:column} #chatArea{width:65%;display:flex;flex-direction:column}
-.head{padding:15px;background:#1f4068;font-weight:bold;text-align:center;border-bottom:1px solid #2ff3a3}
+.head{padding:15px;background:#1f4068;font-weight:bold;text-align:center;border-bottom:1px solid #2ff3a3;display:flex;justify-content:space-between;align-items:center}
 .user{padding:12px 15px;border-bottom:1px solid #1f4068;cursor:pointer} .user:hover,.user.active{background:#1f4068} .user b{color:#2ff3a3}
 #messages{flex:1;overflow-y:auto;padding:15px;display:flex;flex-direction:column;gap:8px;background:#0a1931}
 .msg{background:#1f4068;padding:8px 12px;border-radius:12px;max-width:75%;word-break:break-word} .msg.me{align-self:flex-end;background:#2ff3a3;color:#0a1931}
 .msg img{max-width:200px;border-radius:10px;margin-top:5px;display:block}
 .input{display:flex;gap:5px;padding:10px;background:#162447;align-items:center} .input input{flex:1;padding:12px;border-radius:25px;border:none;outline:none}
-.input button{border:none;padding:10px 14px;border-radius:50%;background:#2ff3a3;cursor:pointer;font-weight:bold}
+.input button{border:none;padding:10px 16px;border-radius:50%;background:#2ff3a3;cursor:pointer;font-weight:bold}
 #nameBox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;z-index:999}
+#langBtn{font-size:11px;background:#2ff3a3;color:#0a1931;border:none;padding:5px 8px;border-radius:5px;cursor:pointer}
 </style>
 </head>
 <body>
 <div id="sidebar">
-<div class="head">👑 HADI KI DAIRAY</div>
-<div class="user" onclick="openChat('GROUP')" id="groupBtn"><b>🌐 گروپ چیٹ (سب دوست)</b></div>
+<div class="head">👑 HADI KI DAIRAY <button id="langBtn" onclick="toggleLang()">اردو</button></div>
+<div class="user" onclick="openChat('GROUP')" id="groupBtn"><b id="groupText">🌐 Group Chat (All Friends)</b></div>
 <div id="userList"></div>
 </div>
 <div id="chatArea">
-<div class="head" id="chatHead">گروپ چیٹ</div>
+<div class="head" id="chatHead">Group Chat</div>
 <div id="messages"></div>
 <div class="input">
 <label for="imgInput" style="background:#2ff3a3;color:#0a1931;padding:10px 14px;border-radius:50%;cursor:pointer">📷</label>
 <input type="file" id="imgInput" accept="image/*" hidden>
-<input type="text" id="msgInput" placeholder="میسج لکھو...">
+<input type="text" id="msgInput" placeholder="Type a message...">
 <button onclick="sendMsg()">➤</button>
 </div>
 </div>
 <div id="nameBox"><div style="background:#162447;padding:25px;border-radius:15px;width:90%;max-width:350px;text-align:center">
-<h3>اپنا نام لکھو</h3><input id="nameInput" placeholder="عبد الہادی" style="width:90%;padding:12px;border-radius:10px;border:none;margin:12px 0">
-<button onclick="saveName()" style="width:100%;padding:12px;background:#2ff3a3;border:none;border-radius:10px;font-weight:bold">شروع کرو</button>
+<h3 id="boxTitle">Enter Your Name</h3>
+<input id="nameInput" placeholder="Abdul Hadi" style="width:90%;padding:12px;border-radius:10px;border:none;margin:12px 0">
+<button id="startBtn" onclick="saveName()" style="width:100%;padding:12px;background:#2ff3a3;border:none;border-radius:10px;font-weight:bold;cursor:pointer">Start Chatting</button>
 </div></div>
 
 <script type="module">
@@ -57,14 +59,45 @@ const db = getDatabase(app);
 
 let myName = localStorage.getItem("hadiName");
 let currentChat = "GROUP";
+let isUrdu = localStorage.getItem("lang") === "ur";
 let allUsers = new Set();
+
 if(myName) document.getElementById("nameBox").style.display="none";
+if(isUrdu) applyLang();
 
 window.saveName = ()=>{
  let n=document.getElementById("nameInput").value.trim();
- if(!n) return alert("نام لکھو"); localStorage.setItem("hadiName",n); myName=n;
+ if(!n) return alert("Please enter name");
+ myName=n;
+ localStorage.setItem("hadiName",n);
  document.getElementById("nameBox").style.display="none";
- push(ref(db,"users"),{name:n});
+ try { push(ref(db,"users"),{name:n}); } catch(e){ console.log(e); }
+}
+
+window.toggleLang = ()=>{
+ isUrdu = !isUrdu;
+ localStorage.setItem("lang", isUrdu ? "ur" : "en");
+ applyLang();
+}
+
+function applyLang(){
+ if(isUrdu){
+  document.getElementById("groupText").innerText="🌐 گروپ چیٹ (سب دوست)";
+  document.getElementById("chatHead").innerText="گروپ چیٹ";
+  document.getElementById("boxTitle").innerText="اپنا نام لکھو";
+  document.getElementById("nameInput").placeholder="عبد الہادی";
+  document.getElementById("startBtn").innerText="شروع کرو";
+  document.getElementById("msgInput").placeholder="میسج لکھو...";
+  document.getElementById("langBtn").innerText="English";
+ } else {
+  document.getElementById("groupText").innerText="🌐 Group Chat (All Friends)";
+  document.getElementById("chatHead").innerText="Group Chat";
+  document.getElementById("boxTitle").innerText="Enter Your Name";
+  document.getElementById("nameInput").placeholder="Abdul Hadi";
+  document.getElementById("startBtn").innerText="Start Chatting";
+  document.getElementById("msgInput").placeholder="Type a message...";
+  document.getElementById("langBtn").innerText="اردو";
+ }
 }
 
 onValue(ref(db,"users"),(snap)=>{
@@ -79,7 +112,7 @@ onValue(ref(db,"users"),(snap)=>{
 
 window.openChat = (chatId)=>{
  currentChat=chatId;
- document.getElementById("chatHead").innerText = chatId==="GROUP" ? "🌐 گروپ چیٹ" : `👤 ${chatId} سے بات`;
+ document.getElementById("chatHead").innerText = chatId==="GROUP" ? (isUrdu?"🌐 گروپ چیٹ":"Group Chat") : `👤 ${chatId}`;
  document.querySelectorAll(".user").forEach(e=>e.classList.remove("active"));
  if(chatId!=="GROUP") document.getElementById("user-"+chatId)?.classList.add("active");
  else document.getElementById("groupBtn").classList.add("active");
@@ -109,7 +142,7 @@ window.sendMsg = ()=>{
 }
 
 document.getElementById("imgInput").addEventListener("change",(e)=>{
- let file=e.target.files[0]; if(!file) return; if(file.size>800000) return alert("تصویر 800KB سے کم رکھو");
+ let file=e.target.files[0]; if(!file) return; if(file.size>800000) return alert("Image must be <800KB");
  let r=new FileReader(); r.onload=()=>{ window.tempImage=r.result; sendMsg(); }; r.readAsDataURL(file);
 });
 document.getElementById("msgInput").addEventListener("keypress",(e)=>{ if(e.key==="Enter") sendMsg(); });
