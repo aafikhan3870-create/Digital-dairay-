@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HADI KI DAIRAY - Live Chat</title>
+<style>
+body { font-family: sans-serif; background: #0a192f; color: white; margin:0; }
+.header { background: #112240; padding: 15px; text-align: center; border-bottom: 2px solid #64ffda; }
+#chatBox { height: 70vh; overflow-y: auto; padding: 15px; }
+.message { background: #112240; margin: 8px 0; padding: 10px; border-radius: 10px; }
+.message b { color: #64ffda; }
+.input-area { display: flex; padding: 15px; background: #112240; position: fixed; bottom: 0; width: 100%; box-sizing: border-box; }
+input { flex: 1; padding: 12px; border-radius: 25px; border: none; outline: none; }
+button { margin-left: 10px; padding: 12px 20px; border-radius: 25px; border: none; background: #64ffda; color: #0a192f; font-weight: bold; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="header">
+<h2>AH - HADI KI DAIRAY 💬</h2>
+<p>abdulhadi-arif | Live Chat</p>
+</div>
+<div id="chatBox"></div>
+<div class="input-area">
+<input id="username" placeholder="Naam likho..." value="abdulhadi-arif" style="max-width: 130px; margin-right: 8px;">
+<input id="messageInput" placeholder="Message likho...">
+<button onclick="sendMessage()">Send</button>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDrxztt_wMInNZ2SsYuA_Z0KfPdUhMWZDM",
+  authDomain: "aafi-khan.firebaseapp.com",
+  projectId: "aafi-khan",
+  storageBucket: "aafi-khan.firebasestorage.app",
+  messagingSenderId: "225988422863",
+  appId: "1:225988422863:web:817848e1895de0472b9bba",
+  measurementId: "G-GP6J4GZ8PM"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const chatBox = document.getElementById('chatBox');
+const q = query(collection(db, "hadi_chats"), orderBy("time"));
+
+onSnapshot(q, (snapshot) => {
+  chatBox.innerHTML = "";
+  snapshot.forEach((doc) => {
+    const data = doc.data();
+    chatBox.innerHTML += `<div class="message"><b>${data.name}:</b> ${data.text}</div>`;
+  });
+  chatBox.scrollTop = chatBox.scrollHeight;
+});
+
+window.sendMessage = async () => {
+  const name = document.getElementById('username').value || "abdulhadi-arif";
+  const text = document.getElementById('messageInput').value;
+  if(!text) return;
+  await addDoc(collection(db, "hadi_chats"), {
+    name: name,
+    text: text,
+    time: serverTimestamp()
+  });
+  document.getElementById('messageInput').value = "";
+}
+</script>
+</body>
+</html>
