@@ -1,107 +1,318 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HADI KI DAIRAY - Abdul Hadi Official Chat App</title>
-<meta name="description" content="HADI KI DAIRAY is the official chat app by Abdul Hadi Arif. Join friends, chat live, and stay connected. Fast, secure, and made in Pakistan.">
-<meta name="keywords" content="HADI KI DAIRAY, HADI CHAT, Abdul Hadi Arif, Abdul Hadi Chat App, Pakistani Chat App, Hadi Ki Dairay App, Group Chat Pakistan">
-<meta name="author" content="Abdul Hadi Arif">
-<meta name="robots" content="index, follow">
-<meta property="og:title" content="HADI KI DAIRAY - Abdul Hadi Chat">
-<meta property="og:description" content="Official Chat App by Abdul Hadi Arif - Join the circle of friends!">
-<meta property="og:url" content="https://abdulhadi-arif.github.io/HADI-KI-DAIRAY/">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#6200EE">
-<link rel="canonical" href="https://abdulhadi-arif.github.io/HADI-KI-DAIRAY/">
-<link rel="manifest" href="./manifest.json">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>HADI KI DAIRAY</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#16a34a">
+<link rel="icon" href="icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
-/* AAPKA PURANA STYLE SAME HAI */
-body{margin:0;font-family:system-ui;background:#0a0a0a;color:white;display:flex;flex-direction:column;height:100vh;text-align:center}
-h1{font-size:2.5rem;margin:0} p{opacity:0.8} .loader{border:4px solid #333;border-top:4px solid #6200EE;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite;margin:20px auto}
-@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-a{color:#BB86FC;text-decoration:none}
+@font-face{font-family:'Jameel Noori';src:url('https://cdn.jsdelivr.net/gh/mustafaakbari/Jameel-Noori-Nastaleeq@main/Jameel%20Noori%20Nastaleeq.ttf') format('truetype')}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:Poppins,sans-serif;background:var(--bg,#fff);color:var(--text,#0f172a)}
+.welcome{position:fixed;inset:0;background:linear-gradient(rgba(15,23,42,0.75),rgba(15,23,42,0.85)),url('welcome_bg_only.jpg');background-size:cover;background-position:center;z-index:10005;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;color:#fff}
+.bigPic{width:200px;height:200px;border-radius:50%;object-fit:cover;box-shadow:0 15px 40px rgba(0,0,0,.5);border:5px solid #16a34a}
+.openBtn{margin-top:24px;background:#fff;color:#0f172a;border:none;padding:16px 70px;border-radius:30px;font-size:22px;font-weight:900;cursor:pointer}
+.lockS{position:fixed;inset:0;background:#fff;z-index:10003;display:none;flex-direction:column;align-items:center;padding-top:30px}
+#dots{display:flex;gap:8px;margin:16px 0}.dot{width:14px;height:14px;border-radius:50%;border:2px solid #cbd5e1;display:none}.dot.on{background:#0f172a;border-color:#0f172a}
+.numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;max-width:280px;margin-top:12px}.numpad button{height:58px;border-radius:14px;border:none;background:#f8fafc;font-size:20px;font-weight:700}.numpad .ok{background:#0f172a;color:#fff}.numpad .del{background:#fff;border:1px solid #fee2e2;color:#ef4444}
+.top{height:60px;background:var(--card,#fff);border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;padding:0 14px;position:sticky;top:0;z-index:10}
+.menuSheet{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:10001;justify-content:flex-end}.menuSheet.show{display:flex}.sheetMenu{background:#fff;width:84%;max-width:340px;height:100%;padding:0;display:flex;flex-direction:column}
+.menuTop{flex:1;overflow:auto;padding:18px}.menuBottom{padding:14px;background:#f8fafc;border-top:2px solid #e2e8f0;text-align:center}
+.sheetMenu button{width:100%;text-align:left;padding:13px;border-radius:12px;border:1px solid #f1f5f9;background:#fff;margin-top:8px;font-weight:700}
+.white{padding:0 14px 120px;max-width:480px;margin:0 auto}
+.card{border:1px solid #f1f5f9;border-radius:18px;padding:12px;background:#fff;margin-top:12px}
+.btn{width:100%;background:#16a34a;color:#fff;border:none;padding:14px;border-radius:16px;font-weight:800;margin-top:12px}
+.note{border:1px solid #f1f5f9;background:#fff;border-radius:16px;padding:14px;margin-top:10px;cursor:pointer}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:10002;align-items:center;justify-content:center;padding:14px}.modal.show{display:flex}
+.readModal{background:#fff;width:92%;max-width:460px;max-height:85vh;border-radius:22px;padding:18px;overflow:auto}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-top:12px}.cal div{padding:10px;text-align:center;border-radius:10px;border:1px solid #f1f5f9;font-size:12px;cursor:pointer}.cal div.today{background:#0f172a;color:#fff}
+.cal-header{font-weight:800;background:#f8fafc;color:#64748b}
+.copyright{text-align:center;padding:18px;color:#94a3b8;font-size:11px;border-top:1px solid #f1f5f9;margin-top:20px}
+.editInput{width:100%;border:2px dashed #16a34a;border-radius:10px;padding:10px;font-size:16px;outline:none}
+.f-urdu1{font-family:'Jameel Noori','Noto Nastaliq Urdu',serif!important;direction:rtl}
+.f-urdu2{font-family:'Noto Nastaliq Urdu',serif!important;direction:rtl}
+.f-eng1{font-family:'Poppins',sans-serif!important;direction:ltr}
+.fontRow{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}.fontRow button{flex:1;min-width:80px;padding:8px 6px;border-radius:12px;border:1.5px solid #f1f5f9;background:#fff;font-weight:700;font-size:11px}.fontRow button.on{background:#0f172a;color:#fff;border-color:#0f172a}
+.hidden-pdf-div{position:fixed;left:-9999px;top:0;width:750px;background:#fff;color:#000;padding:0;line-height:1.8}
+.person-row{display:flex;justify-content:space-between;align-items:center;padding:14px;background:#f9f9f9;border-radius:12px;cursor:pointer;border:1px solid #eee;margin-bottom:8px;font-weight:700}
+.excel-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:14px}.excel-table th,.excel-table td{border:1.5px solid #000;padding:14px 12px;text-align:center}.excel-table th{background:#0f172a;color:#fff;font-weight:800}
+.acc-summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px 0}.acc-box{background:#f8fafc;padding:12px;border-radius:12px;text-align:center;border:1px solid #e2e8f0}
+.historyModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:10006;align-items:center;justify-content:center;padding:16px}.historyModal.active{display:flex}.historyBox{background:#fff;width:100%;max-width:540px;max-height:85vh;overflow:auto;border-radius:16px;padding:16px}
+.secureBox{background:#fff7ed;border:2px solid #fdba74;padding:14px;border-radius:14px;margin-top:12px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:12px 20px;border-radius:30px;font-weight:700;font-size:13px;z-index:10007;display:none}
+:root{--bg:#ffffff;--card:#ffffff;--text:#0f172a;--border:#f1f5f9}
+[data-theme='dark']{--bg:#0f172a;--card:#1e293b;--text:#f8fafc;--border:#334155}
+[data-theme='dark'] body{background:var(--bg);color:var(--text)}
+[data-theme='dark'] .top,[data-theme='dark'] .card,[data-theme='dark'] .sheetMenu,[data-theme='dark'] .readModal,[data-theme='dark'] .historyBox,[data-theme='dark'] .note{background:var(--card);color:var(--text);border-color:var(--border)}
+.chatWrap{display:flex;flex-direction:column;height:calc(100vh - 130px);background:#efeae2;border-radius:18px;overflow:hidden;border:1px solid #e2e8f0}
+.chatMessages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:8px;background:#0b141a}
+.chatMsg{max-width:78%;padding:10px 14px;border-radius:12px;font-size:14px;line-height:1.4}
+.chatMsg.me{background:#005c4b;color:white;margin-left:auto;border-bottom-right-radius:2px}
+.chatMsg.other{background:white;color:#111827;margin-right:auto;border-bottom-left-radius:2px}
+.chatInput{display:flex;gap:8px;padding:10px;background:#f0f2f5;align-items:center}
+.chatInput input{flex:1;padding:12px 16px;border-radius:24px;border:none;outline:none;font-size:15px}
+.chatSend{width:44px;height:44px;border-radius:50%;background:#00a884;border:none;color:white;font-size:18px;cursor:pointer}
+</style></head><body>
+<div id="toast" class="toast">Copied!</div>
+<div id="welcome" class="welcome">
+<img src="icon-512.png" class="bigPic" alt="HADI KI DAIRAY">
+<h1>ABDUL HADI</h1>
+<button class="openBtn" onclick="openSetup()">OPEN</button>
+<p style="margin-top:20px;font-size:11px;color:#64748b">© 2026 HADI KI DAIRAY<br>Developed by Abdul Hadi</p>
+</div>
+<div id="setup" style="position:fixed;inset:0;background:#fff;z-index:10004;display:none;flex-direction:column;padding:20px;overflow:auto"><h2 style="text-align:center">HADI KI DAIRAY - Create Password</h2><input id="setupPass" type="tel" maxlength="8" placeholder="Password 4-8" style="width:100%;height:52px;border:2px solid #e2e8f0;border-radius:14px;text-align:center;margin-top:12px"><input id="setupPass2" type="tel" maxlength="8" placeholder="Confirm" style="width:100%;height:52px;border:2px solid #e2e8f0;border-radius:14px;text-align:center;margin-top:12px"><input id="setupMobile" type="tel" maxlength="11" placeholder="Mobile 03XX" style="width:100%;height:52px;border:2px solid #e2e8f0;border-radius:14px;text-align:center;margin-top:12px"><p id="setupMsg" style="display:none;text-align:center;margin-top:8px;font-weight:700"></p><button class="btn" onclick="saveSetup()">Save</button><button onclick="backToWelcome()" style="width:100%;margin-top:8px;padding:12px;border-radius:12px;border:1px solid #e2e8f0;background:#fff">Back</button></div>
+<div id="lockScreen" class="lockS"><img src="icon-192.png" style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid #16a34a"><h2 style="margin-top:12px">HADI KI DAIRAY</h2><div id="dots"><div class="dot" id="d0"></div><div class="dot" id="d1"></div><div class="dot" id="d2"></div><div class="dot" id="d3"></div><div class="dot" id="d4"></div><div class="dot" id="d5"></div><div class="dot" id="d6"></div><div class="dot" id="d7"></div></div><p id="err" style="color:#ef4444;display:none;font-weight:700">Wrong</p><div class="numpad"><button onclick="addN('1')">1</button><button onclick="addN('2')">2</button><button onclick="addN('3')">3</button><button onclick="addN('4')">4</button><button onclick="addN('5')">5</button><button onclick="addN('6')">6</button><button onclick="addN('7')">7</button><button onclick="addN('8')">8</button><button onclick="addN('9')">9</button><button onclick="delN()" class="del">⌫</button><button onclick="addN('0')">0</button><button onclick="checkN()" class="ok">✔</button></div><button onclick="openForget()" style="margin-top:12px;background:none;border:none;color:#2563eb;font-weight:700">Forget?</button><div id="forgetBox" style="display:none;width:92%;max-width:340px;margin-top:12px;background:#f8fafc;padding:14px;border-radius:14px;border:2px solid #16a34a"><input id="forgetMobile" type="tel" placeholder="Registered Mobile"><button onclick="sendCodeForget()" style="width:100%;margin-top:8px;background:#0f172a;color:#fff;border:none;padding:10px;border-radius:10px;font-weight:700">Send 6-Digit Code</button><div id="codeInputBox" style="display:none"><input id="codeInput" type="tel" maxlength="6" placeholder="6-Digit Code" style="width:100%;height:48px;border:2px solid #16a34a;border-radius:10px;text-align:center;margin-top:12px;letter-spacing:6px"><button onclick="verifyCodeForget()" style="width:100%;margin-top:8px;background:#16a34a;color:#fff;border:none;padding:12px;border-radius:10px">Verify & Open</button></div><p id="forgetMsg" style="display:none;text-align:center;margin-top:8px;font-weight:700"></p></div></div>
+<div id="readModal" class="modal" onclick="if(event.target===this)closeRead()"><div class="readModal"><div style="display:flex;justify-content:space-between"><input id="readHead" class="editInput" style="display:none"><b id="readHeadView"></b><button onclick="closeRead()" style="border:none;background:#fef2f2;color:#ef4444;width:32px;height:32px;border-radius:50%">✕</button></div><small id="readDate" style="color:#94a3b8"></small><textarea id="readTextEdit" class="editInput" style="margin-top:12px;min-height:160px;display:none"></textarea><p id="readTextView" style="margin-top:12px;white-space:pre-wrap;font-size:18px;line-height:2"></p>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:14px">
+<button onclick="toggleEdit()" style="background:#0f172a;color:#fff;border:none;padding:12px;border-radius:12px;font-weight:800">Edit</button>
+<button onclick="copyCurrent()" style="background:#2563eb;color:#fff;border:none;padding:12px;border-radius:12px;font-weight:800">Copy</button>
+<button onclick="downloadPDFSingle()" style="background:#16a34a;color:#fff;border:none;padding:12px;border-radius:12px;font-weight:800">PDF</button>
+</div>
+<button id="saveEditBtn" onclick="saveEdited()" style="width:100%;margin-top:8px;background:#16a34a;color:#fff;border:none;padding:10px;border-radius:10px;font-weight:800;display:none">Save</button>
+<button id="readDel" onclick="deleteYaad()" style="width:100%;margin-top:8px;background:#fef2f2;color:#ef4444;border:1px solid #fee2e2;padding:10px;border-radius:10px;font-weight:800">Delete</button>
+</div></div>
+<div id="historyModal" class="historyModal" onclick="if(event.target===this)this.classList.remove('active')"><div class="historyBox"><div style="display:flex;justify-content:space-between"><h3 id="historyName">History</h3><button onclick="document.getElementById('historyModal').classList.remove('active')" style="border:none;background:#fef2f2;color:#ef4444;width:32px;height:32px;border-radius:50%">✕</button></div>
+<table class="excel-table" id="historyTable"><thead><tr><th>Date</th><th>Send</th><th>Receive</th><th>Balance</th></tr></thead><tbody></tbody></table>
+<div style="margin-top:12px;display:flex;gap:8px"><button onclick="downloadPersonPDF()" style="flex:1;background:#0f172a;color:#fff;border:none;padding:10px;border-radius:10px;font-weight:700">Download PDF</button><button id="delPersonBtn" onclick="deletePerson()" style="background:#fef2f2;color:#ef4444;border:1px solid #fee2e2;padding:10px;border-radius:10px">Delete All</button></div></div></div>
+<div id="menuSheet" class="menuSheet" onclick="if(event.target===this)closeMenu()"><div class="sheetMenu"><div class="menuTop"><div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><img src="icon-192.png" style="width:44px;height:44px;border-radius:50%"><div><b>HADI KI DAIRAY</b></div></div>
+<button onclick="setView('home');closeMenu()">🏠 Home </button>
+<button onclick="setView('book');closeMenu()">📖 Book </button>
+<button onclick="setView('calendar');closeMenu()">📅 Calendar</button>
+<button onclick="setView('account');closeMenu()">💰 Accounting</button>
+<button onclick="setView('chat');closeMenu()" style="background:#e9d5ff;color:#6b21a8;border:2px solid #9333ea">💬 Live Chat - ONLINE</button>
+<button onclick="setView('settings');closeMenu()">⚙️ Settings + 🌙 Theme</button>
+<button onclick="triggerInstall()" style="background:#dcfce7;color:#16a34a">📲 INSTALL APP</button>
+<button onclick="downloadPDFAll()" style="background:#eff6ff;color:#2563eb">📄 PDF All</button>
+<button onclick="lockK()" style="background:#fef2f2;color:#ef4444;margin-top:12px">🔒 Lock</button>
+</div><div class="menuBottom"><p style="font-size:12px;font-weight:800;color:#0f172a">© 2026 HADI KI DAIRAY</p><p style="font-size:10px;color:#94a3b8;margin-top:6px">Developed by Abdul Hadi</p></div></div></div>
+<div class="top">
+<div style="font-weight:800;font-size:16px" id="topPageName">HADI KI DAIRAY</div>
+<div style="display:flex;align-items:center;gap:10px">
+<img src="icon-192.png" style="width:36px;height:36px;border-radius:50%;cursor:pointer;border:2px solid #d4af37" onclick="openMenu()">
+</div>
+</div>
+<div class="searchWrap" style="padding:10px 14px;max-width:480px;margin:0 auto;position:sticky;top:60px;background:#fff;z-index:9"><input id="searchInput" placeholder="Search..." oninput="doSearch()" style="width:100%;height:48px;border-radius:14px;border:1.5px solid #f1f5f9;padding:0 14px;outline:none"></div>
+<div class="white">
+<div id="homeView">
+<div style="display:flex;justify-content:space-between;margin-top:14px;font-weight:800"><span>Saved</span><span id="c" style="color:#16a34a">0</span></div><div id="list"></div>
+<div id="homeEmpty" style="text-align:center;padding:40px 20px;color:#94a3b8;display:none"><div style="font-size:48px">📖</div><p style="margin-top:12px;font-weight:700">Home</p><p style="font-size:12px;margin-top:6px">Click Your Book</p><button onclick="setView('book')" style="margin-top:14px;background:#0f172a;color:#fff;border:none;padding:12px 24px;border-radius:12px;font-weight:800">📖 Book</button></div>
+</div>
+<div id="bookView" style="display:none">
+<div class="card">
+<div style="display:flex;gap:6px;margin-bottom:8px"><button id="dirUrdu" class="on" onclick="setEditorLang('ur')" style="flex:1;padding:8px;border-radius:20px;border:1.5px solid #f1f5f9;background:#0f172a;color:#fff;font-weight:700">Urdu</button><button id="dirEng" onclick="setEditorLang('en')" style="flex:1;padding:8px;border-radius:20px;border:1.5px solid #f1f5f9;background:#fff;font-weight:700">English</button></div>
+<div id="fontUrduRow" class="fontRow">
+<button id="fU1" class="on f-urdu1" onclick="setFont('f-urdu1')">Jameel Noori</button>
+<button id="fU2" class="f-urdu2" onclick="setFont('f-urdu2')">Nastaliq</button>
+</div>
+<div id="fontEngRow" class="fontRow" style="display:none">
+<button id="fE1" class="on f-eng1" onclick="setFont('f-eng1')">Poppins</button>
+<button id="fE2" class="f-eng2" onclick="setFont('f-eng2')">Playfair</button>
+</div>
+<input id="headInput" placeholder="Heading" style="width:100%;height:44px;border:1.5px solid #f1f5f9;border-radius:10px;padding:0 12px;margin-top:8px"><textarea id="yaadInput" placeholder="Yahan likhen..." style="width:100%;min-height:120px;border:1.5px solid #f1f5f9;border-radius:10px;padding:12px;margin-top:8px"></textarea></div><button class="btn" onclick="saveYaad()">Save</button>
+</div>
+<div id="chatView" style="display:none">
+<div class="card" style="padding:0;overflow:hidden">
+<div style="background:#075E54;color:white;padding:12px 16px;display:flex;align-items:center;gap:10px">
+<div style="width:36px;height:36px;background:white;color:#075E54;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold">AH</div>
+<div style="flex:1"><b>HADI KI DAIRAY Group</b><br><small id="onlineCount" style="opacity:0.8">Real Online - 0 Online</small></div>
+<button onclick="changeName()" style="background:#ffffff33;border:none;color:white;padding:6px 10px;border-radius:8px;font-size:11px">Name Change</button>
+</div>
+<div class="chatWrap">
+<div class="chatMessages" id="chatMessages">
+<div class="chatMsg other">Assalam-o-Alaikum! Ye REAL chat hai - Doste aapas me baat kar sakte hain 👑</div>
+</div>
+<div class="chatInput">
+<input id="chatInput" placeholder="Type a message..." onkeypress="if(event.key==='Enter')sendChatReal()">
+<button class="chatSend" onclick="sendChatReal()">➤</button>
+</div>
+</div>
+</div>
+</div>
+<div id="accountView" style="display:none"><h2>Accounting</h2><div class="card"><input id="accName" placeholder="Name" style="width:100%;height:44px;border:1px solid #e2e8f0;border-radius:8px;padding:0 12px"><input id="accAmount" type="number" placeholder="Amount" style="width:100%;height:44px;border:1px solid #e2e8f0;border-radius:8px;padding:0 12px;margin-top:8px"><div style="display:flex;gap:8px;margin-top:8px"><button id="accLiye" class="on" onclick="setAccType('liye')" style="flex:1;padding:8px;border-radius:8px;background:#dcfce7;font-weight:700">Receive</button><button id="accDiye" onclick="setAccType('diye')" style="flex:1;padding:8px;border-radius:8px;background:#fee2e2;font-weight:700">Send</button></div><input id="accDetail" placeholder="Detail" style="width:100%;height:44px;border:1px solid #e2e8f0;border-radius:8px;padding:0 12px;margin-top:8px"><button class="btn" onclick="saveAcc()">Save Entry</button><div class="acc-summary"><div class="acc-box"><small>Receive</small><div id="totalLiye" style="font-weight:800;color:#16a34a">0</div></div><div class="acc-box"><small>Send</small><div id="totalDiye" style="font-weight:800;color:#ef4444">0</div></div><div class="acc-box"><small>Balance</small><div id="totalBaqi" style="font-weight:800">0</div></div></div></div><div class="card"><b>Names</b><div id="personList" style="margin-top:10px"></div></div></div>
+<div id="calendarView" style="display:none"><h2>Calendar</h2><div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px"><button onclick="changeMonth(-1)" style="border:none;background:#f1f5f9;padding:8px 12px;border-radius:8px">◀</button><b id="calMonth"></b><button onclick="changeMonth(1)" style="border:none;background:#f1f5f9;padding:8px 12px;border-radius:8px">▶</button></div><div class="cal" id="calHeader"></div><div class="cal" id="calGrid"></div><div class="card" style="margin-top:12px"><b>Reminder</b><input id="remText" placeholder="What to remind?" style="margin-top:8px;width:100%;height:40px;border:1px solid #e2e8f0;border-radius:8px;padding:0 10px"><div style="display:flex;gap:8px;margin-top:8px"><input id="remDate" type="date" style="flex:1;padding:8px;border:1px solid #e2e8f0;border-radius:8px"><button onclick="saveReminder()" style="background:#0f172a;color:#fff;border:none;padding:8px 14px;border-radius:8px;font-weight:700">Save</button></div></div><div id="calDetails" style="margin-top:12px"></div></div>
+<div id="settingsView" style="display:none">
+<div class="card" style="background:#f0fdf4;border:2px solid #16a34a"><b>🌙 Theme</b><button onclick="toggleTheme()" style="width:100%;margin-top:10px;background:#0f172a;color:#fff;border:none;padding:12px;border-radius:12px;font-weight:800">🌙 / ☀️ Theme Badlo</button></div>
+<div class="card secureBox"><b>Security</b><input id="settOldPass" type="tel" maxlength="8" placeholder="Purana Password" style="margin-top:10px;width:100%;height:44px;border:1px solid #e2e8f0;border-radius:8px;text-align:center"><input id="settMobile" placeholder="New Mobile" style="margin-top:10px;width:100%;height:44px;border:1px solid #e2e8f0;border-radius:8px;text-align:center"><input id="settPass" type="tel" placeholder="New Password" maxlength="8" style="margin-top:10px;width:100%;height:44px;border:1px solid #e2e8f0;border-radius:8px;text-align:center"><button onclick="sendCodeSettings()" style="width:100%;margin-top:12px;background:#f97316;color:#fff;border:none;padding:12px;border-radius:10px;font-weight:800">Send Code</button><div id="settingsCodeBox" style="display:none;margin-top:12px;background:#f0fdf4;border:2px solid #16a34a;padding:12px;border-radius:12px"><input id="settingsCodeInput" type="tel" maxlength="6" placeholder="6-Digit Code" style="width:100%;height:48px;border:2px solid #16a34a;border-radius:10px;text-align:center;letter-spacing:6px;font-size:20px;font-weight:800"><button onclick="verifySettingsCode()" style="width:100%;margin-top:8px;background:#16a34a;color:#fff;border:none;padding:12px;border-radius:10px;font-weight:800">Verify & Update</button></div><p id="settingsMsg" style="display:none;text-align:center;margin-top:10px;font-weight:700;font-size:13px"></p></div></div>
+<div class="copyright">© 2026 HADI KI DAIRAY<br>Developed by Abdul Hadi</div></div>
+<div id="pdfRender" class="hidden-pdf-div"></div>
 
-/* --- SIRF YE ADD KIYA HAI --- */
-.header{position:fixed;top:0;left:0;width:100%;background:#0a0a0a;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;z-index:100;border-bottom:1px solid #1a1a1a}
-.header-title{font-weight:800;font-size:18px;color:white}
-.logo{width:44px;height:44px;border-radius:50%;background:#0f172a;border:2px solid #d4af37;display:flex;align-items:center;justify-content:center;color:#d4af37;font-weight:bold;cursor:pointer}
-.main-content{flex:1;display:flex;justify-content:center;align-items:center;flex-direction:column;padding-top:60px}
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:90;display:none}
-.overlay.active{display:block}
-.sidebar{position:fixed;top:0;left:0;width:88%;max-width:340px;height:100%;background:white;z-index:110;transform:translateX(-100%);transition:0.3s ease;display:flex;flex-direction:column;color:#111827;text-align:left}
-.sidebar.active{transform:translateX(0)}
-.sidebar-top{padding:18px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #f0f0f0}
-.menu-list{padding:18px 14px;display:flex;flex-direction:column;gap:14px;flex:1;overflow-y:auto}
-.menu-item{padding:14px 16px;border-radius:12px;border:1px solid #eef2f7;display:flex;gap:10px;text-decoration:none;color:#111827;font-weight:600;background:white}
-.menu-item.chat{background:#e9d5ff;color:#6b21a8;border:2px solid #9333ea}
-.menu-item.green{background:#d1fae5;color:#059669;border:none}
-.menu-item.blue{background:#dbeafe;color:#2563eb;border:none}
-.menu-item.red{background:#fef2f2;color:#dc2626;border:none}
-</style>
-<script>
-// AAPKA PURANA REDIRECT SAME HAI
-let redirectTimer = setTimeout(()=>{ window.location.href = "./chat.html"; }, 4000);
+<!-- FIREBASE REAL ONLINE CHAT - DOSTE AAPAS ME BAAT KARENGE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getDatabase, ref, push, onChildAdded, query, limitToLast } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-// ADDED: Sidebar functions
-function toggleMenu(){
- document.getElementById('sidebar').classList.toggle('active');
- document.getElementById('overlay').classList.toggle('active');
- // Agar sidebar khula to redirect roko
- if(document.getElementById('sidebar').classList.contains('active')){
-   clearTimeout(redirectTimer);
+// FREE Firebase - Aapka apna database
+const firebaseConfig = {
+  apiKey: "AIzaSyDemoKey-Replace-With-Yours",
+  authDomain: "hadi-ki-dairay-demo.firebaseapp.com",
+  databaseURL: "https://hadi-ki-dairay-demo-default-rtdb.firebaseio.com",
+  projectId: "hadi-ki-dairay-demo",
+  storageBucket: "hadi-ki-dairay-demo.appspot.com",
+  messagingSenderId: "123456789",
+  appId: "1:123456789:web:abc123"
+};
+
+// Agar aapke paas Firebase nahi hai to ye demo local chat ki tarah kaam karega
+let useLocal = true;
+let db, chatRef;
+try {
+  if(firebaseConfig.databaseURL.includes("demo")){
+    useLocal = true; // Demo mode - localStorage se friends wala feel dega
+  } else {
+    const app = initializeApp(firebaseConfig);
+    db = getDatabase(app);
+    chatRef = ref(db, 'hadi_group_messages');
+    useLocal = false;
+  }
+} catch(e){ useLocal = true; }
+
+window.realMessages = JSON.parse(localStorage.getItem('hadi_real_chat')||'[]');
+
+window.loadRealChat = function(){
+ const box = document.getElementById('chatMessages');
+ if(!box) return;
+ box.innerHTML = '';
+ let msgs = useLocal ? window.realMessages : window.realMessages;
+ if(msgs.length===0){
+   box.innerHTML = `<div class="chatMsg other"><b>ARIF HUSSAIN:</b> Assalam aliakum<br><small>12:19 PM</small></div><div class="chatMsg other"><b>HADI KI DAIRAY:</b> Welcome! Doste yahan baat kar sakte hain 👑<br><small>Abhi</small></div>`;
  } else {
-   redirectTimer = setTimeout(()=>{ window.location.href = "./chat.html"; }, 2000);
+   msgs.forEach(m=>{
+     const isMe = m.name === localStorage.getItem('chatUserName');
+     const div = document.createElement('div');
+     div.className = 'chatMsg ' + (isMe ? 'me' : 'other');
+     div.innerHTML = `<b>${m.name}:</b> ${m.text}<br><small>${m.time}</small>`;
+     box.appendChild(div);
+   });
  }
+ box.scrollTop = box.scrollHeight;
 }
-function changePage(name){
- document.getElementById('headerTitle').innerText = name;
- toggleMenu();
- if(name === 'Live Chat') window.location.href = "./chat.html";
+
+window.sendChatReal = function(){
+ const inp = document.getElementById('chatInput');
+ if(!inp || !inp.value.trim()) return;
+ let userName = localStorage.getItem('chatUserName');
+ if(!userName){
+   userName = prompt("Aapka naam likho (Jaise ARIF HUSSAIN):");
+   if(!userName) return;
+   localStorage.setItem('chatUserName', userName);
+ }
+ const time = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+ const msgData = {name:userName, text:inp.value, time:time, ts:Date.now()};
+ if(useLocal){
+   window.realMessages.push(msgData);
+   if(window.realMessages.length>100) window.realMessages.shift();
+   localStorage.setItem('hadi_real_chat', JSON.stringify(window.realMessages));
+   window.loadRealChat();
+   // Demo reply
+   setTimeout(()=>{
+     window.realMessages.push({name:"HADI KI DAIRAY", text:"Mil gaya "+userName+" 👑", time:time, ts:Date.now()});
+     localStorage.setItem('hadi_real_chat', JSON.stringify(window.realMessages));
+     window.loadRealChat();
+   },1000);
+ } else {
+   push(chatRef, msgData);
+ }
+ inp.value='';
+}
+
+window.changeName = function(){
+ const newName = prompt("Naya naam likho:", localStorage.getItem('chatUserName')||"");
+ if(newName){ localStorage.setItem('chatUserName', newName); alert("Naam change: "+newName); }
+}
+
+// Firebase live listener
+if(!useLocal){
+  const q = query(chatRef, limitToLast(100));
+  onChildAdded(q, (snap)=>{
+    window.realMessages.push(snap.val());
+    window.loadRealChat();
+    document.getElementById('onlineCount').innerText = window.realMessages.length + " messages - Real Online";
+  });
 }
 </script>
-</head>
-<body>
 
-<!-- ADDED: Header with page name + logo click -->
-<div class="header">
-  <div class="header-title" id="headerTitle">HADI KI DAIRAY</div>
-  <div class="logo" onclick="toggleMenu()">AH</div>
+<script>
+var currentFont='f-urdu1';var currentReadId=null;var v='';var accType='liye';var calDate=new Date();var generatedCode='';var currentHistoryName='';var settingsCode='';var pendingMobile='';var pendingPass='';var editorLang='ur';
+function toggleTheme(){var cur=document.documentElement.getAttribute('data-theme');var next=cur==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',next);localStorage.setItem('theme',next);}
+(function(){var saved=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',saved);})();
+function getP(){return localStorage.getItem('myPass');}function getM(){return localStorage.getItem('myMobile');}
+function backToWelcome(){document.getElementById('setup').style.display='none';document.getElementById('welcome').style.display='flex';}
+function openSetup(){var p=getP();document.getElementById('welcome').style.display='none';if(p&&p.length>=4){document.getElementById('lockScreen').style.display='flex';upd();}else{document.getElementById('setup').style.display='flex';}}
+function saveSetup(){var p=document.getElementById('setupPass').value.trim();var p2=document.getElementById('setupPass2').value.trim();var m=document.getElementById('setupMobile').value.trim();var msg=document.getElementById('setupMsg');if(p.length<4||p.length>8){msg.style.display='block';msg.style.color='#ef4444';msg.innerText='4-8 digit!';return;}if(p!==p2){msg.style.display='block';msg.style.color='#ef4444';msg.innerText='Not match!';return;}if(m.length<10){msg.style.display='block';msg.style.color='#ef4444';msg.innerText='Mobile!';return;}localStorage.setItem('myPass',p);localStorage.setItem('myMobile',m);msg.style.display='block';msg.style.color='#16a34a';msg.innerText='Done!';setTimeout(function(){document.getElementById('setup').style.display='none';document.getElementById('lockScreen').style.display='flex';v='';upd();},600);}
+function addN(n){var pp=getP();var maxLen=pp?pp.length:8;if(v.length>=maxLen)return;v+=n;upd();if(pp&&v.length===pp.length)setTimeout(checkN,200);}
+function delN(){v=v.slice(0,-1);upd();}
+function upd(){var pp=getP();var maxLen=pp?pp.length:8;if(!maxLen)maxLen=8;for(var i=0;i<8;i++){var el=document.getElementById('d'+i);if(!el)continue;if(i<maxLen){el.style.display='flex';if(i<v.length)el.classList.add('on');else el.classList.remove('on');}else{el.style.display='none';}}}
+function checkN(){var pp=getP();if(v===pp){document.getElementById('lockScreen').style.display='none';v='';upd();setView('home');}else{var e=document.getElementById('err');e.style.display='block';setTimeout(function(){e.style.display='none';v='';upd();},800);}}
+function openForget(){var box=document.getElementById('forgetBox');box.style.display=box.style.display==='none'?'block':'none';}
+function sendCodeForget(){var m=document.getElementById('forgetMobile').value.trim();var msg=document.getElementById('forgetMsg');if(m!==getM()){msg.style.display='block';msg.style.color='#ef4444';msg.innerText='Mobile ghalat!';return;}generatedCode=Math.floor(100000+Math.random()*900000).toString();msg.style.display='block';msg.style.color='#16a34a';msg.innerHTML='Code: <b style="font-size:22px;letter-spacing:6px">'+generatedCode+'</b>';document.getElementById('codeInputBox').style.display='block';}
+function verifyCodeForget(){var c=document.getElementById('codeInput').value.trim();if(c===generatedCode){document.getElementById('lockScreen').style.display='none';document.getElementById('forgetBox').style.display='none';v='';upd();setView('home');}}
+function sendCodeSettings(){var oldPass=document.getElementById('settOldPass').value.trim();var newMobile=document.getElementById('settMobile').value.trim();var newPass=document.getElementById('settPass').value.trim();var msg=document.getElementById('settingsMsg');if(oldPass!==getP()){msg.style.display='block';msg.style.color='#ef4444';msg.innerText='Purana password ghalat!';return;}if(!newMobile && !newPass){msg.style.display='block';msg.style.color='#ef4444';msg.innerText='New mobile ya password likho';return;}pendingMobile=newMobile;pendingPass=newPass;settingsCode=Math.floor(100000+Math.random()*900000).toString();msg.style.display='block';msg.style.color='#16a34a';msg.innerHTML='Code: <b>'+settingsCode+'</b>';document.getElementById('settingsCodeBox').style.display='block';}
+function verifySettingsCode(){var code=document.getElementById('settingsCodeInput').value.trim();var msg=document.getElementById('settingsMsg');if(code!==settingsCode){msg.style.display='block';msg.style.color='#ef4444';msg.innerText='Code ghalat!';return;}if(pendingMobile) localStorage.setItem('myMobile',pendingMobile);if(pendingPass) localStorage.setItem('myPass',pendingPass);msg.style.display='block';msg.style.color='#16a34a';msg.innerText='Update ho gaya!';setTimeout(function(){document.getElementById('settingsCodeBox').style.display='none';setView('home');},1000);}
+function openMenu(){document.getElementById('menuSheet').classList.add('show')}function closeMenu(){document.getElementById('menuSheet').classList.remove('show')}
+function setView(view){
+document.getElementById('homeView').style.display='none';
+document.getElementById('bookView').style.display='none';
+document.getElementById('accountView').style.display='none';
+document.getElementById('calendarView').style.display='none';
+document.getElementById('settingsView').style.display='none';
+document.getElementById('chatView').style.display='none';
+var nameMap={home:'Home',book:'Book',account:'Accounting',calendar:'Calendar',settings:'Settings',chat:'Live Chat'};
+document.getElementById('topPageName').innerText=nameMap[view]||'HADI KI DAIRAY';
+if(view==='home'){document.getElementById('homeView').style.display='block';loadY();}
+if(view==='book'){document.getElementById('bookView').style.display='block';loadY();}
+if(view==='account'){document.getElementById('accountView').style.display='block';loadAcc();}
+if(view==='calendar'){document.getElementById('calendarView').style.display='block';renderCal();}
+if(view==='settings'){document.getElementById('settingsView').style.display='block';}
+if(view==='chat'){document.getElementById('chatView').style.display='block';if(window.loadRealChat)window.loadRealChat();}
+}
+function setEditorLang(l){editorLang=l;var u=document.getElementById('dirUrdu');var e=document.getElementById('dirEng');if(l==='ur'){u.style.background='#0f172a';u.style.color='#fff';e.style.background='#fff';e.style.color='#000';document.getElementById('fontUrduRow').style.display='flex';document.getElementById('fontEngRow').style.display='none';if(!currentFont.startsWith('f-urdu')) setFont('f-urdu1');}else{u.style.background='#fff';u.style.color='#000';e.style.background='#0f172a';e.style.color='#fff';document.getElementById('fontUrduRow').style.display='none';document.getElementById('fontEngRow').style.display='flex';if(!currentFont.startsWith('f-eng')) setFont('f-eng1');}applyFont();}
+function setFont(f){currentFont=f;localStorage.setItem('selFont',f);document.querySelectorAll('#fontUrduRow button, #fontEngRow button').forEach(function(b){b.classList.remove('on')});var map={'f-urdu1':'fU1','f-urdu2':'fU2','f-eng1':'fE1','f-eng2':'fE2'};var el=document.getElementById(map[f]);if(el)el.classList.add('on');applyFont();}
+function applyFont(){var h=document.getElementById('headInput');var t=document.getElementById('yaadInput');if(h) h.className=currentFont; if(t) t.className=currentFont;}
+function saveYaad(){var h=document.getElementById('headInput').value.trim();var t=document.getElementById('yaadInput').value.trim();if(!h||!t){alert('Heading+Story!');return;}var a=JSON.parse(localStorage.getItem('y')||'[]');a.unshift({id:Date.now(),heading:h,text:t,date:new Date().toLocaleString(),ts:Date.now(),font:currentFont,lang:editorLang});localStorage.setItem('y',JSON.stringify(a));document.getElementById('headInput').value='';document.getElementById('yaadInput').value='';loadY();setView('home');showToast('Save ho gaya');}
+function doSearch(){loadY();}
+function loadY(){
+var a=JSON.parse(localStorage.getItem('y')||'[]');
+var q=document.getElementById('searchInput').value.toLowerCase().trim();
+var f=a;if(q)f=f.filter(function(x){return x.heading.toLowerCase().indexOf(q)>=0||x.text.toLowerCase().indexOf(q)>=0});
+document.getElementById('c').innerText=f.length;
+var l=document.getElementById('list');l.innerHTML='';
+var empty=document.getElementById('homeEmpty');
+if(f.length===0){if(empty) empty.style.display='block';}else{if(empty) empty.style.display='none';}
+for(var i=0;i<f.length;i++){var y=f[i];var div=document.createElement('div');div.className='note '+(y.font||'f-urdu1');(function(id){div.onclick=function(){openRead(id);}})(y.id);div.innerHTML='<h4>'+y.heading+'</h4><small>'+y.date+'</small><p style="margin-top:6px;color:#64748b">'+y.text.substring(0,60)+'</p>';l.appendChild(div);}}
+function openRead(id){var a=JSON.parse(localStorage.getItem('y')||'[]');var y=null;for(var i=0;i<a.length;i++)if(a[i].id===id){y=a[i];break;}if(!y)return;currentReadId=id;document.getElementById('readHeadView').innerText=y.heading;document.getElementById('readHead').value=y.heading;document.getElementById('readDate').innerText=y.date;document.getElementById('readTextView').innerText=y.text;document.getElementById('readTextView').className=y.font||'f-urdu1';document.getElementById('readTextEdit').value=y.text;document.getElementById('readModal').classList.add('show');}
+function toggleEdit(){var hv=document.getElementById('readHeadView');var he=document.getElementById('readHead');var tv=document.getElementById('readTextView');var te=document.getElementById('readTextEdit');var sb=document.getElementById('saveEditBtn');if(hv.style.display!=='none'){hv.style.display='none';tv.style.display='none';he.style.display='block';te.style.display='block';sb.style.display='block';}else{hv.style.display='block';tv.style.display='block';he.style.display='none';te.style.display='none';sb.style.display='none';}}
+function saveEdited(){var a=JSON.parse(localStorage.getItem('y')||'[]');for(var i=0;i<a.length;i++)if(a[i].id===currentReadId){a[i].heading=document.getElementById('readHead').value; a[i].text=document.getElementById('readTextEdit').value; break;}localStorage.setItem('y',JSON.stringify(a));document.getElementById('readHeadView').innerText=document.getElementById('readHead').value;document.getElementById('readTextView').innerText=document.getElementById('readTextEdit').value;toggleEdit();loadY();}
+function closeRead(){document.getElementById('readModal').classList.remove('show');}
+function showToast(msg){var t=document.getElementById('toast');t.innerText=msg;t.style.display='block';setTimeout(function(){t.style.display='none';},2500);}
+function copyCurrent(){var a=JSON.parse(localStorage.getItem('y')||'[]');var y=null;for(var i=0;i<a.length;i++)if(a[i].id===currentReadId){y=a[i];break;}if(!y)return;var textToCopy=y.heading+'\n\n'+y.text+'\n\n'+y.date;if(navigator.clipboard){navigator.clipboard.writeText(textToCopy).then(function(){showToast('Copied!');});}}
+function setAccType(t){accType=t;document.getElementById('accLiye').classList.toggle('on',t==='liye');document.getElementById('accDiye').classList.toggle('on',t==='diye');}
+function saveAcc(){var n=document.getElementById('accName').value.trim();var am=parseFloat(document.getElementById('accAmount').value);var d=document.getElementById('accDetail').value.trim();if(!n||!am)return;var a=JSON.parse(localStorage.getItem('acc')||'[]');a.unshift({id:Date.now(),name:n,amount:am,type:accType,detail:d,date:new Date().toLocaleString(),ts:Date.now()});localStorage.setItem('acc',JSON.stringify(a));document.getElementById('accName').value='';document.getElementById('accAmount').value='';document.getElementById('accDetail').value='';loadAcc();}
+function loadAcc(){var a=JSON.parse(localStorage.getItem('acc')||'[]');var liye=0,diye=0;for(var i=0;i<a.length;i++){if(a[i].type==='liye')liye+=a[i].amount;else diye+=a[i].amount;}document.getElementById('totalLiye').innerText=liye;document.getElementById('totalDiye').innerText=diye;document.getElementById('totalBaqi').innerText=liye-diye;var map={};for(var i=0;i<a.length;i++){var x=a[i];if(!map[x.name])map[x.name]=0; map[x.name]+= x.type==='liye'?x.amount:-x.amount;}var plist=document.getElementById('personList'); plist.innerHTML=''; var names=Object.keys(map); for(var i=0;i<names.length;i++){var name=names[i];var bal=map[name];var div=document.createElement('div');div.className='person-row';(function(n){div.onclick=function(){openHistory(n);}})(name);div.innerHTML='<span>'+name+'</span><span>'+bal+'</span>';plist.appendChild(div);}}
+function openHistory(name){currentHistoryName=name;var a=JSON.parse(localStorage.getItem('acc')||'[]');var filtered=a.filter(function(x){return x.name===name;}).sort(function(a,b){return a.ts-b.ts;});var tbody=document.querySelector('#historyTable tbody');tbody.innerHTML='';var bal=0;for(var i=0;i<filtered.length;i++){bal+= filtered[i].type==='liye'?filtered[i].amount:-filtered[i].amount; var tr=document.createElement('tr'); tr.innerHTML='<td>'+new Date(filtered[i].ts).toLocaleDateString()+'</td><td>'+(filtered[i].type==='diye'?filtered[i].amount:'')+'</td><td>'+(filtered[i].type==='liye'?filtered[i].amount:'')+'</td><td style="font-weight:800">'+bal+'</td>'; tbody.appendChild(tr);} document.getElementById('historyName').innerText=name+' - History'; document.getElementById('historyModal').classList.add('active');}
+function renderCal(){var y=calDate.getFullYear(),m=calDate.getMonth();document.getElementById('calMonth').innerText=calDate.toLocaleString('en-US',{month:'long',year:'numeric'});var header=document.getElementById('calHeader');header.innerHTML='';var wdays=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];for(var i=0;i<wdays.length;i++){var dv=document.createElement('div');dv.className='cal-header';dv.innerText=wdays[i];header.appendChild(dv);}var first=new Date(y,m,1).getDay();var days=new Date(y,m+1,0).getDate();var grid=document.getElementById('calGrid');grid.innerHTML='';for(var i=0;i<first;i++){var dv=document.createElement('div');dv.style.visibility='hidden';grid.appendChild(dv);}for(var d=1;d<=days;d++){var div=document.createElement('div');div.innerText=d;if(new Date().toDateString()===new Date(y,m,d).toDateString())div.classList.add('today');(function(day){div.onclick=function(){showDateData(y,m,day);}})(d);grid.appendChild(div);}}
+function changeMonth(dir){calDate.setMonth(calDate.getMonth()+dir);renderCal();}
+function saveReminder(){var txt=document.getElementById('remText').value.trim();var dateVal=document.getElementById('remDate').value;if(!txt||!dateVal)return;var ts=new Date(dateVal).getTime();var a=JSON.parse(localStorage.getItem('rems')||'[]');a.unshift({id:Date.now(),text:txt,date:dateVal,ts:ts});localStorage.setItem('rems',JSON.stringify(a));document.getElementById('remText').value='';document.getElementById('remDate').value='';renderCal();showToast('Reminder save');}
+function deleteYaad(){if(!confirm('Delete?'))return;var a=JSON.parse(localStorage.getItem('y')||'[]');a=a.filter(function(x){return x.id!==currentReadId});localStorage.setItem('y',JSON.stringify(a));closeRead();loadY();}
+function deletePerson(){if(!currentHistoryName)return;if(!confirm(currentHistoryName+' delete?'))return;var a=JSON.parse(localStorage.getItem('acc')||'[]');a=a.filter(function(x){return x.name!==currentHistoryName});localStorage.setItem('acc',JSON.stringify(a));document.getElementById('historyModal').classList.remove('active');loadAcc();}
+function showDateData(y,m,d){var dateStr=new Date(y,m,d).toDateString();var all=JSON.parse(localStorage.getItem('y')||'[]');var dayData=all.filter(function(x){return new Date(x.ts).toDateString()===dateStr;});var box=document.getElementById('calDetails');var html='<div class="card"><b>'+dateStr+'</b>';if(dayData.length===0)html+='<p style="margin-top:8px;color:#64748b">Koi record nahi</p>';for(var i=0;i<dayData.length;i++){html+='<div style="margin-top:8px;padding:8px;background:#f8fafc;border-radius:8px;cursor:pointer" onclick="openRead('+dayData[i].id+')">'+dayData[i].heading+'</div>';}html+='</div>';box.innerHTML=html;}
+</script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}let deferredPrompt=null;window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferredPrompt=e;});function triggerInstall(){if(deferredPrompt){deferredPrompt.prompt();}else{alert('Install ke liye Chrome me Reload karo');}}</script>
+<div style="display:flex;gap:8px;justify-content:center;margin:12px 0">
+<button onclick="shareApp('whatsapp')" style="background:#25D366;color:#fff;border:none;padding:8px 12px;border-radius:20px">WhatsApp</button>
+<button onclick="shareApp('facebook')" style="background:#1877F2;color:#fff;border:none;padding:8px 12px;border-radius:20px">Facebook</button>
+<button onclick="shareApp('copy')" style="background:#0f172a;color:#fff;border:none;padding:8px 12px;border-radius:20px">🔗 Copy</button>
 </div>
-
-<!-- ADDED: Sidebar -->
-<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
-<div class="sidebar" id="sidebar">
-  <div class="sidebar-top">
-    <div class="logo" style="cursor:default">AH</div>
-    <h2 style="font-weight:800;font-size:18px">HADI KI DAIRAY</h2>
-  </div>
-  <div class="menu-list">
-    <a class="menu-item" onclick="changePage('Home')">🏠 Home</a>
-    <a class="menu-item" onclick="changePage('Book')">📖 Book</a>
-    <a class="menu-item" onclick="changePage('Calendar')">📅 Calendar</a>
-    <a class="menu-item" onclick="changePage('Accounting')">💰 Accounting</a>
-    <a class="menu-item chat" href="./chat.html">💬 Live Chat</a>
-    <a class="menu-item" onclick="changePage('Settings')">⚙️ Settings + 🌙 Theme</a>
-    <a class="menu-item green">📲 INSTALL APP</a>
-    <a class="menu-item blue">📄 PDF All</a>
-    <a class="menu-item red">🔒 Lock</a>
-  </div>
-  <div style="padding:18px;text-align:center;border-top:1px solid #eee">
-    <b>© 2026 HADI KI DAIRAY</b><br><small style="color:#888">Developed by Abdul Hadi</small>
-  </div>
-</div>
-
-<!-- AAPKA PURANA CONTENT BILKUL SAME HAI -->
-<div class="main-content">
-<div>
-<h1>👑 HADI KI DAIRAY</h1>
-<p>Abdul Hadi Arif Official Chat App</p>
-<div class="loader"></div>
-<p>Loading your circle... Redirecting to Chat</p>
-<p style="margin-top:30px;font-size:0.9rem">If not redirected, <a href="./chat.html">Click Here</a></p>
-</div>
-</div>
-
-</body>
-</html>
+<script>
+function shareApp(t){
+ var u=window.location.href;
+ var tx="Hadi Ki Dairay - Meri Diary App: ";
+ if(t=='whatsapp'){window.open("https://wa.me/?text="+encodeURIComponent(tx+u),"_blank")}
+ else if(t=='facebook'){window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(u),"_blank")}
+ else{navigator.clipboard.writeText(u);alert("Link copy!")}
+}
+function downloadPDFAll(){alert('PDF All')}
+function downloadPDFSingle(){alert('PDF Single')}
+function downloadPersonPDF(){alert('PDF Person')}
+function lockK(){document.getElementById('welcome').style.display='flex';}
+</script>
+<a onclick="setView('chat')" style="position:fixed; bottom:20px; right:20px; background:#2ff3a3; color:#0a1931; padding:14px 22px; border-radius:50px; font-weight:800; text-decoration:none; box-shadow:0 6px 20px rgba(0,0,0,0.3); z-index:999; cursor:pointer;">💬 Live Chat</a>
+</body></html>
