@@ -1,15 +1,15 @@
 {
-  "name": "HADI KI DAIRAY - Chat App",
-  "short_name": "HADI CHAT",
-  "description": "Abdul Hadi ki private chat app - dosto ke liye group chat",
-  "start_url": "./chat.html",
+  "name": "HADI KI DAIRAY",
+  "short_name": "HADI KI DAIRAY",
+  "description": "HADI KI DAIRAY - Digital Diary, Book & Accounting App by Abdul Hadi",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0a1931",
   "theme_color": "#0a1931",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/1380/1380370.png",
+      "src": "icon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
