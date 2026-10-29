@@ -1,19 +1,19 @@
 {
   "name": "HADI KI DAIRAY",
   "short_name": "HADI KI DAIRAY",
-  "description": "HADI KI DAIRAY - Digital Diary, Book & Accounting App by Abdul Hadi",
+  "description": "HADI KI DAIRAY - My Digital Diary App",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0a1931",
   "theme_color": "#0a1931",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/1380/1380370.png",
+      "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/1380/1380370.png",
+      "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
