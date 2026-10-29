@@ -1,5 +1,3 @@
-const CACHE_NAME = "hadi-ki-dairay-v2";
-const FILES_TO_CACHE = [
 const CACHE_NAME = 'hadi-v4-gol-logo';
 const urlsToCache = [
   './',
